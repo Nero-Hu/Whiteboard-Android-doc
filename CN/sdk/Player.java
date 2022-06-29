@@ -292,6 +292,25 @@ public class Player extends Displayer {
     }
     //endregion
 
+    /**
+     * 添加白板回放的回调。
+     *
+     * @param playerListener 白板回放的回调。详见 {@link com.herewhite.sdk.PlayerListener PlayerListener}。
+     */
+    public void addPlayerListener(@NonNull PlayerListener playerListener) {
+        listeners.addIfAbsent(playerListener);
+    }
+
+    /**
+     * 删除白板回放的回调。
+     *
+     * @param playerListener 白板回放的回调。详见 {@link com.herewhite.sdk.PlayerListener PlayerListener}。
+     */
+    public void removePlayerListener(@NonNull PlayerListener playerListener) {
+        listeners.remove(playerListener);
+    }
+    // endregion
+
     // region PlayerListener
     private PlayerListener listener;
 

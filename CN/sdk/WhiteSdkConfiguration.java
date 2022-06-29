@@ -232,6 +232,34 @@ public class WhiteSdkConfiguration extends WhiteObject {
     }
     /// @endcond
 
+
+    /**
+     * 获取是否关闭新铅笔工具的笔锋效果。
+     *
+     * @return 是否关闭新铅笔工具的笔锋效果：
+     *
+     * - `true`：关闭笔锋效果。
+     * - `false`：开启笔锋效果。
+     */
+    public boolean isDisableNewPencilStroke() {
+        return disableNewPencilStroke;
+    }
+
+    /**
+     * 开启/关闭新铅笔工具的笔锋效果。
+     *
+     * @note 该方法仅在调用 {@link com.herewhite.sdk.RoomParams.setDisableNewPencil setDisableNewPencil(false)} 后生效。
+     *
+     * @param disableNewPencilStroke 是否关闭新铅笔工具的笔锋效果：
+     *
+     * - `true`：关闭笔锋效果。
+     * - `false`：（默认）开启笔锋效果。
+     */
+    public void setDisableNewPencilStroke(boolean disableNewPencilStroke) {
+        this.disableNewPencilStroke = disableNewPencilStroke;
+    }
+
+
     /**
      * 设置绘图的渲染模式。
      *

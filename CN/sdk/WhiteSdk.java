@@ -221,7 +221,7 @@ public class WhiteSdk {
      * 创建互动白板回放房间。
      *
      * @param playerConfiguration 白板回放的参数配置，详见 {@link com.herewhite.sdk.domain.PlayerConfiguration PlayerConfiguration}。
-     * @param listener            白板回放事件的回调，详见 {@link com.herewhite.sdk.PlayerEventListener PlayerEventListener}。
+     * @param listener            白板回放事件的回调，详见 {@link com.herewhite.sdk.PlayerListener PlayerListener}。
      * @param playerPromise       `Promise<Player>` 接口实例，详见 {@link com.herewhite.sdk.domain.Promise Promise}。你可以通过该接口获取 `createPlayer` 的调用结果：
      *  - 如果方法调用成功，将返回新创建的回放房间对象，详见 {@link com.herewhite.sdk.Player Player}。
      *  - 如果方法调用失败，将返回错误信息。

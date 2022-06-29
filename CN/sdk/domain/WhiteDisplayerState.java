@@ -62,9 +62,9 @@ public class WhiteDisplayerState extends WhiteObject {
     }
 
     /**
-     * 获取当前场景组下的场景状态。
+     * 获取当前场景目录下的场景状态。
      *
-     * @return 当前场景组下的场景状态，详见 {@link SceneState}。
+     * @return 当前场景目录下的场景状态，详见 {@link SceneState}。
      */
     public SceneState getSceneState() {
         return sceneState;

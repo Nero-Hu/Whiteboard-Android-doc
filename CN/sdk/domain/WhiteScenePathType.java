@@ -19,7 +19,7 @@ public enum WhiteScenePathType {
     //@SerializedName("page")
     Page,
     /**
-     * 查询路径为场景组路径。
+     * 查询路径为场景目录路径。
      */
     //@SerializedName("dir")
     Dir,

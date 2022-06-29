@@ -366,6 +366,17 @@ public class Room extends Displayer {
     }
     //endregion
 
+    /**
+     * 在指定位置插入文字。
+     *
+     * @param x 第一个文字左侧边的中点在世界坐标系中的 X 轴坐标。
+     * @param y 第一个文字左侧边的中点在世界坐标系中的 Y 轴坐标。
+     * @param text 初始的文字内容，不传则为空。
+     */
+    public void insertText(int x, int y, String text) {
+        bridge.callHandler("room.insertText", new Object[]{x, y, text});
+    }
+
     //region GET API
 
     /**
@@ -580,7 +591,7 @@ public class Room extends Displayer {
     }
 
     /**
-     * 获取房间当前场景组下的场景状态。
+     * 获取房间当前场景目录下的场景状态。
      *
      * @since 2.4.0
      *
@@ -592,14 +603,14 @@ public class Room extends Displayer {
      *   - {@link #setScenePath(String path, Promise<Boolean> promise) setScenePath}[2/2]
      *   - {@link #putScenes(String, Scene[], int)}
      *
-     * @return 当前场景组下的场景状态，详见 {@link com.herewhite.sdk.domain.SceneState SceneState}。
+     * @return 当前场景目录下的场景状态，详见 {@link com.herewhite.sdk.domain.SceneState SceneState}。
      */
     public SceneState getSceneState() {
         return syncRoomState.getDisplayerState().getSceneState();
     }
 
     /**
-     * 获取房间当前场景组下的场景状态。
+     * 获取房间当前场景目录下的场景状态。
      *
      * @note
      * - 该方法为异步调用。
@@ -633,7 +644,7 @@ public class Room extends Displayer {
     }
 
     /**
-     * 获取房间当前场景组下的场景列表。
+     * 获取房间当前场景目录下的场景列表。
      *
      * @since 2.4.0
      *
@@ -645,14 +656,14 @@ public class Room extends Displayer {
      *   - {@link #setScenePath(String path, Promise<Boolean> promise) setScenePath}[2/2]
      *   - {@link #putScenes(String, Scene[], int) putScenes}
      *
-     * @return 当前场景组下的场景列表，详见 {@link com.herewhite.sdk.domain.Scene Scene}。
+     * @return 当前场景目录下的场景列表，详见 {@link com.herewhite.sdk.domain.Scene Scene}。
      */
     public Scene[] getScenes() {
         return this.getSceneState().getScenes();
     }
 
     /**
-     * 获取房间当前场景组下的场景列表。
+     * 获取房间当前场景目录下的场景列表。
      *
      * @note
      * - 该方法为异步调用。
@@ -843,11 +854,11 @@ public class Room extends Displayer {
      * - 如需获取方法调用回调，请使用 {@link #setScenePath(String path, Promise<Boolean> promise) setScenePath}[2/2]。
      *
      * 场景切换失败可能有以下原因：
-     * - 路径不合法，请确保场景路径以 `/` 开头，由场景组和场景名构成。
+     * - 路径不合法，请确保场景路径以 `/` 开头，由场景目录和场景名构成。
      * - 场景路径对应的场景不存在。
-     * - 传入的路径是场景组的路径，而不是场景路径。
+     * - 传入的路径是场景目录的路径，而不是场景路径。
      *
-     * @param path 想要切换到的场景的场景路径，请确保场景路径以 `/` 开头，由场景组和场景名构成，例如，`/math/classA`.
+     * @param path 想要切换到的场景的场景路径，请确保场景路径以 `/` 开头，由场景目录和场景名构成，例如，`/math/classA`.
      */
     public void setScenePath(String path) {
         bridge.callHandler("room.setScenePath", new Object[]{path});
@@ -862,11 +873,11 @@ public class Room extends Displayer {
      * 该方法为异步调用。
      * <p>
      * 场景切换失败可能有以下原因：
-     * - 路径不合法，请确保场景路径以 "/"，由场景组和场景名构成。
+     * - 路径不合法，请确保场景路径以 "/"，由场景目录和场景名构成。
      * - 场景路径对应的场景不存在。
-     * - 传入的路径是场景组的路径，而不是场景路径。
+     * - 传入的路径是场景目录的路径，而不是场景路径。
      *
-     * @param path    想要切换到的场景的场景路径，请确保场景路径以 "/"，由场景组和场景名构成，例如，`/math/classA`.
+     * @param path    想要切换到的场景的场景路径，请确保场景路径以 "/"，由场景目录和场景名构成，例如，`/math/classA`.
      * @param promise `Promise<Boolean>` 接口，详见 {@link com.herewhite.sdk.domain.Promise Promise}。你可以通过该接口获取 `setScenePath` 的调用结果：
      *                - 如果方法调用成功，则返回 `true`.
      *                - 如果方法调用失败，则返回错误信息。
@@ -886,12 +897,12 @@ public class Room extends Displayer {
     }
 
     /**
-     * 切换至当前场景组下的指定场景。
+     * 切换至当前场景目录下的指定场景。
      * <p>
      * 方法调用成功后，房间内的所有用户看到的白板都会切换到指定场景。
-     * 指定的场景必须在当前场景组中，否则，方法调用会失败。
+     * 指定的场景必须在当前场景目录中，否则，方法调用会失败。
      *
-     * @param index   目标场景在当前场景组下的索引号。
+     * @param index   目标场景在当前场景目录下的索引号。
      * @param promise `Promise<Boolean>` 接口，详见 {@link com.herewhite.sdk.domain.Promise Promise}。你可以通过该接口获取 `setSceneIndex` 的调用结果：
      *                - 如果方法调用成功，则返回 `true`。
      *                - 如果方法调用失败，则返回错误信息。
@@ -914,13 +925,13 @@ public class Room extends Displayer {
     }
 
     /**
-     * 在指定场景组下插入多个场景。
+     * 在指定场景目录下插入多个场景。
      *
      * @note 调用该方法插入多个场景后不会切换到新插入的场景。如果要切换至新插入的场景，需要调用 `setScenePath`。
      *
-     * @param dir    场景组名称，必须以 `/` 开头。不能为场景路径。
+     * @param dir    场景目录的名称，必须以 `/` 开头。不能为场景路径。
      * @param scenes 由多个场景构成的数组。单个场景的字段详见 {@link com.herewhite.sdk.domain.Scene Scene}。
-     * @param index  待插入的多个场景中，第一个场景在该场景组的索引号。如果传入的索引号大于该场景组已有场景总数，新插入的场景会排在现有场景的最后。场景的索引号从 0 开始。
+     * @param index  待插入的多个场景中，第一个场景在该场景目录的索引号。如果传入的索引号大于该场景目录已有场景总数，新插入的场景会排在现有场景的最后。场景的索引号从 0 开始。
      *
      * **示例代码**
      * <pre>
@@ -940,34 +951,34 @@ public class Room extends Displayer {
      * 成功移动场景后，场景路径也会改变。
      *
      * @note
-     * - 该方法只能移动场景，不能移动场景组，即 `sourcePath` 只能是场景路径，不能是场景组路径。
-     * - 该方法支持改变指定场景在当前所属场景组下的位置，也支持将指定场景移至其他场景组。
+     * - 该方法只能移动场景，不能移动场景目录，即 `sourcePath` 只能是场景路径，不能是场景目录路径。
+     * - 该方法支持改变指定场景在当前所属场景目录下的位置，也支持将指定场景移至其他场景目录。
      *
-     * @param sourcePath      需要移动的场景原路径。必须为场景路径，不能是场景组的路径。
-     * @param targetDirOrPath 目标场景组路径或目标场景路径：
-     *                        - 当 `targetDirOrPath`设置为目标场景组时，表示将指定场景移至其他场景组中，场景路径会发生改变，但是场景名称不变。
-     *                        - 当 `targetDirOrPath`设置为目标场景路径时，表示改变指定场景在当前场景组的位置，场景路径和场景名都会发生改变。
+     * @param sourcePath      需要移动的场景原路径。必须为场景路径，不能是场景目录的路径。
+     * @param targetDirOrPath 目标场景目录的路径或目标场景的路径：
+     *                        - 当 `targetDirOrPath` 设置为场景目录时，表示将指定场景移至其他场景目录中，场景路径会发生改变，但是场景名称不变。
+     *                        - 当 `targetDirOrPath` 设置为场景时，表示改变指定场景在当前场景目录的位置，场景路径和场景名都会发生改变。
      */
     public void moveScene(String sourcePath, String targetDirOrPath) {
         bridge.callHandler("room.moveScene", new Object[]{sourcePath, targetDirOrPath});
     }
 
     /**
-     * 删除场景或者场景组。
+     * 删除场景或者场景目录。
      *
      * @note
      * - 互动白板实时房间内必须至少有一个场景。当删除所有的场景后，SDK 会自动生成一个路径为 `/init` 初始场景（房间初始化时的默认场景）。
-     * - 如果删除白板当前所在场景，白板会展示被删除场景所在场景组的最后一个场景
-     * - 如果删除的是场景组，则该场景组下的所有场景都会被删除。
-     * - 如果删除的是当前场景所在的场景组，例如 `dirA`，SDK 会执行向上递归逻辑选择新的场景作为当前场景，规则如下：
-     *    1. 如果当前场景组路径下还有其他场景组，例如 `dirB`，排在被删除的场景组 `dirA` 后面，则将场景切换至
+     * - 如果删除白板当前所在场景，白板会展示被删除场景所在场景目录的最后一个场景
+     * - 如果删除的是场景目录，则该场景目录下的所有场景都会被删除。
+     * - 如果删除的是当前场景所在的场景目录，例如 `dirA`，SDK 会执行向上递归逻辑选择新的场景作为当前场景，规则如下：
+     *    1. 如果当前场景目录路径下还有其他场景目录，例如 `dirB`，排在被删除的场景目录 `dirA` 后面，则将场景切换至
      *    `dirB` 中的第一个场景（index 为 0）。
-     *    2. 如果当前场景组路径下 `dirA` 后不存在场景组，则查看当前场景组路径下是否存在场景；
-     *    如果存在，则将场景切换至当前场景组路径下的第一个场景（index 为 0）。
-     *    3. 如果当前场景组路径下 `dirA` 后没有场景组，也不存在任何场景，则查看 `dirA` 前面是否存在场景组 `dirC`；如果存在，则选择 `dirC` 中的第一个场景（index 为 0）。
+     *    2. 如果当前场景目录路径下 `dirA` 后不存在场景目录，则查看当前场景目录路径下是否存在场景；
+     *    如果存在，则将场景切换至当前场景目录路径下的第一个场景（index 为 0）。
+     *    3. 如果当前场景目录路径下 `dirA` 后没有场景目录，也不存在任何场景，则查看 `dirA` 前面是否存在场景目录 `dirC`；如果存在，则选择 `dirC` 中的第一个场景（index 为 0）。
      *   SDK 会继续向上递归执行该逻辑，直到找到新的场景。
      *
-     * @param dirOrPath 场景组路径或者场景路径。如果传入的是场景组，则会删除该场景组下的所有场景。
+     * @param dirOrPath 场景目录路径或者场景路径。如果传入的是场景目录，则会删除该场景目录下的所有场景。
      */
     public void removeScenes(String dirOrPath) {
         bridge.callHandler("room.removeScenes", new Object[]{dirOrPath});

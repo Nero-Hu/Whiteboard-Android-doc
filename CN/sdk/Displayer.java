@@ -123,6 +123,24 @@ public class Displayer {
         });
     }
 
+    /**
+     * 获取指定场景的信息。
+     *
+     * @param path 场景的路径。请确保场景路径以 `/` 开头，并且由场景目录和场景名构成，例如，`/math/classA`。
+     * @param promise `Promise<Scene>` 接口实例，详见 {@link com.herewhite.sdk.domain.Promise Promise}。你可以通过该接口获取 `getScene` 方法的调用结果：
+     * - 如果方法调用成功，将返回场景信息。详见 {@link com.herewhite.sdk.domain.Scene Scene}。
+     * - 如果方法调用失败，将返回错误信息。
+     */
+    public void getScene(String path, final Promise<Scene> promise) {
+        bridge.callHandler("displayer.getScene", new Object[]{path}, new OnReturnValue<String>() {
+            @Override
+            public void onValue(String retValue) {
+                Scene scene = gson.fromJson(retValue, Scene.class);
+                promise.then(scene);
+            }
+        });
+    }
+
 
     /**
      * 获取当前房间内所有场景的信息。

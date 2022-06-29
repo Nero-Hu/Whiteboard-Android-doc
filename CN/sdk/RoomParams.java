@@ -223,30 +223,33 @@ public class RoomParams extends WhiteObject {
     private boolean disableBezier = false;
 
     /**
-     * 获取是否关闭笔锋效果。
+     * 获取是否关闭新铅笔工具。
      *
-     * @return 是否关闭笔锋效果：
-     * - true: 关闭笔锋效果。
-     * - false: 开启笔锋效果。
+     * @return 是否关闭新铅笔工具：
+     * - `true`: 关闭新铅笔工具。
+     * - `false`: 开启新铅笔工具。
      */
     public boolean isDisableNewPencil() {
         return disableNewPencil;
     }
 
     /**
-     * 关闭/开启笔锋效果。
+     * 关闭/开启新铅笔工具。
+     *
+     * 设置 `setDisableNewPencil(false)` 后，SDK 会对铅笔工具（`PENCIL`）应用新版笔迹平滑算法，使书写笔迹更加流畅自然，并带有笔锋效果。
+     *
      * @since 2.12.2
      *
      * @note
      * - 在 2.12.2 版本中，`setDisableNewPencil` 的默认值为 `false`，自 2.12.3 版本起，`setDisableNewPencil` 的默认值改为 `true`。
-     * - 为正常显示笔迹，在开启笔峰效果前，请确保该房间内的所有用户使用如下 SDK：
+     * - 为正常显示笔迹，在开启新铅笔工具前，请确保该房间内的所有用户使用如下 SDK：
      *      - Android SDK 2.12.3 版或之后
      *      - iOS SDK 2.12.3 版或之后
      *      - Web SDK 2.12.5 版或之后
      *
-     * @param disableNewPencil 是否关闭笔锋效果：
-     * - true: （默认）关闭笔锋效果。
-     * - false: 开启笔锋效果。
+     * @param disableNewPencil 是否关闭新铅笔工具：
+     * - `true`: （默认）关闭新铅笔工具。
+     * - `false`: 开启新铅笔工具。
      */
     public void setDisableNewPencil(boolean disableNewPencil) {
         this.disableNewPencil = disableNewPencil;
@@ -412,4 +415,28 @@ public class RoomParams extends WhiteObject {
         this.roomToken = roomToken;
     }
 
+   /**
+    * 开启全链路加速功能。
+    *
+    * Agora 互动白板服务集成了 [Agora 全链路加速（FPA）服务](https://docs.agora.io/cn/global-accelerator/agora_ga_overview?platform=All%20Platforms)。
+    * 集成 Agora Whiteboard SDK 后，你只需调用 `setUseNativeWebSocket(true)`，即可在互动白板应用中开启全链路加速服务，提升传输质量。
+    *
+    * @param nativeWebSocket 是否开启全链路加速：
+    * - `true`：开启全链路加速。
+    * - `false`：（默认）关闭全链路加速。
+    */
+    public void setUseNativeWebSocket(boolean nativeWebSocket) {
+        this.nativeWebSocket = nativeWebSocket;
+    }
+
+   /**
+    * 获取是否开启全链路加速功能。
+    *
+    * @return 是否开启全链路加速功能：
+    * - `true`：开启。
+    * - `false`：关闭。
+    */
+    public boolean isUseNativeWebSocket() {
+        return nativeWebSocket;
+    }
 }

@@ -284,7 +284,7 @@
 
 <table>
 <tr>
-<td>{@link com.herewhite.sdk.Room.insertImage(ImageInformation imageInfo) insertImage}</td>
+<td>{@link com.herewhite.sdk.Room.insertImage(ImageInformation imageInfo) insertImage}1</td>
 <td>插入图片占位符</td>
 </tr>
 <tr>
@@ -292,24 +292,32 @@
 <td>展示图片</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.Room.insertImage(ImageInformationWithUrl imageInformationWithUrl) insertImage}</td>
+<td>{@link com.herewhite.sdk.Room.insertImage(ImageInformationWithUrl imageInformationWithUrl) insertImage}2</td>
 <td>插入并展示图片</td>
 </tr>
 <tr>
+<td>{@link com.herewhite.sdk.Room.insertText insertText}</td>
+<td>在指定位置插入文字</td>
+</tr>
+<tr>
+<td>{@link com.herewhite.sdk.Displayer.getScene getScene}</td>
+<td>获取指定场景的信息</td>
+</tr>
+<tr>
 <td>{@link com.herewhite.sdk.Room.getSceneState() getSceneState}[1/2]</td>
-<td>获取当前场景组下的场景状态（同步方法）</td>
+<td>获取当前场景目录下的场景状态（同步方法）</td>
 </tr>
 <tr>
 <td>{@link com.herewhite.sdk.Room.getSceneState(Promise<SceneState> promise) getSceneState}[2/2]</td>
-<td>获取当前场景组下的场景状态（异步方法）</td>
+<td>获取当前场景目录下的场景状态（异步方法）</td>
 </tr>
 <tr>
 <td>{@link com.herewhite.sdk.Room.getScenes() getScenes}[1/2]</td>
-<td>获取当前场景组下的场景列表（同步方法）</td>
+<td>获取当前场景目录下的场景列表（同步方法）</td>
 </tr>
 <tr>
 <td>{@link com.herewhite.sdk.Room.getScenes(Promise<Scene[]> promise) getScenes}[2/2]</td>
-<td>获取当前场景组下的场景列表（异步方法）</td>
+<td>获取当前场景目录下的场景列表（异步方法）</td>
 </tr>
 <tr>
 <td>{@link com.herewhite.sdk.Room.setScenePath(String path) setScenePath}[1/2]</td>
@@ -321,11 +329,11 @@
 </tr>
 <tr>
 <td>{@link com.herewhite.sdk.Room.setSceneIndex(Integer index, @Nullable Promise<Boolean> promise) setSceneIndex}[1/2]</td>
-<td>切换至当前场景组下的指定场景</td>
+<td>切换至当前场景目录下的指定场景</td>
 </tr>
 <tr>
 <td>{@link com.herewhite.sdk.Room.putScenes(String dir, Scene[] scenes, int index) putScenes}</td>
-<td>在指定场景组下插入多个场景</td>
+<td>在指定场景目录下插入多个场景</td>
 </tr>
 <tr>
 <td>{@link com.herewhite.sdk.Room.moveScene(String sourcePath, String targetDirOrPath) moveScene}</td>
@@ -333,7 +341,7 @@
 </tr>
 <tr>
 <td>{@link com.herewhite.sdk.Room.removeScenes(String dirOrPath) removeScenes}</td>
-<td>删除场景或者场景组</td>
+<td>删除场景或者场景目录</td>
 </tr>
 <tr>
 <td>{@link com.herewhite.sdk.Room.cleanScene(boolean retainPpt) cleanScene}</td>
@@ -427,6 +435,14 @@
 <td>{@link com.herewhite.sdk.Player.getPlayerTimeInfo(Promise<PlayerTimeInfo> promise) getPlayerTimeInfo}</td>
 <td>获取白板回放的时间信息（异步方法）</td>
 </tr>
+<tr>
+<td>{@link com.herewhite.sdk.Player.addPlayerListener addPlayerListener}</td>
+<td>添加白板回放的回调</td>
+</tr>
+<tr>
+<td>{@link com.herewhite.sdk.Player.removePlayerListener removePlayerListener}</td>
+<td>删除白板回放的回调</td>
+</tr>
 </table>
 
 ### 自定义事件
@@ -489,5 +505,9 @@
 <tr>
 <td>{@link com.herewhite.sdk.Displayer.refreshViewSize() refreshViewSize}</td>
 <td>刷新白板的界面</td>
+</tr>
+<tr>
+<td>{@link com.herewhite.sdk.RoomParams.setUseNativeWebSocket setUseNativeWebSocket}</td>
+<td>开启/关闭全链路加速功能。</td>
 </tr>
 </table>
