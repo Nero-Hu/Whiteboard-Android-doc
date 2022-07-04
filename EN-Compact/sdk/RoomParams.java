@@ -223,31 +223,31 @@ public class RoomParams extends WhiteObject {
     private boolean disableBezier = false;
 
     /**
-     * Gets whether the stroke effect is disabled.
+     * Gets whether the new pencil is disabled.
      *
-     * @return Whether the stroke effect is enabled:
-     * - true: The stroke effect is disabled.
-     * - false: The stroke effect is enabled.
+     * @return Whether the new pencil is enabled:
+     * - `true`: The new pencil is disabled.
+     * - `false`: The new pencil is enabled.
      */
     public boolean isDisableNewPencil() {
         return disableNewPencil;
     }
 
     /**
-     * Disables/Enables the stroke effect of the pencil.
+     * Disables/Enables the new pencil.
      *
      * @since 2.12.2
      *
      * @note
      * - In v2.12.2, the SDK sets the default value of `disableNewPencil` as `false`; as of v2.12.3, the SDK changes the default value of `disableNewPencil` to `true`.
-     * - To enable the stroke effect, ensure that every user in the room uses one of the following SDKs:
+     * - To enable the new pencil, ensure that every user in the room uses one of the following SDKs:
      *      - Android SDK v2.12.3 or later
      *      - iOS SDK v2.12.3 or later
      *      - Web SDK v2.12.5 or later
      *
-     * @param disableNewPencil Whether to disable the handwriting effect of the pencil:
-     * - `true`: (Default) Disable the stroke effect of the pencil.
-     * - `false`: Enable the stroke effect of the pencil.
+     * @param disableNewPencil Whether to disable the new pencil:
+     * - `true`: (Default) Disable the new pencil. The SDK applies the old stroke smoothing algorithm to pencil.
+     * - `false`: Enable the new pencil. This allows the SDK to apply the new stroke smoothing algorithm to pencil, which results in smoother, more natural handwriting with a stroke effect.
      */
     public void setDisableNewPencil(boolean disableNewPencil) {
         this.disableNewPencil = disableNewPencil;

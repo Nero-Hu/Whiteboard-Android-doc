@@ -376,6 +376,17 @@ public class Room extends Displayer {
     }
     //endregion
 
+    /**
+     * Inserts text at a specified position.
+     *
+     * @param x The X coordinate of the midpoint of the left edge of the first character in the world coordinate system.
+     * @param y The Y coordinate of the midpoint of the left edge of the first character in the world coordinate system.
+     * @param text The initial text. If you do not pass in a value, the content is empty.
+     */
+    public void insertText(int x, int y, String text) {
+        bridge.callHandler("room.insertText", new Object[]{x, y, text});
+    }
+
     //region GET API
 
     /**

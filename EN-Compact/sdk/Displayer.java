@@ -120,6 +120,24 @@ public class Displayer {
         });
     }
 
+    /**
+     * Gets the information about a specified scene.
+     *
+     * @param path The path of a scene. Ensure the scene path stars with `/` and consists of the scene directory and scene name. For example, `/math/classA`.
+     * @param promise The `Promise<Scene>` interface instance. See {@link com.herewhite.sdk.domain.Promise Promise}.
+     * You can get the call result of `getScene` through this interface:
+     * - The information about the specified scene, if the method call succeeds. See {@link com.herewhite.sdk.domain.Scene Scene}.
+     * - An error message, if the method call fails.
+     */
+    public void getScene(String path, final Promise<Scene> promise) {
+        bridge.callHandler("displayer.getScene", new Object[]{path}, new OnReturnValue<String>() {
+            @Override
+            public void onValue(String retValue) {
+                Scene scene = gson.fromJson(retValue, Scene.class);
+                promise.then(scene);
+            }
+        });
+    }
 
     /**
      * Gets information about all scenes in the room.

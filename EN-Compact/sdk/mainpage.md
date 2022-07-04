@@ -286,6 +286,14 @@ Agora provides interactive whiteboard with high reliability and rich features th
 <td>Inserts and displays an image on the whiteboard.</td>
 </tr>
 <tr>
+<td>{@link com.herewhite.sdk.Room.insertText insertText}</td>
+<td>Inserts text at a specified position.</td>
+</tr>
+<tr>
+<td>{@link com.herewhite.sdk.Displayer.getScene getScene}</td>
+<td>Gets the information about a specified scene.</td>
+</tr>
+<tr>
 <td>{@link com.herewhite.sdk.Room.getSceneState() getSceneState}[1/2]</td>
 <td>Gets the state of the scenes under the current scene directory (synchronous).</td>
 </tr>

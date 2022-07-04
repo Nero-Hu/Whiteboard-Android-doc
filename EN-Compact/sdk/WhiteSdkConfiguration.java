@@ -230,6 +230,30 @@ public class WhiteSdkConfiguration extends WhiteObject {
     /// @endcond
 
     /**
+     * Gets Whether the stroke effect of the new pencil is disabled.
+     *
+     * @return Whether the stroke effect of the new pencil is disabled:
+     * - `true`: The stroke effect of the new pencil is disabled.
+     * - `false`: The stroke effect of the new pencil is enabled.
+     */
+    public boolean isDisableNewPencilStroke() {
+        return disableNewPencilStroke;
+    }
+
+    /**
+     * Enables/Disables the stroke effect of the new pencil.
+     *
+     * @note This method takes effect only after calling {@link com.herewhite.sdk.RoomParams.setDisableNewPencil setDisableNewPencil(false)}.
+     *
+     * @param disableNewPencilStroke Whether to disable the stroke effect of the new pencil:
+     * - `true`: Disable the stroke effect.
+     * - `false`: (Default) Enable the stroke effect.
+     */
+    public void setDisableNewPencilStroke(boolean disableNewPencilStroke) {
+        this.disableNewPencilStroke = disableNewPencilStroke;
+    }
+
+    /**
      * Sets the rendering mode for drawings.
      *
      * @since 2.8.0

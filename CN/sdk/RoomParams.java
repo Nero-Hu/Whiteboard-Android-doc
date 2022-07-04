@@ -236,8 +236,6 @@ public class RoomParams extends WhiteObject {
     /**
      * 关闭/开启新铅笔工具。
      *
-     * 设置 `setDisableNewPencil(false)` 后，SDK 会对铅笔工具（`PENCIL`）应用新版笔迹平滑算法，使书写笔迹更加流畅自然，并带有笔锋效果。
-     *
      * @since 2.12.2
      *
      * @note
@@ -248,8 +246,8 @@ public class RoomParams extends WhiteObject {
      *      - Web SDK 2.12.5 版或之后
      *
      * @param disableNewPencil 是否关闭新铅笔工具：
-     * - `true`: （默认）关闭新铅笔工具。
-     * - `false`: 开启新铅笔工具。
+     * - `true`: （默认）关闭新铅笔工具。关闭后，SDK 对铅笔工具（pencil）应用旧版笔迹平滑算法。
+     * - `false`: 开启新铅笔工具。开启后，SDK 对铅笔工具应用新版笔迹平滑算法，使书写笔迹更加流畅自然，并带有笔锋效果。
      */
     public void setDisableNewPencil(boolean disableNewPencil) {
         this.disableNewPencil = disableNewPencil;
