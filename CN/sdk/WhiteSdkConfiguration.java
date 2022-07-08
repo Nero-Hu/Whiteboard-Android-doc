@@ -234,9 +234,9 @@ public class WhiteSdkConfiguration extends WhiteObject {
 
 
     /**
-     * 获取是否关闭新铅笔工具的笔锋效果。
+     * 获取新铅笔工具的笔锋效果是否关闭。
      *
-     * @return 是否关闭新铅笔工具的笔锋效果：
+     * @return 新铅笔工具的笔锋效果是否关闭：
      *
      * - `true`：关闭笔锋效果。
      * - `false`：开启笔锋效果。

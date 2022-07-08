@@ -230,7 +230,7 @@ public class WhiteSdkConfiguration extends WhiteObject {
     /// @endcond
 
     /**
-     * Gets Whether the stroke effect of the new pencil is disabled.
+     * Gets whether the stroke effect of the new pencil is disabled.
      *
      * @return Whether the stroke effect of the new pencil is disabled:
      * - `true`: The stroke effect of the new pencil is disabled.
