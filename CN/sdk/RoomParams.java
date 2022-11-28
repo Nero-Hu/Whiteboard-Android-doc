@@ -437,4 +437,28 @@ public class RoomParams extends WhiteObject {
     public boolean isUseNativeWebSocket() {
         return nativeWebSocket;
     }
+    
+   /**
+    * 获取浮动条功能是否已开启。
+    *
+    * @return 浮动条功能是否已开启：
+    * - `true`：开启。
+    * - `false`：关闭。
+    */
+    public boolean isUsingFloatBar() {
+        return floatBar;
+    }
+
+   /**
+    * 设置是否开启开启浮动条功能。
+    *
+    * @param floatBar 是否开启浮动条：
+    * - `true`：开启浮动条功能。
+    * - `false`：（默认）关闭浮动条功能。
+    */
+    public void setUsingFloatBar(boolean floatBar) {
+        this.floatBar = floatBar;
+    }
+
+    private boolean floatBar = false;
 }
