@@ -1022,25 +1022,6 @@ public class Room extends Displayer {
     //endregion
 
     /**
-     * 删除当前页面，多窗口下限定为主白板场景集当前页面。
-     *
-     * @since 2.16.23
-     */
-    public void removePage(@Nullable Promise<Boolean> promise) {
-        removePage(new RemovePageParam(), promise);
-    }
-
-    /**
-     * 删除当前场景集指定页面，多窗口下限定为主白板场景集下页面
-     *
-     * @since 2.16.23
-     * @param index 指定页面索引号。
-     */
-    public void removePage(int index, @Nullable Promise<Boolean> promise) {
-        removePage(new RemovePageParam(index), promise);
-    }
-
-    /**
      * 更新视角的缩放比例。
      *
      * @deprecated 该方法已经废弃。请使用 {@link #moveCamera(CameraConfig)}。
