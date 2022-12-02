@@ -385,4 +385,19 @@ public class WhiteSdk {
     public void releasePlayer(String uuid) {
         releasePlayer();
     }
+
+    /**
+     * 请求 Slide 的日志。
+     *
+     * @param logFile 用于存储 Slide 日志的日志文件。
+     * @param promise 请求调用回调结果。
+     */
+    public void requestSlideLog(File logFile, final Promise<Boolean> promise) {
+        try {
+            RequestSlideLogHandler handler = new RequestSlideLogHandler(logFile, promise);
+            handler.request();
+        } catch (Exception e) {
+            promise.catchEx(new SDKError(e.getMessage()));
+        }
+    }
 }
