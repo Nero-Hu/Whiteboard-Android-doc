@@ -1038,6 +1038,25 @@ public class Room extends Displayer {
     //endregion
 
     /**
+     * Removes the current page. When in multi-window mode, removes the current page of the main whiteboard scene.
+     *
+     * @since 2.16.23
+     */
+    public void removePage(@Nullable Promise<Boolean> promise) {
+        removePage(new RemovePageParam(), promise);
+    }
+
+    /**
+     * Removes the current page. When in multi-window mode, removes the current page of the main whiteboard scene.
+     *
+     * @since 2.16.23
+     * @param index The index number of the specified page.
+     */
+    public void removePage(int index, @Nullable Promise<Boolean> promise) {
+        removePage(new RemovePageParam(index), promise);
+    }
+
+    /**
      * Sets the scale of the view.
      *
      * @deprecated This method is deprecated. Use {@link #moveCamera(CameraConfig) moveCamera} instead.

@@ -413,4 +413,27 @@ public class RoomParams extends WhiteObject {
         this.roomToken = roomToken;
     }
 
+   /**
+    * Checks whether the floatbar is enabled:
+    *
+    * @return Whether the floatbar is enabled:
+    * - `true`: Enabled.
+    * - `false`: Disabled.
+    */
+    public boolean isUsingFloatBar() {
+        return floatBar;
+    }
+
+   /**
+    * Sets whether to enable the floatbar: 
+    *
+    * @param floatBar Whether to enable the floatbar：
+    * - `true`: Enables the floatbar.
+    * - `false`: (Default) Disables the floatbar. 
+    */
+    public void setUsingFloatBar(boolean floatBar) {
+        this.floatBar = floatBar;
+    }
+
+    private boolean floatBar = false;
 }
