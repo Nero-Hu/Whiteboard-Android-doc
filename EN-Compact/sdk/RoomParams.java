@@ -417,8 +417,8 @@ public class RoomParams extends WhiteObject {
     * Checks whether the floatbar is enabled:
     *
     * @return Whether the floatbar is enabled:
-    * - `true`: Enabled.
-    * - `false`: Disabled.
+    * - `true`: The floatbar is enabled.
+    * - `false`: The floatbar is disabled..
     */
     public boolean isUsingFloatBar() {
         return floatBar;
@@ -428,8 +428,8 @@ public class RoomParams extends WhiteObject {
     * Sets whether to enable the floatbar: 
     *
     * @param floatBar Whether to enable the floatbar：
-    * - `true`: Enables the floatbar.
-    * - `false`: (Default) Disables the floatbar. 
+    * - `true`: Enable the floatbar..
+    * - `false`: (Default) Disable the floatbar. 
     */
     public void setUsingFloatBar(boolean floatBar) {
         this.floatBar = floatBar;

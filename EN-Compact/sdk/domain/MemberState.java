@@ -132,41 +132,41 @@ public class MemberState extends WhiteObject {
     }
 
     /**
-     * Gets whether directly selecting and editing whiteboard texts is allowed.
+     * Gets whether directly selecting and editing whiteboard text is allowed.
      *
-     * @return Whether directly selecting and editing whiteboard texts is allowed.
+     * @return Whether directly selecting and editing whiteboard text is allowed.
      */
     public Boolean getTextCanSelectText() {
         return textCanSelectText;
     }
 
     /**
-     * Sets whether to allow directly selecting and editing whiteboard texts
+     * Sets whether to allow directly selecting and editing whiteboard text.
      *
-     * @param textCanSelectText Whether to allow directly selecting and editing whiteboard texts:
-     *                          - `true`：Directly selecting and editing whiteboard texts is allowed.
-     *                          - `false`：Directly selecting and editing whiteboard texts is not allowed.
+     * @param textCanSelectText Whether to allow directly selecting and editing whiteboard text:
+     *                          - `true`：Allow directly selecting and editing whiteboard text.
+     *                          - `false`：Do not allow directly selecting and editing whiteboard text.
      */
     public void setTextCanSelectText(Boolean textCanSelectText) {
         this.textCanSelectText = textCanSelectText;
     }
 
     /**
-     * Gets whether to support draw dotted lines:
+     * Gets whether to support drawing dotted lines:
      *
-     * @return Whether to support draw dotted lines:
+     * @return Whether to support drawing dotted lines:
      */
     public Boolean getDottedLine() {
         return dottedLine;
     }
 
     /**
-     * Sets whether to support draw dotted lines:
+     * Sets whether to support drawing dotted lines:
      * This feature only applies to NewPencil. You need to set disableNewPencil to false before joining the room. 
      *
-     * @param dottedLine Whether to support draw dotted lines:
-     *                   - `true`：Support draw dotted lines.
-     *                   - `false`：(Default) Do not support draw dotted lines.
+     * @param dottedLine Whether to support drawing dotted lines:
+     *                   - `true`：Support drawing dotted lines.
+     *                   - `false`：(Default) Do not support drawing dotted lines.
      */
     public void setDottedLine(Boolean dottedLine) {
         this.dottedLine = dottedLine;
