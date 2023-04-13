@@ -292,4 +292,19 @@ public class WhiteSdk {
     public void releaseRoom(String uuid) {
         releaseRoom();
     }
+
+    /**
+     * Requests the slide log.
+     *
+     * @param logFile The file that stores the slide log. 
+     * @param promise The callback of the request.
+     */
+    public void requestSlideLog(File logFile, final Promise<Boolean> promise) {
+        try {
+            RequestSlideLogHandler handler = new RequestSlideLogHandler(logFile, promise);
+            handler.request();
+        } catch (Exception e) {
+            promise.catchEx(new SDKError(e.getMessage()));
+        }
+    }
 }

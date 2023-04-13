@@ -12,7 +12,9 @@ public class MemberState extends WhiteObject {
     private int[] strokeColor;
     private Double strokeWidth;
     private Double textSize;
-
+    private Boolean textCanSelectText;
+    private Boolean dottedLine;
+    
     public MemberState() {
     }
 
@@ -127,5 +129,46 @@ public class MemberState extends WhiteObject {
      */
     public void setTextSize(double textSize) {
         this.textSize = textSize;
+    }
+
+    /**
+     * Gets whether directly selecting and editing whiteboard text is allowed.
+     *
+     * @return Whether directly selecting and editing whiteboard text is allowed.
+     */
+    public Boolean getTextCanSelectText() {
+        return textCanSelectText;
+    }
+
+    /**
+     * Sets whether to allow directly selecting and editing whiteboard text.
+     *
+     * @param textCanSelectText Whether to allow directly selecting and editing whiteboard text:
+     *                          - `true`：Allow directly selecting and editing whiteboard text.
+     *                          - `false`：Do not allow directly selecting and editing whiteboard text.
+     */
+    public void setTextCanSelectText(Boolean textCanSelectText) {
+        this.textCanSelectText = textCanSelectText;
+    }
+
+    /**
+     * Gets whether to support drawing dotted lines:
+     *
+     * @return Whether to support drawing dotted lines:
+     */
+    public Boolean getDottedLine() {
+        return dottedLine;
+    }
+
+    /**
+     * Sets whether to support drawing dotted lines:
+     * This feature only applies to NewPencil. You need to set disableNewPencil to false before joining the room. 
+     *
+     * @param dottedLine Whether to support drawing dotted lines:
+     *                   - `true`：Support drawing dotted lines.
+     *                   - `false`：(Default) Do not support drawing dotted lines.
+     */
+    public void setDottedLine(Boolean dottedLine) {
+        this.dottedLine = dottedLine;
     }
 }

@@ -52,4 +52,9 @@ public class Appliance {
      * Shape tool.
      */
     public final static String SHAPE = "shape";
+    /**
+     * A pencil eraser used to erase any part of the pencil strokes.
+     * This tool only applies to NewPencil. You need to set disableNewPencil to false before using the pencil eraser.
+     */
+    public final static String PENCIL_ERASER = "pencilEraser";
 }

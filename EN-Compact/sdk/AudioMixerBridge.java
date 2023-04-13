@@ -44,4 +44,14 @@ public interface AudioMixerBridge {
      * @param position The playback position (ms) of the audio mixing file.
      */
     void setAudioMixingPosition(int position);
+
+    /**
+     * Pauses playing or mixing the music file.
+     */
+    void pauseAudioMixing();
+
+    /**
+     * Resumes playing or mixing the music file.
+     */
+    void resumeAudioMixing();
 }
