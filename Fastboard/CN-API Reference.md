@@ -59,11 +59,15 @@ public class FastRoomOptions {
     private final boolean writable;
  
     private final FastRegion fastRegion;
- 
+
+    private Float containerSizeRatio;
+
+    private FastUserPayload userPayload;
+
     public FastRoomOptions(String appId, String uuid, String token, String uid, FastRegion fastRegion) {
         this(appId, uuid, token, uid, fastRegion, true);
     }
- 
+
     public FastRoomOptions(String appId, String uuid, String token, String uid, FastRegion fastRegion, boolean writable) {
         this.appId = appId;
         this.uuid = uuid;
@@ -86,8 +90,9 @@ public class FastRoomOptions {
 - `writable`：boolean。用户是否以互动模式加入白板房间：
   - `true`：以互动模式加入白板房间，即具有读写权限。
   - `false`：以订阅模式加入白板房间，即具有只读权限。
-- `fastRegion`：数据中心。详见 <a href="#fastregion">FastRegion</a>。
-
+- `fastRegion`：数据中心。详见 <a href="#fastregion">`FastRegion`</a>。
+- `containerSizeRatio`：Float 类型。本地显示窗口中，内容的高宽比，默认为 `9:16`。
+- `userPayload`：用户信息设置。主要用于在白板房间中同步并展示用户光标的位置。详见 <a href="#fastuserpayload">`FastUserPayload`</a>。
 
 <a name="fastregion"></a>
 #### FastRegion
@@ -103,6 +108,71 @@ public class FastRoomOptions {
 - `IN_MUM`：印度孟买，服务区覆盖印度。
 
 - `GB_LON`：英国伦敦，服务区覆盖欧洲。
+
+<a name="fastuserpayload"></a>
+#### FastUserPayload
+
+```java
+public class FastUserPayload {
+    private final String nickName;
+    private final String avatar;
+   
+    public FastUserPayload(String nickName) {
+        this(nickName, null);
+    }
+
+    public FastUserPayload(String nickName, String avatar) {
+        this.nickName = nickName;
+        this.avatar = avatar;
+    }
+}
+```
+
+`FastUserPayload` 对象，用于储存用户信息，包含以下成员变量：
+
+- `nickName`：String。用户昵称。
+
+- `avatar`：String。用户头像。
+
+## FastResource 类
+
+`FastResource` 类提供设置白板配色的方法。
+
+### getBackgroundColor
+
+```java
+public int getBackgroundColor(boolean darkMode)
+```
+
+设置 Fastboard 控件底色。
+
+**参数**
+
+- `darkMode`：boolean。Fastboard 控件底色是否为暗色主题：
+  - `true`：暗色主题。底色为暗黑色，值为 `#212121`。
+  - `false`：亮色主题。底色为白色，值为 `#FFFFFF`。
+
+**返回**
+
+十六进制的颜色值。
+
+### getBoardBackgroundColor
+
+```java
+public int getBoardBackgroundColor(boolean darkMode)
+```
+
+设置白板底色。
+
+**参数**
+
+- `darkMode`：boolean。白板底色是否为暗色主题：
+  - `true`：暗色主题。底色为暗黑色，值为 `#212121`。
+  - `false`：亮色主题。底色为白色，值为 `#FFFFFF`。
+
+**返回**
+
+十六进制的颜色值。
 
 ## FastRoom 类
 
@@ -169,6 +239,21 @@ public boolean isReady()
 - `true`：准备就绪。
 - `false`：尚未准备就绪。
 
+### isWritable
+
+```java
+public boolean isWritable() 
+```
+
+获取房间是否为互动模式。
+
+**返回**
+
+房间是否为互动模式：
+
+- `true`：房间为互动模式。
+- `false`：房间为只读模式。
+
 ### redo
 
 ```java
@@ -176,6 +261,43 @@ public void redo()
 ```
 
 重做，即回退撤销操作。
+
+### setWritable [1/2]
+
+```java
+public void setWritable(boolean writable)
+```
+
+设置房间的权限模式。
+
+**注意**
+
+该方法需要在房间准备就绪后调用。
+
+**参数**
+
+- `writable`：设置房间是否为互动模式：
+  - `true`：设置房间为互动模式。
+  - `false`：设置房间为只读模式。
+
+### setWritable [2/2]
+
+```java
+public void setWritable(boolean writable, FastResult<Boolean> result)
+```
+
+设置房间的权限模式。
+
+**注意**
+
+该方法需要在房间准备就绪后调用。
+
+**参数**
+
+- `writable`：设置房间是否为互动模式：
+  - `true`：设置房间为互动模式。
+  - `false`：设置房间为只读模式。
+- `result`：设置权限模式的结果。传入 `result` 后，该方法会创建一个 `FastResult<Boolean>` 对象并将其作为参数传入，用于在该方法调用成功或失败时打印结果日志和错误信息。
 
 ### undo
 
@@ -601,6 +723,18 @@ public static void setToolsColors(List<Integer> toolsColors)
 **参数**
 
 - `toolsColors`：白板工具的颜色，RGB 格式，例如 `0x0000FF` 表示蓝色。
+
+### setToolboxEdgeMargin
+
+```java
+public void setToolboxEdgeMargin(int margin)
+```
+
+设置白板工具条的边距。
+
+**参数**
+
+- `margin`：int。工具条的边距，单位为 `px`。
 
 ### setToolboxGravity
 
