@@ -144,7 +144,8 @@ public class FastUserPayload {
 public int getBackgroundColor(boolean darkMode)
 ```
 
-设置 Fastboard 控件底色。你可以通过重写该方法来自定义控件底色。
+设置 Fastboard 控件底色。
+你可以通过重写该方法来自定义控件底色。
 
 **参数**
 
@@ -163,6 +164,7 @@ public int getBoardBackgroundColor(boolean darkMode)
 ```
 
 设置白板底色。
+你可以通过重写该方法来自定义白板底色。
 
 **注意**
 
