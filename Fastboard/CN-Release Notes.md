@@ -9,12 +9,9 @@
 
 #### 新增特性
 
-**修改白板配色**
+**修改白板底色**
 
-该版本新增 `FastResource` 类，提供一系列修改配色的方法，包括：
-
--  `getBackgroundColor`：配置 Fastboard 控件的底色。
--  `getBoardBackgroundColor`：配置白板的底色。
+该版本在 `FastRoom` 类下新增 `setResource` 方法，用于修改白板底色。你可以通过重写 `FastResource` 类中的方法来自定义白板底色。
 
 **设置窗口比例**
 

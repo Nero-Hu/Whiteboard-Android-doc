@@ -128,57 +128,11 @@ public class FastUserPayload {
 }
 ```
 
-`FastUserPayload` 对象，用于储存用户信息，包含以下成员变量：
+`FastUserPayload` 对象，用于储存光标上显示的用户信息，包含以下成员变量：
 
 - `nickName`：String。用户光标上显示的用户昵称。
 
 - `avatar`：String。用户光标上显示的用户头像，应传入头像对应的 URL 地址。
-
-## FastResource 类
-
-`FastResource` 类提供设置白板配色的方法。
-
-### getBackgroundColor
-
-```java
-public int getBackgroundColor(boolean darkMode)
-```
-
-设置 Fastboard 控件底色。
-你可以通过重写该方法来自定义控件底色。
-
-**参数**
-
-- `darkMode`：boolean。Fastboard 控件底色是否为暗色主题：
-  - `true`：暗色主题。
-  - `false`：亮色主题。
-
-**返回**
-
-十六进制的颜色值。
-
-### getBoardBackgroundColor
-
-```java
-public int getBoardBackgroundColor(boolean darkMode)
-```
-
-设置白板底色。
-你可以通过重写该方法来自定义白板底色。
-
-**注意**
-
-- 如果不重写该方法，将默认调用 `getBackgroundColor`。
-
-**参数**
-
-- `darkMode`：boolean。白板底色是否为暗色主题：
-  - `true`：暗色主题。
-  - `false`：亮色主题。
-
-**返回**
-
-十六进制的颜色值。
 
 ## FastRoom 类
 
@@ -575,6 +529,76 @@ public class FastStyle {
 
  - `true`：暗色模式。
  - `false`：浅色模式。
+
+
+### setResource
+
+```java
+public void setResource(FastResource fastResource)
+```
+
+设置白板颜色相关的资源。
+
+**参数**
+
+- `fastResource`：白板颜色相关的资源。详见 <a href="#fastresource">FastResource</a>。
+
+<a name="fastresource"></a>
+#### FastResource
+
+白板颜色相关的资源
+
+```java
+public class FastResource {
+    @ColorInt
+    public int getBackgroundColor(boolean darkMode) {
+        return color(darkMode
+                ? R.color.fast_dark_mode_bg
+                : R.color.fast_light_mode_bg
+        );
+    }
+
+    @ColorInt
+    public int getBoardBackgroundColor(boolean darkMode) {
+        return getBackgroundColor(darkMode);
+    }
+}
+```
+
+包含如下成员方法，均可通过重写方法来自定义颜色：
+
+**getBackgroundColor**
+
+设置白板控件底色。
+
+**参数**
+
+- `darkMode`：boolean。白板控件底色是否为暗色模式：
+  - `true`：暗色模式。
+  - `false`：浅色模式。
+
+**返回**
+
+十六进制的颜色值。
+
+**getBoardBackgroundColor**
+
+设置白板底色。
+
+**注意**
+
+- 如果不重写该方法，将默认调用 `getBackgroundColor`。
+
+**参数**
+
+- `darkMode`：boolean。白板底色是否为暗色模式：
+  - `true`：暗色模式。
+  - `false`：浅色模式。
+
+**返回**
+
+十六进制的颜色值。
+
 
 ## FastUiSettings 类
 
