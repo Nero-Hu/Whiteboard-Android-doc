@@ -91,7 +91,7 @@ public class FastRoomOptions {
   - `true`：以互动模式加入白板房间，即具有读写权限。
   - `false`：以订阅模式加入白板房间，即具有只读权限。
 - `fastRegion`：数据中心。详见 <a href="#fastregion">`FastRegion`</a>。
-- `containerSizeRatio`：Float 类型。本地显示窗口中，内容的高宽比，默认为 `9:16`。
+- `containerSizeRatio`：Float。本地显示窗口中，内容的高宽比，默认为 `9:16`。
 - `userPayload`：用户光标显示的用户信息，包括用户的昵称和头像。详见 <a href="#fastuserpayload">`FastUserPayload`</a>。
 
 <a name="fastregion"></a>
@@ -132,7 +132,7 @@ public class FastUserPayload {
 
 - `nickName`：String。用户光标上显示的用户昵称。
 
-- `avatar`：String。用户光标上显示的用户头像，应传入头像对应的 URL 地址。
+- `avatar`：String。（可选）用户光标上显示的用户头像，应传入头像对应的 URL 地址。
 
 ## FastRoom 类
 
@@ -211,8 +211,8 @@ public boolean isWritable()
 
 获取本地用户是否为互动模式：
 
-- `true`：本地用户在当前互动白板实时房间为互动模式，即可对白板进行读写操作。
-- `false`：本地用户在当前互动白板实时房间为订阅模式，即对白板只能进行读取操作。
+- `true`：互动模式，即具有读写权限。
+- `false`：订阅模式，即具有只读权限。
 
 ### redo
 
@@ -546,7 +546,7 @@ public void setResource(FastResource fastResource)
 <a name="fastresource"></a>
 #### FastResource
 
-白板颜色相关的资源
+白板颜色相关的资源。
 
 ```java
 public class FastResource {
@@ -587,7 +587,7 @@ public class FastResource {
 
 **注意**
 
-- 如果不重写该方法，将默认调用 `getBackgroundColor`。
+如果不重写该方法，将默认调用 `getBackgroundColor`。
 
 **参数**
 
