@@ -5,7 +5,7 @@
 
 ## 1.3.4 版
 
-该版本于 2023 年 4 月 X 日发布。
+该版本于 2023 年 4 月 25 日发布。
 
 #### 新增特性
 
@@ -23,7 +23,9 @@
 
 **设置房间读写权限**
 
-该版本在 `FastRoom` 类下新增 [`setWritable [1/2]`](https://docs.agora.io/cn/whiteboard/fastboard_api_android?platform=Android#setWritable%20[1/2]) 和 [`setWritable [2/2]`](https://docs.agora.io/cn/whiteboard/fastboard_api_android?platform=Android#setWritable%20[2/2]) 方法，用于设置用户在房间中为具有读写权限的**互动模式**或只有只读权限的**订阅模式**，其中，`setWritable [2/2]` 支持通过回调函数异步处理调用结果。新增 `isWritable` 方法用于获取本地用户在当前互动白板实时房间是否为互动模式。
+该版本在 `FastRoom` 类下新增了以下方法：
+- [`setWritable [1/2]`](https://docs.agora.io/cn/whiteboard/fastboard_api_android?platform=Android#setWritable%20[1/2]) 和 [`setWritable [2/2]`](https://docs.agora.io/cn/whiteboard/fastboard_api_android?platform=Android#setWritable%20[2/2])：设置用户在房间中为具有读写权限的**互动模式**或只有只读权限的**订阅模式**，其中，`setWritable [2/2]` 支持通过回调函数异步处理调用结果。
+- [`isWritable`](https://docs.agora.io/cn/whiteboard/fastboard_api_android?platform=Android#iswritable)：获取本地用户在当前互动白板实时房间是否为互动模式。
 <div class="alert info">在用户数量较多的房间中，限制房间中处于互动模式的用户数量可以有效提高白板房间连接的稳定性和房间可承载人数上限。</div>
 
 **调整工具条边距**
@@ -32,14 +34,14 @@
 
 #### 优化
 
-该版本优化了用户界面的整体表现，并调整了白板工具图标样式和白板工具条的默认边距。
+该版本优化了用户界面，并调整了白板工具图标样式和白板工具条的默认边距。
 
 #### 问题修复
 
 该版本修复了以下问题：
 
-- 使用文字工具时可能失焦。
-- `FastUiSettings` 类下的 `hideRoomController` 在启动阶段可能失效。
+- 使用文字工具时偶先失焦。
+- `FastUiSettings` 类下的 `hideRoomController` 在启动阶段偶先失效。
 
 
 ## 1.2.3 版
