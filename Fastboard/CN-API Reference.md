@@ -91,7 +91,7 @@ public class FastRoomOptions {
   - `true`：以互动模式加入白板房间，即具有读写权限。
   - `false`：以订阅模式加入白板房间，即具有只读权限。
 - `fastRegion`：数据中心。详见 <a href="#fastregion">`FastRegion`</a>。
-- `containerSizeRatio`：Float。本地显示窗口中，内容的高宽比，默认为 `9:16`。
+- `containerSizeRatio`：Float。本地显示窗口中，内容的高宽比，默认为 `0.56`，即 `9:16`。
 - `userPayload`：用户光标显示的用户信息，包括用户的昵称和头像。详见 <a href="#fastuserpayload">`FastUserPayload`</a>。
 
 <a name="fastregion"></a>
@@ -569,7 +569,7 @@ public class FastResource {
 
 **getBackgroundColor**
 
-设置白板控件底色。
+获取白板控件底色。
 
 **参数**
 
@@ -583,7 +583,7 @@ public class FastResource {
 
 **getBoardBackgroundColor**
 
-设置白板底色。
+获取白板底色。
 
 **注意**
 
@@ -789,10 +789,9 @@ public void setToolboxExpand(boolean expand)
   - `true`：展开。
   - `false`：折叠。
 
-## 其他
 
 <a name="result"></a>
-### FastResult
+## FastResult
 
 方法调用结果。
 
