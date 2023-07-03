@@ -3,6 +3,47 @@
 声网 Fastboard SDK 是为帮助开发人员快速构建白板应用推出的新一代白板 SDK。Fastboard SDK 基于互动白板 SDK 开发，对复杂的 API 进行封装，简化了接口调用逻辑，并提供核心功能的实现和默认 UI；此外，Fastboard SDK 还集成窗口管理器（[Window Manager](https://github.com/netless-io/window-manager)）和常用插件，帮助开发者轻松扩展白板应用的功能。使用 Fastboard SDK，你无需深入学习互动白板复杂的概念，只需几行代码即可加入白板房间，并立即使用丰富的工具体验实时互动协作。
 
 
+## 1.3.4 版
+
+该版本于 2023 年 4 月 25 日发布。
+
+#### 新增特性
+
+**修改白板底色**
+
+该版本在 `FastRoom` 类下新增 [`setResource`](https://docs.agora.io/cn/whiteboard/fastboard_api_android?platform=Android#setresource) 方法，用于修改白板的相关颜色资源。你可以通过重写 [`FastResource`](https://docs.agora.io/cn/whiteboard/fastboard_api_android?platform=Android#fastresource) 类中的方法来自定义颜色。
+
+**设置窗口比例**
+
+该版本在 [`FastRoomOptions`](https://docs.agora.io/cn/whiteboard/fastboard_api_android?platform=Android#fastroomoptions) 类中新增 `containerSizeRatio` 属性，用于修改本地显示窗口中内容的高宽比。
+
+**显示用户光标**
+
+该版本在 [`FastRoomOptions`](https://docs.agora.io/cn/whiteboard/fastboard_api_android?platform=Android#fastroomoptions) 类中新增 `userPayload` 属性，用于在白板房间中同步其他用户的光标位置并显示对应昵称和头像。
+
+**设置房间读写权限**
+
+该版本在 `FastRoom` 类下新增了以下方法：
+- [`setWritable [1/2]`](https://docs.agora.io/cn/whiteboard/fastboard_api_android?platform=Android#setWritable%20[1/2]) 和 [`setWritable [2/2]`](https://docs.agora.io/cn/whiteboard/fastboard_api_android?platform=Android#setWritable%20[2/2])：设置用户在房间中为具有读写权限的**互动模式**或只有只读权限的**订阅模式**，其中，`setWritable [2/2]` 支持通过回调函数异步处理调用结果。
+- [`isWritable`](https://docs.agora.io/cn/whiteboard/fastboard_api_android?platform=Android#iswritable)：获取本地用户在当前互动白板实时房间是否为互动模式。
+<div class="alert info">在用户数量较多的房间中，限制房间中处于互动模式的用户数量可以有效提高白板房间连接的稳定性和房间可承载人数上限。</div>
+
+**调整工具条边距**
+
+该版本在 `FastUiSettings` 类下新增 [`setToolboxEdgeMargin`](https://docs.agora.io/cn/whiteboard/fastboard_api_android?platform=Android#settoolboxedgemargin) 方法，用于设置工具条和白板侧边的边距。
+
+#### 优化
+
+该版本优化了用户界面，并调整了白板工具图标样式和白板工具条的默认边距。
+
+#### 问题修复
+
+该版本修复了以下问题：
+
+- 使用文字工具时偶先失焦。
+- `FastUiSettings` 类下的 `hideRoomController` 在启动阶段偶先失效。
+
+
 ## 1.2.3 版
 
 该版本于 2022 年 10 月 28 日发布。

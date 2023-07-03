@@ -59,11 +59,15 @@ public class FastRoomOptions {
     private final boolean writable;
  
     private final FastRegion fastRegion;
- 
+
+    private Float containerSizeRatio;
+
+    private FastUserPayload userPayload;
+
     public FastRoomOptions(String appId, String uuid, String token, String uid, FastRegion fastRegion) {
         this(appId, uuid, token, uid, fastRegion, true);
     }
- 
+
     public FastRoomOptions(String appId, String uuid, String token, String uid, FastRegion fastRegion, boolean writable) {
         this.appId = appId;
         this.uuid = uuid;
@@ -86,8 +90,9 @@ public class FastRoomOptions {
 - `writable`：boolean。用户是否以互动模式加入白板房间：
   - `true`：以互动模式加入白板房间，即具有读写权限。
   - `false`：以订阅模式加入白板房间，即具有只读权限。
-- `fastRegion`：数据中心。详见 <a href="#fastregion">FastRegion</a>。
-
+- `fastRegion`：数据中心。详见 <a href="#fastregion">`FastRegion`</a>。
+- `containerSizeRatio`：Float。本地显示窗口中，内容的高宽比，默认为 `0.56`，即 `9:16`。
+- `userPayload`：用户光标显示的用户信息，包括用户的昵称和头像。详见 <a href="#fastuserpayload">`FastUserPayload`</a>。
 
 <a name="fastregion"></a>
 #### FastRegion
@@ -103,6 +108,31 @@ public class FastRoomOptions {
 - `IN_MUM`：印度孟买，服务区覆盖印度。
 
 - `GB_LON`：英国伦敦，服务区覆盖欧洲。
+
+<a name="fastuserpayload"></a>
+#### FastUserPayload
+
+```java
+public class FastUserPayload {
+    private final String nickName;
+    private final String avatar;
+   
+    public FastUserPayload(String nickName) {
+        this(nickName, null);
+    }
+
+    public FastUserPayload(String nickName, String avatar) {
+        this.nickName = nickName;
+        this.avatar = avatar;
+    }
+}
+```
+
+`FastUserPayload` 对象，用于储存光标上显示的用户信息，包含以下成员变量：
+
+- `nickName`：String。用户光标上显示的用户昵称。
+
+- `avatar`：String。（可选）用户光标上显示的用户头像，应传入头像对应的 URL 地址。
 
 ## FastRoom 类
 
@@ -169,6 +199,21 @@ public boolean isReady()
 - `true`：准备就绪。
 - `false`：尚未准备就绪。
 
+### isWritable
+
+```java
+public boolean isWritable() 
+```
+
+获取本地用户在当前互动白板实时房间是否为互动模式。
+
+**返回**
+
+获取本地用户是否为互动模式：
+
+- `true`：互动模式，即具有读写权限。
+- `false`：订阅模式，即具有只读权限。
+
 ### redo
 
 ```java
@@ -176,6 +221,44 @@ public void redo()
 ```
 
 重做，即回退撤销操作。
+
+### setWritable [1/2]
+
+```java
+public void setWritable(boolean writable)
+```
+
+设置用户在房间是否为互动模式。
+
+**注意**
+
+该方法需要在房间准备就绪后调用。
+
+**参数**
+
+- `writable`：用户在房间中是否为互动模式：
+  - `true`：互动模式，即具有读写权限。
+  - `false`：订阅模式，即具有只读权限。
+
+### setWritable [2/2]
+
+```java
+public void setWritable(boolean writable, FastResult<Boolean> result)
+```
+
+设置用户在房间是否为互动模式。
+
+**注意**
+
+该方法需要在房间准备就绪后调用。
+
+**参数**
+
+- `writable`：用户在房间中是否为互动模式：
+  - `true`：互动模式，即具有读写权限。
+  - `false`：订阅模式，即具有只读权限。
+- `result`：`setWritable` 方法调用的结果。详见 <a href="#result">FastResult</a>。传入 `FastResult` 实例，SDK 会触发在 `FastResult` 接口中实现的回调，报告 `setWritable` 方法调用是否成功；传入 `null` 表示不监听回调。
+
 
 ### undo
 
@@ -347,7 +430,7 @@ public class FastInsertDocParams {
 - `taskUUID`：String。文档转换任务的 Task UUID，即[发起文档转换任务 API ](https://docs.agora.io/cn/whiteboard/whiteboard_file_conversion?platform=RESTful#发起文档转换)请求成功时响应包体中 uuid 参数的值。
 - `taskToken`：String。文档转换任务的 Task Token，必须和[发起文档转换任务](https://docs.agora.io/cn/whiteboard/whiteboard_file_conversion?platform=RESTful#发起文档转换)时传入的 Task Token 一致。
 - `converterType`: 枚举。文档转换服务的版本，取值如下：
-  - `Projector`: 新版。详见[新版文档转换服务](https://docs.agora.io/cn/whiteboard/file_conversion_overview?platform=Android)。``
+  - `Projector`: 新版。详见[新版文档转换服务](https://docs.agora.io/cn/whiteboard/file_conversion_overview?platform=Android)。
   - `WhiteboardConverter`: 旧版（默认值）。详见[旧版文档转换服务](https://docs.agora.io/cn/whiteboard/file_conversion_overview_old?platform=RESTful)。
 - `fileType`：String。文档类型：
   - `pdf`：静态文档。
@@ -355,22 +438,6 @@ public class FastInsertDocParams {
 - `dynamicDoc`: boolean。文档转换任务类型是否为动态转换任务。
 - `title`：String。窗口标题。
 
-<a name="result"></a>
-#### FastResult
-
-调用 `insertDocs` 插入文档的结果。
-
-```java
-public interface FastResult<T> {
-  void onSuccess(T value);
-  void onError(Exception exception);
-}
-```
-
-`FastResult` 接口报告 insertDocs 方法的调用结果，包含以下回调方法：
-
-- `onSuccess`：方法调用成功回调。
-- `onError`：发生错误回调。
 
 ### setFastStyle
 
@@ -462,6 +529,76 @@ public class FastStyle {
 
  - `true`：暗色模式。
  - `false`：浅色模式。
+
+
+### setResource
+
+```java
+public void setResource(FastResource fastResource)
+```
+
+设置白板颜色相关的资源。
+
+**参数**
+
+- `fastResource`：白板颜色相关的资源。详见 <a href="#fastresource">FastResource</a>。
+
+<a name="fastresource"></a>
+#### FastResource
+
+白板颜色相关的资源。
+
+```java
+public class FastResource {
+    @ColorInt
+    public int getBackgroundColor(boolean darkMode) {
+        return color(darkMode
+                ? R.color.fast_dark_mode_bg
+                : R.color.fast_light_mode_bg
+        );
+    }
+
+    @ColorInt
+    public int getBoardBackgroundColor(boolean darkMode) {
+        return getBackgroundColor(darkMode);
+    }
+}
+```
+
+包含如下成员方法，均可通过重写方法来自定义颜色：
+
+**getBackgroundColor**
+
+获取白板控件底色。
+
+**参数**
+
+- `darkMode`：boolean。白板控件底色是否为暗色模式：
+  - `true`：暗色模式。
+  - `false`：浅色模式。
+
+**返回**
+
+十六进制的颜色值。
+
+**getBoardBackgroundColor**
+
+获取白板底色。
+
+**注意**
+
+如果不重写该方法，将默认调用 `getBackgroundColor`。
+
+**参数**
+
+- `darkMode`：boolean。白板底色是否为暗色模式：
+  - `true`：暗色模式。
+  - `false`：浅色模式。
+
+**返回**
+
+十六进制的颜色值。
+
 
 ## FastUiSettings 类
 
@@ -602,6 +739,23 @@ public static void setToolsColors(List<Integer> toolsColors)
 
 - `toolsColors`：白板工具的颜色，RGB 格式，例如 `0x0000FF` 表示蓝色。
 
+### setToolboxEdgeMargin
+
+```java
+public void setToolboxEdgeMargin(int margin)
+```
+
+设置白板工具条与侧边的边距。
+
+边距的定义由 `setToolboxGravity` 中设置的工具条位置决定：
+
+- 工具条位于白板左边：边距指工具条左侧侧边与白板左侧侧边之间的距离。
+- 工具条位于白板右边：边距指工具条右侧侧边与白板右侧侧边之间的距离。
+
+**参数**
+
+- `margin`：int。工具条与白板侧边的距离，单位为 `px`。
+
 ### setToolboxGravity
 
 ```java
@@ -634,3 +788,21 @@ public void setToolboxExpand(boolean expand)
 - `expand`：是否展开工具栏：
   - `true`：展开。
   - `false`：折叠。
+
+
+<a name="result"></a>
+## FastResult
+
+方法调用结果。
+
+```java
+public interface FastResult<T> {
+  void onSuccess(T value);
+  void onError(Exception exception);
+}
+```
+
+`FastResult` 接口报告方法的调用结果，包含以下回调方法：
+
+- `onSuccess`：方法调用成功回调。
+- `onError`：发生错误回调。
