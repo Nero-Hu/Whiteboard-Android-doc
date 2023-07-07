@@ -35,10 +35,10 @@ public enum Region {
     // @SerializedName("in-mum")
     in_mum,
     /**
-     * `gb_lon`: London, England.
+     * `eu`: Frankfurt, Europe.
      *
      * This data center provides services to Europe.
      */
-    // @SerializedName("gb-lon")
-    gb_lon;
+    // @SerializedName("eu")
+    eu;
 }

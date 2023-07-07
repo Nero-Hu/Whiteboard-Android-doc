@@ -14,15 +14,15 @@
 <th>描述</th>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.WhiteSdk.WhiteSdk(JsBridgeInterface bridge, Context context, WhiteSdkConfiguration whiteSdkConfiguration) WhiteSdk}[1/4]</td>
+<td>{@link com.herewhite.sdk.WhiteSdk.WhiteSdk(JsBridgeInterface bridge, Context context, WhiteSdkConfiguration whiteSdkConfiguration) WhiteSdk} [1/4]</td>
 <td>初始化 {@link com.herewhite.sdk.WhiteSdk WhiteSdk} 实例</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.WhiteSdk.WhiteSdk(JsBridgeInterface bridge, Context context, WhiteSdkConfiguration whiteSdkConfiguration, @Nullable CommonCallback commonCallback) WhiteSdk}[2/4]</td>
+<td>{@link com.herewhite.sdk.WhiteSdk.WhiteSdk(JsBridgeInterface bridge, Context context, WhiteSdkConfiguration whiteSdkConfiguration, @Nullable CommonCallback commonCallback) WhiteSdk} [2/4]</td>
 <td>初始化 {@link com.herewhite.sdk.WhiteSdk WhiteSdk} 实例（设置回调）</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.WhiteSdk.WhiteSdk(JsBridgeInterface bridge, Context context, WhiteSdkConfiguration whiteSdkConfiguration, @Nullable CommonCallback commonCallback, @Nullable AudioMixerBridge audioMixerBridge) WhiteSdk}[4/4]</td>
+<td>{@link com.herewhite.sdk.WhiteSdk.WhiteSdk(JsBridgeInterface bridge, Context context, WhiteSdkConfiguration whiteSdkConfiguration, @Nullable CommonCallback commonCallback, @Nullable AudioMixerBridge audioMixerBridge) WhiteSdk} [4/4]</td>
 <td>初始化 {@link com.herewhite.sdk.WhiteSdk WhiteSdk} 实例（设置回调和混音）</td>
 </tr>
 <tr>
@@ -30,19 +30,19 @@
 <td>设置通用事件回调</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.WhiteSdk.joinRoom(RoomParams roomParams, Promise<Room> roomPromise) joinRoom}[1/2]</td>
+<td>{@link com.herewhite.sdk.WhiteSdk.joinRoom(RoomParams roomParams, Promise<Room> roomPromise) joinRoom} [1/2]</td>
 <td>加入互动白板实时房间</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.WhiteSdk.joinRoom(RoomParams roomParams, RoomListener roomListener, Promise<Room> roomPromise) joinRoom}[2/2]</td>
+<td>{@link com.herewhite.sdk.WhiteSdk.joinRoom(RoomParams roomParams, RoomListener roomListener, Promise<Room> roomPromise) joinRoom} [2/2]</td>
 <td>加入互动白板实时房间并设置房间事件回调</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.WhiteSdk.createPlayer(PlayerConfiguration playerConfiguration, Promise<Player> playerPromise) createPlayer}[1/2]</td>
+<td>{@link com.herewhite.sdk.WhiteSdk.createPlayer(PlayerConfiguration playerConfiguration, Promise<Player> playerPromise) createPlayer} [1/2]</td>
 <td>创建互动白板回放房间</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.WhiteSdk.createPlayer(PlayerConfiguration playerConfiguration, PlayerListener listener, Promise<Player> playerPromise) createPlayer}[2/2]</td>
+<td>{@link com.herewhite.sdk.WhiteSdk.createPlayer(PlayerConfiguration playerConfiguration, PlayerListener listener, Promise<Player> playerPromise) createPlayer} [2/2]</td>
 <td>创建互动白板回放房间并设置回放事件回调</td>
 </tr>
 <tr>
@@ -62,11 +62,11 @@
 <td>设置在本地白板中输入文字时使用的字体</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.WhiteSdk.releaseRoom() releaseRoom}[2/2]</td>
+<td>{@link com.herewhite.sdk.WhiteSdk.releaseRoom() releaseRoom} [2/2]</td>
 <td>释放互动白板实时房间实例并删除 `RoomListener` 回调。</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.WhiteSdk.releasePlayer() releasePlayer}[1/2]</td>
+<td>{@link com.herewhite.sdk.WhiteSdk.releasePlayer() releasePlayer} [1/2]</td>
 <td>释放回放房间实例并删除 `PlayerListener` 回调。</td>
 </tr>
 <tr>
@@ -144,35 +144,35 @@
 <td>获取用户是否为互动模式</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.Room.getGlobalState() getGlobalState}[1/2]</td>
+<td>{@link com.herewhite.sdk.Room.getGlobalState() getGlobalState} [1/2]</td>
 <td>获取房间的全局状态（同步方法）</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.Room.getGlobalState(Promise<GlobalState> promise) getGlobalState}[2/2]</td>
+<td>{@link com.herewhite.sdk.Room.getGlobalState(Promise<GlobalState> promise) getGlobalState} [2/2]</td>
 <td>获取房间的全局状态（异步方法）</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.Room.getRoomMembers() getRoomMembers}[1/2]</td>
+<td>{@link com.herewhite.sdk.Room.getRoomMembers() getRoomMembers} [1/2]</td>
 <td>获取房间的用户列表（同步方法）</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.Room.getRoomMembers(Promise<RoomMember[]> promise) getRoomMembers}[2/2]</td>
+<td>{@link com.herewhite.sdk.Room.getRoomMembers(Promise<RoomMember[]> promise) getRoomMembers} [2/2]</td>
 <td>获取房间的用户列表（异步方法）</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.Room.getRoomPhase() getRoomPhase}[1/2]</td>
+<td>{@link com.herewhite.sdk.Room.getRoomPhase() getRoomPhase} [1/2]</td>
 <td>获取房间的连接状态（同步方法）</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.Room.getRoomPhase(Promise<RoomPhase> promise) getRoomPhase}[2/2]</td>
+<td>{@link com.herewhite.sdk.Room.getRoomPhase(Promise<RoomPhase> promise) getRoomPhase} [2/2]</td>
 <td>获取房间的连接状态（异步方法）</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.Room.getRoomState() getRoomState}[1/2]</td>
+<td>{@link com.herewhite.sdk.Room.getRoomState() getRoomState} [1/2]</td>
 <td>获取房间的所有状态（同步方法）</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.Room.getRoomState(Promise<RoomState> promise) getRoomState}[2/2]</td>
+<td>{@link com.herewhite.sdk.Room.getRoomState(Promise<RoomState> promise) getRoomState} [2/2]</td>
 <td>获取房间的所有状态（异步方法）</td>
 </tr>
 </table>
@@ -181,15 +181,19 @@
 
 <table>
 <tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+<tr>
 <td>{@link com.herewhite.sdk.Room.setMemberState(MemberState memberState) setMemberState}</td>
 <td>修改房间的白板工具状态</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.Room.getMemberState() getMemberState}[1/2]</td>
+<td>{@link com.herewhite.sdk.Room.getMemberState() getMemberState} [1/2]</td>
 <td>获取白板工具状态（同步方法）</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.Room.getMemberState(Promise<MemberState> promise getMemberState) getMemberState}[2/2]</td>
+<td>{@link com.herewhite.sdk.Room.getMemberState(Promise<MemberState> promise getMemberState) getMemberState} [2/2]</td>
 <td>获取白板工具状态（异步方法）</td>
 </tr>
 <tr>
@@ -234,6 +238,10 @@
 
 <table>
 <tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+<tr>
 <td>{@link com.herewhite.sdk.Room.setViewMode(ViewMode viewMode) setViewMode}</td>
 <td>切换视角模式</td>
 </tr>
@@ -270,11 +278,11 @@
 <td>禁止/允许用户调整（移动或缩放）视角</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.Room.getBroadcastState() getBroadcastState}[1/2]</td>
+<td>{@link com.herewhite.sdk.Room.getBroadcastState() getBroadcastState} [1/2]</td>
 <td>获取用户的视角状态（同步方法）</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.Room.getBroadcastState(Promise<BroadcastState> promise) getBroadcastState}[2/2]</td>
+<td>{@link com.herewhite.sdk.Room.getBroadcastState(Promise<BroadcastState> promise) getBroadcastState} [2/2]</td>
 <td>获取用户的视角状态（异步方法）</td>
 </tr>
 </table>
@@ -284,7 +292,11 @@
 
 <table>
 <tr>
-<td>{@link com.herewhite.sdk.Room.insertImage(ImageInformation imageInfo) insertImage}1</td>
+<th>方法</th>
+<th>描述</th>
+</tr>
+<tr>
+<td>{@link com.herewhite.sdk.Room.insertImage(ImageInformation imageInfo) insertImage} [1/2]</td>
 <td>插入图片占位符</td>
 </tr>
 <tr>
@@ -292,7 +304,7 @@
 <td>展示图片</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.Room.insertImage(ImageInformationWithUrl imageInformationWithUrl) insertImage}2</td>
+<td>{@link com.herewhite.sdk.Room.insertImage(ImageInformationWithUrl imageInformationWithUrl) insertImage} [2/2]</td>
 <td>插入并展示图片</td>
 </tr>
 <tr>
@@ -304,31 +316,31 @@
 <td>获取指定场景的信息</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.Room.getSceneState() getSceneState}[1/2]</td>
+<td>{@link com.herewhite.sdk.Room.getSceneState() getSceneState} [1/2]</td>
 <td>获取当前场景目录下的场景状态（同步方法）</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.Room.getSceneState(Promise<SceneState> promise) getSceneState}[2/2]</td>
+<td>{@link com.herewhite.sdk.Room.getSceneState(Promise<SceneState> promise) getSceneState} [2/2]</td>
 <td>获取当前场景目录下的场景状态（异步方法）</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.Room.getScenes() getScenes}[1/2]</td>
+<td>{@link com.herewhite.sdk.Room.getScenes() getScenes} [1/2]</td>
 <td>获取当前场景目录下的场景列表（同步方法）</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.Room.getScenes(Promise<Scene[]> promise) getScenes}[2/2]</td>
+<td>{@link com.herewhite.sdk.Room.getScenes(Promise<Scene[]> promise) getScenes} [2/2]</td>
 <td>获取当前场景目录下的场景列表（异步方法）</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.Room.setScenePath(String path) setScenePath}[1/2]</td>
+<td>{@link com.herewhite.sdk.Room.setScenePath(String path) setScenePath} [1/2]</td>
 <td>切换至指定的场景（同步方法）</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.Room.setScenePath(String path, Promise<Boolean> promise) setScenePath}[2/2]</td>
+<td>{@link com.herewhite.sdk.Room.setScenePath(String path, Promise<Boolean> promise) setScenePath} [2/2]</td>
 <td>切换至指定的场景（异步方法）</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.Room.setSceneIndex(Integer index, @Nullable Promise<Boolean> promise) setSceneIndex}[1/2]</td>
+<td>{@link com.herewhite.sdk.Room.setSceneIndex(Integer index, @Nullable Promise<Boolean> promise) setSceneIndex} [1/2]</td>
 <td>切换至当前场景目录下的指定场景</td>
 </tr>
 <tr>
@@ -449,6 +461,10 @@
 
 <table>
 <tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
+<tr>
 <td>{@link com.herewhite.sdk.Room.dispatchMagixEvent(AkkoEvent eventEntry) dispatchMagixEvent}</td>
 <td>发送自定义事件</td>
 </tr>
@@ -486,6 +502,10 @@
 ### 其他方法
 
 <table>
+<tr>
+<th>方法</th>
+<th>描述</th>
+</tr>
 <tr>
 <td>{@link com.herewhite.sdk.Room.debugInfo(Promise<JSONObject> promise) debugInfo}</td>
 <td>获取调试日志信息</td>

@@ -12,15 +12,15 @@ Agora provides interactive whiteboard with high reliability and rich features th
 <th>Description</th>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.WhiteSdk.WhiteSdk(JsBridgeInterface bridge, Context context, WhiteSdkConfiguration whiteSdkConfiguration) WhiteSdk}[1/4]</td>
+<td>{@link com.herewhite.sdk.WhiteSdk.WhiteSdk(JsBridgeInterface bridge, Context context, WhiteSdkConfiguration whiteSdkConfiguration) WhiteSdk} [1/4]</td>
 <td>Initializes a {@link com.herewhite.sdk.WhiteSdk WhiteSdk} instance.</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.WhiteSdk.WhiteSdk(JsBridgeInterface bridge, Context context, WhiteSdkConfiguration whiteSdkConfiguration, @Nullable CommonCallback commonCallback) WhiteSdk}[2/4]</td>
+<td>{@link com.herewhite.sdk.WhiteSdk.WhiteSdk(JsBridgeInterface bridge, Context context, WhiteSdkConfiguration whiteSdkConfiguration, @Nullable CommonCallback commonCallback) WhiteSdk} [2/4]</td>
 <td>Initializes a {@link com.herewhite.sdk.WhiteSdk WhiteSdk} instance and sets callbacks.</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.WhiteSdk.WhiteSdk(JsBridgeInterface bridge, Context context, WhiteSdkConfiguration whiteSdkConfiguration, @Nullable CommonCallback commonCallback, @Nullable AudioMixerBridge audioMixerBridge) WhiteSdk}[4/4]</td>
+<td>{@link com.herewhite.sdk.WhiteSdk.WhiteSdk(JsBridgeInterface bridge, Context context, WhiteSdkConfiguration whiteSdkConfiguration, @Nullable CommonCallback commonCallback, @Nullable AudioMixerBridge audioMixerBridge) WhiteSdk} [4/4]</td>
 <td>Initializes a {@link com.herewhite.sdk.WhiteSdk WhiteSdk} instance and sets callbacks and audio mixing</td>
 </tr>
 <tr>
@@ -28,11 +28,11 @@ Agora provides interactive whiteboard with high reliability and rich features th
 <td>Sets common callbacks.</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.WhiteSdk.joinRoom(RoomParams roomParams, Promise<Room> roomPromise) joinRoom}[1/2]</td>
+<td>{@link com.herewhite.sdk.WhiteSdk.joinRoom(RoomParams roomParams, Promise<Room> roomPromise) joinRoom} [1/2]</td>
 <td>Joins the live Interactive Whiteboard room.</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.WhiteSdk.joinRoom(RoomParams roomParams, RoomListener roomListener, Promise<Room> roomPromise) joinRoom}[2/2]</td>
+<td>{@link com.herewhite.sdk.WhiteSdk.joinRoom(RoomParams roomParams, RoomListener roomListener, Promise<Room> roomPromise) joinRoom} [2/2]</td>
 <td>Joins the live Interactive Whiteboard room and sets room event callbacks.</td>
 </tr>
 <tr>
@@ -48,7 +48,7 @@ Agora provides interactive whiteboard with high reliability and rich features th
 <td>Sets the fonts used by the text tool in the local whiteboard.</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.WhiteSdk.releaseRoom() releaseRoom}[2/2]</td>
+<td>{@link com.herewhite.sdk.WhiteSdk.releaseRoom() releaseRoom} [2/2]</td>
 <td>Releases the {@link com.herewhite.sdk.Room Room} instance and removes the `RoomListener` callback.</td>
 </tr>
 <tr>
@@ -126,35 +126,35 @@ Agora provides interactive whiteboard with high reliability and rich features th
 <td>Gets whether the local user is in interactive mode in the room.</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.Room.getGlobalState() getGlobalState}[1/2]</td>
+<td>{@link com.herewhite.sdk.Room.getGlobalState() getGlobalState} [1/2]</td>
 <td>Gets the global state of the room (synchronous).</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.Room.getGlobalState(Promise<GlobalState> promise) getGlobalState}[2/2]</td>
+<td>{@link com.herewhite.sdk.Room.getGlobalState(Promise<GlobalState> promise) getGlobalState} [2/2]</td>
 <td>Gets the global state of the room (asynchronous).</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.Room.getRoomMembers() getRoomMembers}[1/2]</td>
+<td>{@link com.herewhite.sdk.Room.getRoomMembers() getRoomMembers} [1/2]</td>
 <td>Gets the list of members in the room (synchronous).</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.Room.getRoomMembers(Promise<RoomMember[]> promise) getRoomMembers}[2/2]</td>
+<td>{@link com.herewhite.sdk.Room.getRoomMembers(Promise<RoomMember[]> promise) getRoomMembers} [2/2]</td>
 <td>Gets the list of members in the room (asynchronous).</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.Room.getRoomPhase() getRoomPhase}[1/2]</td>
+<td>{@link com.herewhite.sdk.Room.getRoomPhase() getRoomPhase} [1/2]</td>
 <td>Gets the connection state of the room (synchronous).</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.Room.getRoomPhase(Promise<RoomPhase> promise) getRoomPhase}[2/2]</td>
+<td>{@link com.herewhite.sdk.Room.getRoomPhase(Promise<RoomPhase> promise) getRoomPhase} [2/2]</td>
 <td>Gets the connection state of the room (asynchronous).</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.Room.getRoomState() getRoomState}[1/2]</td>
+<td>{@link com.herewhite.sdk.Room.getRoomState() getRoomState} [1/2]</td>
 <td>Gets the current room state (synchronous).</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.Room.getRoomState(Promise<RoomState> promise) getRoomState}[2/2]</td>
+<td>{@link com.herewhite.sdk.Room.getRoomState(Promise<RoomState> promise) getRoomState} [2/2]</td>
 <td>Gets the current room state (asynchronous).</td>
 </tr>
 </table>
@@ -171,11 +171,11 @@ Agora provides interactive whiteboard with high reliability and rich features th
 <td>Modifies the state of the whiteboard tool currently in use.</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.Room.getMemberState() getMemberState}[1/2]</td>
+<td>{@link com.herewhite.sdk.Room.getMemberState() getMemberState} [1/2]</td>
 <td>Gets the state of the whiteboard tool currently in use (synchronous).</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.Room.getMemberState(Promise<MemberState> promise getMemberState) getMemberState}[2/2]</td>
+<td>{@link com.herewhite.sdk.Room.getMemberState(Promise<MemberState> promise getMemberState) getMemberState} [2/2]</td>
 <td>Gets the state of the whiteboard tool currently in use (asynchronous).</td>
 </tr>
 <tr>
@@ -256,11 +256,11 @@ Agora provides interactive whiteboard with high reliability and rich features th
 <td>Disables the local user from adjusting the view of the whiteboard.</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.Room.getBroadcastState() getBroadcastState}[1/2]</td>
+<td>{@link com.herewhite.sdk.Room.getBroadcastState() getBroadcastState} [1/2]</td>
 <td>Gets the view state of the user (synchronous).</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.Room.getBroadcastState(Promise<BroadcastState> promise) getBroadcastState}[2/2]</td>
+<td>{@link com.herewhite.sdk.Room.getBroadcastState(Promise<BroadcastState> promise) getBroadcastState} [2/2]</td>
 <td>Gets the view state of the user (asynchronous).</td>
 </tr>
 </table>
@@ -274,7 +274,7 @@ Agora provides interactive whiteboard with high reliability and rich features th
 <th>Description</th>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.Room.insertImage(ImageInformation imageInfo) insertImage}</td>
+<td>{@link com.herewhite.sdk.Room.insertImage(ImageInformation imageInfo) insertImage} [1/2]</td>
 <td>Inserts an image placeholder on the whiteboard.</td>
 </tr>
 <tr>
@@ -282,7 +282,7 @@ Agora provides interactive whiteboard with high reliability and rich features th
 <td>Displays an image in the specified image placeholder.</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.Room.insertImage(ImageInformationWithUrl imageInformationWithUrl) insertImage}</td>
+<td>{@link com.herewhite.sdk.Room.insertImage(ImageInformationWithUrl imageInformationWithUrl) insertImage} [2/2]</td>
 <td>Inserts and displays an image on the whiteboard.</td>
 </tr>
 <tr>
@@ -294,31 +294,31 @@ Agora provides interactive whiteboard with high reliability and rich features th
 <td>Gets the information about a specified scene.</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.Room.getSceneState() getSceneState}[1/2]</td>
+<td>{@link com.herewhite.sdk.Room.getSceneState() getSceneState} [1/2]</td>
 <td>Gets the state of the scenes under the current scene directory (synchronous).</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.Room.getSceneState(Promise<SceneState> promise) getSceneState}[2/2]</td>
+<td>{@link com.herewhite.sdk.Room.getSceneState(Promise<SceneState> promise) getSceneState} [2/2]</td>
 <td>Gets the state of the scenes under the current scene directory (asynchronous).</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.Room.getScenes() getScenes}[1/2]</td>
+<td>{@link com.herewhite.sdk.Room.getScenes() getScenes} [1/2]</td>
 <td>Gets the list of scenes under the current scene directory (synchronous).</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.Room.getScenes(Promise<Scene[]> promise) getScenes}[2/2]</td>
+<td>{@link com.herewhite.sdk.Room.getScenes(Promise<Scene[]> promise) getScenes} [2/2]</td>
 <td>Gets the list of scenes under the current scene directory (asynchronous).</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.Room.setScenePath(String path) setScenePath}[1/2]</td>
+<td>{@link com.herewhite.sdk.Room.setScenePath(String path) setScenePath} [1/2]</td>
 <td>Switches to the specified scene (synchronous).</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.Room.setScenePath(String path, Promise<Boolean> promise) setScenePath}[2/2]</td>
+<td>{@link com.herewhite.sdk.Room.setScenePath(String path, Promise<Boolean> promise) setScenePath} [2/2]</td>
 <td>Switches to the specified scene (asynchronous).</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.Room.setSceneIndex(Integer index, @Nullable Promise<Boolean> promise) setSceneIndex}[1/2]</td>
+<td>{@link com.herewhite.sdk.Room.setSceneIndex(Integer index, @Nullable Promise<Boolean> promise) setSceneIndex} [1/2]</td>
 <td>Switches to the specified scene under the current scene directory.</td>
 </tr>
 <tr>
