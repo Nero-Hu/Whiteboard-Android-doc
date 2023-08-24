@@ -480,6 +480,11 @@
 <td>{@link com.herewhite.sdk.Displayer.removeMagixEventListener(String eventName) removeMagixEventListener}</td>
 <td>移除自定义事件监听</td>
 </tr>
+<tr>
+<td>{@link com.herewhite.sdk.Room.dispatchDocsEvent(WindowDocsEvent docsEvent, Promise<Boolean> promise) dispatchDocsEvent}</td>
+<td>发送文档操作事件</td>
+</tr>
+
 </table>
 
 ### iframe 插件交互

@@ -200,4 +200,23 @@ public class PlayerConfiguration extends WhiteObject {
         this.mediaURL = mediaURL;
     }
     /// @endcond
+
+    /**
+     * 获取白板请求 modules 数据的地址。
+     * @return 方法调用成功时返回 modules 地址。
+     */
+    public String getModulesOrigin() {
+        return modulesOrigin;
+    }
+
+    /**
+     * 设置白板请求 modules 数据的地址。
+     * 配置后不会请求白板默认地址。
+     * @param modulesOrigin modules 地址。示例 https://modules.example.com。
+     */
+    public void setModulesOrigin(String modulesOrigin) {
+        this.modulesOrigin = modulesOrigin;
+    }
+    
+    private String modulesOrigin;
 }

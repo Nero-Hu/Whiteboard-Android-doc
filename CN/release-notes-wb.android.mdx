@@ -7,6 +7,78 @@ import VersionSection, { VersionTitle, ListTitle } from '@app/mdxComponents/Vers
 
 本文提供声网互动白板 Android SDK 的发版说明。
 
+<VersionSection version="2.16.59 版">
+
+该版本于 2023 年 8 月 31 日发布。
+
+<VersionTitle icon="/img/icons/version-compatibility.png">升级必看</VersionTitle>
+
+该版本废弃了白板数据中心原有的英国伦敦数据中心（`Region.gb-lon`），并新增了欧洲法兰克福数据中心（`Region.eu`），服务区覆盖欧洲。如需使用该数据中心，请在升级到该版本后更新代码，并在控制台-互动白板服务配置中启用该数据中心。
+
+<VersionTitle icon="/img/icons/version-feature.png">新增特性</VersionTitle>
+
+<ListTitle>PPT 音量控制</ListTitle>
+
+新增 `getSlideVolumeWithCompletionHandler` 和 `updateSlideVolume` 方法用于获取和更新 PPT 内音频的音量。
+
+<ListTitle>PPT URL 拦截替换</ListTitle>
+
+`WhiteSdkConfiguration` 新增 `enableSlideInterrupterAPI` 配置项。开启后，通过调用 `WhiteSdk.setSlideListener(SlideListener)` 实现 PPT 文件 URL 的拦截替换功能。
+
+<ListTitle>PPT 渲染提示</ListTitle>
+
+`WhiteSdkConfiguration` 新增 `whiteSlideAppParams` 配置项用于 [@netless/app-slide](https://github.com/netless-io/netless-app/tree/master/packages/app-slide) 渲染相关的显示配置。当前支持配置 `WhiteSlideAppParams.showRenderError`，用于配置显示/隐藏渲染错误提示。
+
+<ListTitle>自定义 API 服务器域名</ListTitle>
+
+`WhiteSdkConfiguration` 新增 `apiHosts` 配置项, 用于配置白板的 API 服务器域名列表，可用于实现服务器代理。
+
+<ListTitle>自定义模块源</ListTitle>
+
+`RoomParams` 和 `PlayerConfiguration` 分别新增 `modulesOrigin` 配置项，用于配置白板请求模块（modules）数据的地址。
+
+<ListTitle>文档操作事件</ListTitle>
+
+新增 `dispatchDocsEvent` 方法，用于向插入白板的 PDF/PPTX 文档发送事件，实现控制文档翻页、页面跳转和幻灯片动画播放。
+
+<VersionTitle icon="/img/icons/version-improve.png">改进</VersionTitle>
+
+<ListTitle>优化插入文档</ListTitle>
+
+新增 `ProjectorAttributes` 和 `ProjectorOptions`, 对应调用 `manager.addApp` 时传入的参数，详见 [`addApp`](https://github.com/netless-io/window-manager/blob/master/docs/basic.md#open-dynamicstatic-ppt)。
+
+使用新增的 `createSlideApp` 方法即可构建 `WindowAppParam` 对象，优化使用[新版文档转换服务](/doc/whiteboard/android/whiteboard-sdk/advanced-features/convert-files)转换 PPT 文件并插入至白板的流程。
+
+<ListTitle>窗口全屏</ListTitle>
+
+新增 `WindowParams.fullscreen`, 用于控制窗口是否全屏。
+
+<VersionTitle icon="/img/icons/version-bugfix.png">问题修复</VersionTitle>
+
+该版本修复了新版 Android Studio 无法预览布局的问题。
+
+<VersionTitle icon="/img/icons/version-api.png">API 变更</VersionTitle>
+
+<ListTitle>新增</ListTitle>
+
+- `getSlideVolumeWithCompletionHandler`
+- `updateSlideVolume`
+- `WhiteSdkConfiguration`
+  - `enableSlideInterrupterAPI`
+  - `whiteSlideAppParams`
+  - `apiHosts`
+- `setSlideDelegate`
+- `RoomParams` 新增 `modulesOrigin`
+- `PlayerConfiguration` 新增 `modulesOrigin`
+- `dispatchDocsEvent`
+ - `WindowDocsEvent`
+- `createSlideApp`
+  - `ProjectorAttributes`
+  - `ProjectorOptions`
+- `WindowParams.fullscreen`
+
+</VersionSection>
+
 
 
 <VersionSection version="2.16.42 版">
