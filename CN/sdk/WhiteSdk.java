@@ -402,7 +402,7 @@ public class WhiteSdk {
     }
 
     /**
-     * 更新当前 Slide 的音量。
+     * 更新当前 PPT 的音量。
      * 
      * @param volume 音量值，取值范围为 (0,1]。
      */
@@ -411,11 +411,11 @@ public class WhiteSdk {
     }
 
     /**
-     * 获取当前 Slide 的音量。
+     * 获取当前 PPT 的音量。
      *
-     * @param promise 方法调用结果：
-     * - 调用成功：返回音量信息。`volume` 为 (0,1] 之间的值，`error` 为 `nil`。
-     * - 调用失败：返回错误消息。`volume` 返回值为 0，`error` 为错误消息。
+     * @param promise 方法调用结果，包含 `volume` 和 `error` 两个字段：
+     * - 调用成功：`volume` 返回值为 (0,1] 之间的值，代表当前 PPT 的音量，`error` 返回值为 `nil`。
+     * - 调用失败：`volume` 返回值为 0，`error` 返回值为错误消息。
      */
     public void getSlideVolume(Promise<Double> promise) {
         sdkJsInterface.setPostMessageCallback(jsonObject -> {

@@ -148,7 +148,7 @@ public class WhiteSdkConfiguration extends WhiteObject {
     private boolean enableImgErrorCallback;
 
     /**
-     * 配置白板的 API 服务器域名列表，可以用于服务器代理。配置后，白板不再使用 sdk 自带配置。
+     * 配置白板的 API 服务器域名列表，可以用于服务器代理。配置后，白板不再使用 SDK 自带配置。
      * @example [api.example.com]
      */
     private List<String> apiHosts;
@@ -286,12 +286,12 @@ public class WhiteSdkConfiguration extends WhiteObject {
     }
 
     /**
-     * 开启/关闭 SlideApp 拦截替换功能。
+     * 开启/关闭 PPT 拦截替换功能。
      * 
-     * 该方法可以开启或关闭 SlideApp 资源的拦截功能。
-     * 如果开启，在加载 url 资源时，SlideApp 会拦截图片并触发 {@link com.herewhite.sdk.window.SlideListener#slideUrlInterrupter(String, ResultCaller)} 回调，你可以在该回调中替换图片的地址。
+     * 该方法可以开启或关闭 PPT 资源的拦截功能。
+     * 如果开启，在加载 URL 资源时会拦截资源并触发 {@link com.herewhite.sdk.window.SlideListener#slideUrlInterrupter(String, ResultCaller)} 回调，你可以在该回调中替换资源的地址。
      *
-     * @param enableSlideInterrupterAPI 是否开启 SlideApp 资源拦截和替换功能：
+     * @param enableSlideInterrupterAPI 是否开启 PPT 资源拦截和替换功能：
      *                             - `true`：开启。
      *                             - `false`：（默认）关闭。
      */
@@ -299,15 +299,18 @@ public class WhiteSdkConfiguration extends WhiteObject {
         this.enableSlideInterrupterAPI = enableSlideInterrupterAPI;
     }
 
+    /**
+     * 获取白板的 API 服务器域名列表。
+     */
     public List<String> getApiHosts() {
         return apiHosts;
     }
 
     /**
      * 配置白板的 API 服务器域名列表。
-     * 可以用于配置服务器代理。配置后，白板不再使用 sdk 自带配置。
+     * 可以用于配置服务器代理。配置后，白板不再使用 SDK 自带配置。
      *
-     * @param apiHosts 白板的 API 服务器域名列表 [api.example.com]。
+     * @param apiHosts 白板的 API 服务器域名列表。例如 [api.example.com]。
      */
     public void setApiHosts(List<String> apiHosts) {
         this.apiHosts = apiHosts;
@@ -625,11 +628,17 @@ public class WhiteSdkConfiguration extends WhiteObject {
 
     private boolean enableImgErrorCallback;
 
-    // 互动白板 SlideApp 的配置项。
+    /**
+     * PPT 渲染显示的相关配置项。
+     */
     public static class SlideAppOptions extends WhiteObject {
-        // 是否显示渲染错误
+        /**
+         * 是否显示渲染错误。
+         */
         private boolean showRenderError = false;
-        // 是否开启调试模式
+        /**
+         * 是否开启调试模式。
+         */
         private boolean debug = false;
 
         public boolean isShowRenderError() {

@@ -4,6 +4,9 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.UUID;
 
+/**
+ * `WindowAppParam` 类，用于构建 `WindowAppParam` 对象。
+ */
 public class WindowAppParam {
     public static final String KIND_DOCSVIEWER = "DocsViewer";
     public static final String KIND_MEDIAPLAYER = "MediaPlayer";
@@ -41,7 +44,7 @@ public class WindowAppParam {
      * @param taskUuid 转换任务的 UUID。
      * @param prefixUrl 以 http 或 https 开头的 url, 例如 https://convertcdn.netless.link/dynamicConvert. 请注意不以 / 结尾。
      * @param title 窗口标题。用于展示插入的文档。
-     * @return
+     * @return `WindowAppParam` 对象。
      */
     public static WindowAppParam createSlideApp(String taskUuid, String prefixUrl, String title) {
         if (!prefixUrl.startsWith("http")) {

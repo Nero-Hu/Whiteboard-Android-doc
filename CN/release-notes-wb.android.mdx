@@ -13,17 +13,19 @@ import VersionSection, { VersionTitle, ListTitle } from '@app/mdxComponents/Vers
 
 <VersionTitle icon="/img/icons/version-compatibility.png">升级必看</VersionTitle>
 
-该版本废弃了白板数据中心原有的英国伦敦数据中心（`Region.gb-lon`），并新增了欧洲法兰克福数据中心（`Region.eu`），服务区覆盖欧洲。如需使用该数据中心，请在升级到该版本后更新代码，并在控制台-互动白板服务配置中启用该数据中心。
+该版本废弃了白板数据中心原有的英国伦敦数据中心（`Region.gb-lon`），并新增了欧洲法兰克福数据中心（`Region.eu`），服务区覆盖欧洲。如果你在之前版本中设置了 `Region.gb-lon`，请在升级到该版本后改用 `Region.eu`，并在控制台-互动白板服务配置中启用该数据中心。
 
 <VersionTitle icon="/img/icons/version-feature.png">新增特性</VersionTitle>
 
 <ListTitle>PPT 音量控制</ListTitle>
 
-新增 `getSlideVolumeWithCompletionHandler` 和 `updateSlideVolume` 方法用于获取和更新 PPT 内音频的音量。
+该版本废新增 `getSlideVolume` 和 `updateSlideVolume` 方法用于获取和更新 PPT 内音频的音量。
 
 <ListTitle>PPT URL 拦截替换</ListTitle>
 
-`WhiteSdkConfiguration` 新增 `enableSlideInterrupterAPI` 配置项。开启后，通过调用 `WhiteSdk.setSlideListener(SlideListener)` 实现 PPT 文件 URL 的拦截替换功能。
+`WhiteSdkConfiguration` 新增 `enableSlideInterrupterAPI` 配置项，用于开启 PPT 资源 URL 拦截替换功能。该功能可用于加密用户上传的 PPT 资源，保护用户隐私。
+
+开启后，通过调用 `WhiteSdk.setSlideListener(SlideListener)` 实现 PPT 文件 URL 的拦截替换功能。
 
 <ListTitle>PPT 渲染提示</ListTitle>
 
@@ -45,13 +47,13 @@ import VersionSection, { VersionTitle, ListTitle } from '@app/mdxComponents/Vers
 
 <ListTitle>优化插入文档</ListTitle>
 
-新增 `ProjectorAttributes` 和 `ProjectorOptions`, 对应调用 `manager.addApp` 时传入的参数，详见 [`addApp`](https://github.com/netless-io/window-manager/blob/master/docs/basic.md#open-dynamicstatic-ppt)。
+该版本优化了使用[新版文档转换服务](/doc/whiteboard/android/whiteboard-sdk/advanced-features/convert-files)转换 PPT 文件并插入至白板的流程。
 
-使用新增的 `createSlideApp` 方法即可构建 `WindowAppParam` 对象，优化使用[新版文档转换服务](/doc/whiteboard/android/whiteboard-sdk/advanced-features/convert-files)转换 PPT 文件并插入至白板的流程。
+你可以使用新增的 `createSlideApp` 方法即可构建 `WindowAppParam` 对象，该对象包含 `ProjectorAttributes` 和 `ProjectorOptions`, 对应打开文档时传入的参数，详见 [`addApp`](https://github.com/netless-io/window-manager/blob/master/docs/basic.md#open-dynamicstatic-ppt)。
 
 <ListTitle>窗口全屏</ListTitle>
 
-新增 `WindowParams.fullscreen`, 用于控制窗口是否全屏。
+新增 `WindowParams.fullscreen` 属性, 用于控制窗口是否全屏。
 
 <VersionTitle icon="/img/icons/version-bugfix.png">问题修复</VersionTitle>
 
@@ -63,7 +65,7 @@ import VersionSection, { VersionTitle, ListTitle } from '@app/mdxComponents/Vers
 
 - `getSlideVolumeWithCompletionHandler`
 - `updateSlideVolume`
-- `WhiteSdkConfiguration`
+- `WhiteSdkConfiguration` 中新增：
   - `enableSlideInterrupterAPI`
   - `whiteSlideAppParams`
   - `apiHosts`
@@ -75,6 +77,7 @@ import VersionSection, { VersionTitle, ListTitle } from '@app/mdxComponents/Vers
 - `createSlideApp`
   - `ProjectorAttributes`
   - `ProjectorOptions`
+  - `WindowAppParam`
 - `WindowParams.fullscreen`
 
 </VersionSection>
