@@ -307,4 +307,46 @@ public class WhiteSdk {
             promise.catchEx(new SDKError(e.getMessage()));
         }
     }
+
+    /**
+     * Updates the volume the PPT slide. 
+     * 
+     * @param volume Volume. The value range is (0,1].
+     */
+    public void updateSlideVolume(float volume) {
+        bridge.evaluateJavascript("window.postMessage({'type': \"@slide/_update_volume_\",'volume': " + volume + "});");
+    }
+
+    /**
+     * Gets the volume the PPT slide. 
+     *
+     * @param promise The result of the method call, including two fields, `volume` and `error`: 
+     * - A successful call: `volume` ranges from (0,1], indicating the volume the PPT; `error` returns `nil`.
+     * - A failed call: `volume` returns 0; `error` returns the error message. 
+     */
+    public void getSlideVolume(Promise<Double> promise) {
+        sdkJsInterface.setPostMessageCallback(jsonObject -> {
+            try {
+                String type = jsonObject.optString("type");
+                if ("@slide/_report_volume_".equals(type)) {
+                    sdkJsInterface.setPostMessageCallback(null);
+                    promise.then(jsonObject.getDouble("volume"));
+                }
+            } catch (Exception e) {
+                sdkJsInterface.setPostMessageCallback(null);
+                promise.catchEx(SDKError.parseError(jsonObject));
+            }
+        });
+        bridge.evaluateJavascript("window.postMessage({'type': \"@slide/_get_volume_\"});");
+    }
+
+    /**
+     * Sets the listener for PPT slides.
+     * PPT slides uses the `SlideListener` class to report events to App. 
+     *
+     * @param slideListener Common callback events. See {@link SlideListener SlideListener}.
+     */
+    public void setSlideListener(SlideListener slideListener) {
+        sdkJsInterface.setSlideListener(slideListener);
+    }
 }

@@ -436,4 +436,15 @@ public class RoomParams extends WhiteObject {
     }
 
     private boolean floatBar = false;
+
+    /**
+     * Sets the address for requesting whiteboard module data.
+     * Once set, the default address is disabled automatically.
+     * @param modulesOrigin The address of modules. Example: https://modules.example.com.
+     */
+    public void setModulesOrigin(String modulesOrigin) {
+        this.modulesOrigin = modulesOrigin;
+    
+    private String modulesOrigin;
+    }
 }
