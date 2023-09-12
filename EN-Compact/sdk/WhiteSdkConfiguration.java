@@ -285,7 +285,7 @@ public class WhiteSdkConfiguration extends WhiteObject {
      * 
      * Once enabled, the {@link com.herewhite.sdk.window.SlideListener#slideUrlInterrupter(String, ResultCaller)} callback will be triggered when loading PPT URL, and you can set the replacement for the URL in this callback. 
      *
-     * @param enableSlideInterrupterAPI Whether to enable ntercepting and replacing URLs of PPT resources:
+     * @param enableSlideInterrupterAPI Whether to enable intercepting and replacing URLs of PPT resources:
      *                             - `true`：Enabled.
      *                             - `false`：(Default) Disabled.
      */

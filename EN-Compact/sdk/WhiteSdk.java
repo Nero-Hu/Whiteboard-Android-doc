@@ -309,7 +309,7 @@ public class WhiteSdk {
     }
 
     /**
-     * Updates the volume the PPT slide. 
+     * Updates the volume of the PPT slide. 
      * 
      * @param volume Volume. The value range is (0,1].
      */
@@ -318,10 +318,10 @@ public class WhiteSdk {
     }
 
     /**
-     * Gets the volume the PPT slide. 
+     * Gets the volume of the PPT slide. 
      *
      * @param promise The result of the method call, including two fields, `volume` and `error`: 
-     * - A successful call: `volume` ranges from (0,1], indicating the volume the PPT; `error` returns `nil`.
+     * - A successful call: `volume` ranges from (0,1], indicating the volume of the PPT; `error` returns `nil`.
      * - A failed call: `volume` returns 0; `error` returns the error message. 
      */
     public void getSlideVolume(Promise<Double> promise) {
@@ -342,7 +342,7 @@ public class WhiteSdk {
 
     /**
      * Sets the listener for PPT slides.
-     * PPT slides uses the `SlideListener` class to report events to App. 
+     * PPT slides use the `SlideListener` class to report events to App. 
      *
      * @param slideListener Common callback events. See {@link SlideListener SlideListener}.
      */

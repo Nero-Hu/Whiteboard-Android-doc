@@ -39,10 +39,10 @@ public class WindowAppParam {
     }
 
     /**
-     * Constructs the pamameters used to add PPT slides in whiteboard.
+     * Constructs the parameters used to add PPT slides in whiteboard.
      * @param taskUuid The task UUID of the conversion task.
-     * @param prefixUrl URL begins with http or https, such as https://convertcdn.netless.link/dynamicConvert. Notice that the URL does not ends with `/`.
-     * @param title The title of the window. Used to display the inserted docs.
+     * @param prefixUrl URL begins with http or https, such as https://convertcdn.netless.link/dynamicConvert. Notice that the URL does not end with `/`.
+     * @param title The title of the window, which is used to display the inserted docs.
      * @return The `WindowAppParam` object.
      */
     public static WindowAppParam createSlideApp(String taskUuid, String prefixUrl, String title) {
