@@ -81,7 +81,7 @@ public class FastRoomOptions {
 
 `FastRoomOptions` 类包含以下属性：
 
-- `appId`：String。互动白板项目的 App Identifier。详见[获取互动白板项目的安全密钥](/doc/whiteboard/android/whiteboard-sdk/get-started/enable-service3获取互动白板项目的安全密钥)。
+- `appId`：String。互动白板项目的 App Identifier。详见[获取互动白板项目的安全密钥](/doc/whiteboard/android/whiteboard-sdk/get-started/enable-service#获取互动白板项目的安全密钥)。
 - `uuid`：String。房间的 UUID，即房间的唯一标识符。详见[创建房间](https://docs.agora.io/cn/whiteboard/whiteboard_room_management?platform=RESTful#创建房间（post）)请求成功后响应包体中 `uuid` 参数的值。
 - `token`：String。房间的 Room Token，用于加入房间时的用户鉴权。可以通过以下方式获取：
   - 调用[生成 Room Token RESTful API](https://docs.agora.io/cn/whiteboard/generate_whiteboard_token?platform=RESTful#生成-room-token（post）)。
