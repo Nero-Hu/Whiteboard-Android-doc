@@ -417,7 +417,7 @@ public class WhiteSdkConfiguration extends WhiteObject {
      *
      *
      *
-     * @param appIdentifier 白板项目的唯一标识。详见[获取白板项目的 App Identifier](https://docs.agora.io/cn/whiteboard/enable_whiteboard?platform=Android#获取-app-identifier)。
+     * @param appIdentifier 白板项目的唯一标识。详见[获取白板项目的 App Identifier](/doc/whiteboard/android/whiteboard-sdk/get-started/enable-service3获取-app-identifier)。
      * @param log           是否开启调试日志回调：
      *                      - `true`：开启。
      *                      - `false`：（默认）关闭。
@@ -431,7 +431,7 @@ public class WhiteSdkConfiguration extends WhiteObject {
     /**
      * 初始化互动白板 SDK 配置。
      *
-     * @param appIdentifier 白板项目的唯一标识。详见[获取白板项目的 App Identifier](https://docs.agora.io/cn/whiteboard/enable_whiteboard?platform=Android#获取-app-identifier)。
+     * @param appIdentifier 白板项目的唯一标识。详见[获取白板项目的 App Identifier](/doc/whiteboard/android/whiteboard-sdk/get-started/enable-service3获取-app-identifier)。
      */
     public WhiteSdkConfiguration(String appIdentifier) {
         this.appIdentifier = appIdentifier;
