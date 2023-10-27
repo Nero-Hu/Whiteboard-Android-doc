@@ -124,6 +124,7 @@ public class WhiteSdkConfiguration extends WhiteObject {
     private boolean log = false;
     private RenderEngineType renderEngine = RenderEngineType.canvas;
     private boolean enableInterrupterAPI = false;
+    private boolean enableSlideInterrupterAPI = false;
     private boolean preloadDynamicPPT = false;
     private boolean routeBackup = false;
     private boolean userCursor = false;
@@ -138,6 +139,20 @@ public class WhiteSdkConfiguration extends WhiteObject {
     private HashMap<String, String> __nativeTags = new HashMap<>();
     private PptParams pptParams = new PptParams();
     private HashMap<String, String> fonts;
+
+    /**
+     * Options for PPT slide. 
+     */
+    private SlideAppOptions slideAppOptions = new SlideAppOptions();
+    private HashMap<String, String> fonts;
+    private boolean enableImgErrorCallback;
+
+    /**
+     * Configures the API server domain name list for the whiteboard, which can be used for server proxy. 
+     * After configuration, the whiteboard will no longer use the SDK's default configuration. 
+     * @example [api.example.com]
+     */
+    private List<String> apiHosts;
 
     /**
      * Gets whether the iframe plug-in is enabled.
@@ -251,6 +266,49 @@ public class WhiteSdkConfiguration extends WhiteObject {
      */
     public void setDisableNewPencilStroke(boolean disableNewPencilStroke) {
         this.disableNewPencilStroke = disableNewPencilStroke;
+    }
+
+    public SlideAppOptions getSlideAppOptions() {
+        return slideAppOptions;
+    }
+
+    public void setSlideAppOptions(SlideAppOptions slideAppOptions) {
+        this.slideAppOptions = slideAppOptions;
+    }
+
+    public boolean isEnableSlideInterrupterAPI() {
+        return enableSlideInterrupterAPI;
+    }
+
+    /**
+     * Enables/disables intercepting and replacing URLs of PPT resources.
+     * 
+     * Once enabled, the {@link com.herewhite.sdk.window.SlideListener#slideUrlInterrupter(String, ResultCaller)} callback will be triggered when loading PPT URL, and you can set the replacement for the URL in this callback. 
+     *
+     * @param enableSlideInterrupterAPI Whether to enable intercepting and replacing URLs of PPT resources:
+     *                             - `true`：Enabled.
+     *                             - `false`：(Default) Disabled.
+     */
+    public void setEnableSlideInterrupterAPI(boolean enableSlideInterrupterAPI) {
+        this.enableSlideInterrupterAPI = enableSlideInterrupterAPI;
+    }
+
+    /**
+     * Gets the API server domains for the whiteboard.
+     */
+    public List<String> getApiHosts() {
+        return apiHosts;
+    }
+
+    /**
+     * Sets the API server domains for the whiteboard.
+     * The setting can be used for server proxy implementation.
+     * Once set, the default setting is disabled. 
+     *
+     * @param apiHosts The list of API server domains for the whiteboard.
+     */
+    public void setApiHosts(List<String> apiHosts) {
+        this.apiHosts = apiHosts;
     }
 
     /**
@@ -567,4 +625,34 @@ public class WhiteSdkConfiguration extends WhiteObject {
     }
 
     private boolean enableImgErrorCallback;
+
+    /**
+     * Configuration options for notifications when rendering PPT slides. 
+     */
+    public static class SlideAppOptions extends WhiteObject {
+        /**
+         * Whether to display rendering errors.
+         */
+        private boolean showRenderError = false;
+        /**
+         * Whether to enable debug mode.
+         */
+        private boolean debug = false;
+
+        public boolean isShowRenderError() {
+            return showRenderError;
+        }
+
+        public void setShowRenderError(boolean showRenderError) {
+            this.showRenderError = showRenderError;
+        }
+
+        public boolean isDebug() {
+            return debug;
+        }
+
+        public void setDebug(boolean debug) {
+            this.debug = debug;
+        }
+    }
 }

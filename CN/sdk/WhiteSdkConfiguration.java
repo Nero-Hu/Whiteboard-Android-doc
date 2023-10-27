@@ -121,6 +121,7 @@ public class WhiteSdkConfiguration extends WhiteObject {
     private boolean log = false;
     private RenderEngineType renderEngine = RenderEngineType.canvas;
     private boolean enableInterrupterAPI = false;
+    private boolean enableSlideInterrupterAPI = false;
     private boolean preloadDynamicPPT = false;
     private boolean routeBackup = false;
     private boolean userCursor = false;
@@ -138,6 +139,19 @@ public class WhiteSdkConfiguration extends WhiteObject {
      */
     private PptParams pptParams = new PptParams();
     private HashMap<String, String> fonts;
+
+    /**
+     * SlideApp 的配置项
+     */
+    private SlideAppOptions slideAppOptions = new SlideAppOptions();
+    private HashMap<String, String> fonts;
+    private boolean enableImgErrorCallback;
+
+    /**
+     * 配置白板的 API 服务器域名列表，可以用于服务器代理。配置后，白板不再使用 SDK 自带配置。
+     * @example [api.example.com]
+     */
+    private List<String> apiHosts;
 
     /**
      * 获取是否启用 iframe 插件。
@@ -259,6 +273,48 @@ public class WhiteSdkConfiguration extends WhiteObject {
         this.disableNewPencilStroke = disableNewPencilStroke;
     }
 
+    public SlideAppOptions getSlideAppOptions() {
+        return slideAppOptions;
+    }
+
+    public void setSlideAppOptions(SlideAppOptions slideAppOptions) {
+        this.slideAppOptions = slideAppOptions;
+    }
+
+    public boolean isEnableSlideInterrupterAPI() {
+        return enableSlideInterrupterAPI;
+    }
+
+    /**
+     * 开启/关闭 PPT 拦截替换功能。
+     * 
+     * 该方法可以开启或关闭 PPT 资源的拦截功能。
+     * 如果开启，在加载 URL 资源时会拦截资源并触发 {@link com.herewhite.sdk.window.SlideListener#slideUrlInterrupter(String, ResultCaller)} 回调，你可以在该回调中替换资源的地址。
+     *
+     * @param enableSlideInterrupterAPI 是否开启 PPT 资源拦截和替换功能：
+     *                             - `true`：开启。
+     *                             - `false`：（默认）关闭。
+     */
+    public void setEnableSlideInterrupterAPI(boolean enableSlideInterrupterAPI) {
+        this.enableSlideInterrupterAPI = enableSlideInterrupterAPI;
+    }
+
+    /**
+     * 获取白板的 API 服务器域名列表。
+     */
+    public List<String> getApiHosts() {
+        return apiHosts;
+    }
+
+    /**
+     * 配置白板的 API 服务器域名列表。
+     * 可以用于配置服务器代理。配置后，白板不再使用 SDK 自带配置。
+     *
+     * @param apiHosts 白板的 API 服务器域名列表。例如 [api.example.com]。
+     */
+    public void setApiHosts(List<String> apiHosts) {
+        this.apiHosts = apiHosts;
+    }
 
     /**
      * 设置绘图的渲染模式。
@@ -361,7 +417,7 @@ public class WhiteSdkConfiguration extends WhiteObject {
      *
      *
      *
-     * @param appIdentifier 白板项目的唯一标识。详见[获取白板项目的 App Identifier](https://docs.agora.io/cn/whiteboard/enable_whiteboard?platform=Android#获取-app-identifier)。
+     * @param appIdentifier 白板项目的唯一标识。详见[获取白板项目的 App Identifier](/doc/whiteboard/android/whiteboard-sdk/get-started/enable-service#获取-app-identifier)。
      * @param log           是否开启调试日志回调：
      *                      - `true`：开启。
      *                      - `false`：（默认）关闭。
@@ -375,7 +431,7 @@ public class WhiteSdkConfiguration extends WhiteObject {
     /**
      * 初始化互动白板 SDK 配置。
      *
-     * @param appIdentifier 白板项目的唯一标识。详见[获取白板项目的 App Identifier](https://docs.agora.io/cn/whiteboard/enable_whiteboard?platform=Android#获取-app-identifier)。
+     * @param appIdentifier 白板项目的唯一标识。详见[获取白板项目的 App Identifier](/doc/whiteboard/android/whiteboard-sdk/get-started/enable-service#获取-app-identifier)。
      */
     public WhiteSdkConfiguration(String appIdentifier) {
         this.appIdentifier = appIdentifier;
@@ -571,4 +627,34 @@ public class WhiteSdkConfiguration extends WhiteObject {
     }
 
     private boolean enableImgErrorCallback;
+
+    /**
+     * PPT 渲染显示的相关配置项。
+     */
+    public static class SlideAppOptions extends WhiteObject {
+        /**
+         * 是否显示渲染错误。
+         */
+        private boolean showRenderError = false;
+        /**
+         * 是否开启调试模式。
+         */
+        private boolean debug = false;
+
+        public boolean isShowRenderError() {
+            return showRenderError;
+        }
+
+        public void setShowRenderError(boolean showRenderError) {
+            this.showRenderError = showRenderError;
+        }
+
+        public boolean isDebug() {
+            return debug;
+        }
+
+        public void setDebug(boolean debug) {
+            this.debug = debug;
+        }
+    }
 }

@@ -375,6 +375,10 @@ Agora provides interactive whiteboard with high reliability and rich features th
 <td>Sends a custom event.</td>
 </tr>
 <tr>
+<td>{@link com.herewhite.sdk.Room.dispatchDocsEvent(WindowDocsEvent docsEvent, Promise<Boolean> promise) dispatchDocsEvent}</td>
+<td>Dispatches a docs event.</td>
+</tr>
+<tr>
 <td>{@link com.herewhite.sdk.Displayer.addMagixEventListener(String eventName, EventListener eventListener) addMagixEventListener}</td>
 <td>Adds a listener for a customized event.</td>
 </tr>

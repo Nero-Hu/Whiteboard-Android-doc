@@ -1221,6 +1221,24 @@ public class Room extends Displayer {
     }
     //endregion
 
+    /**
+     * 发送文档操作事件。
+     *
+     * @param docsEvent 事件内容，详见 {@link com.herewhite.sdk.domain.WindowDocsEvent WindowDocsEvent}。
+     * @param promise `Promise<Boolean>` 接口，详见 {@link com.herewhite.sdk.domain.Promise Promise}。你可以通过该接口获取 `dispatchDocsEvent` 的调用结果：
+     *                - 如果方法调用成功，则返回 `true`.
+     *                - 如果方法调用失败，则返回错误信息。
+     */
+    public void dispatchDocsEvent(WindowDocsEvent docsEvent, Promise<Boolean> promise) {
+        String event = docsEvent.getEvent();
+        WindowDocsEvent.Options options = docsEvent.getOptions();
+        bridge.callHandler("room.dispatchDocsEvent", new Object[]{event, options}, (OnReturnValue<Boolean>) value -> {
+            if (promise != null) {
+                promise.then(value);
+            }
+        });
+    }
+
     // region roomListener
     // 关于此处的回调在JsBridge线程，请考虑/讨论确定是否在主执行
     private RoomListener roomListener;

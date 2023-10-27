@@ -400,4 +400,46 @@ public class WhiteSdk {
             promise.catchEx(new SDKError(e.getMessage()));
         }
     }
+
+    /**
+     * 更新当前 PPT 的音量。
+     * 
+     * @param volume 音量值，取值范围为 (0,1]。
+     */
+    public void updateSlideVolume(float volume) {
+        bridge.evaluateJavascript("window.postMessage({'type': \"@slide/_update_volume_\",'volume': " + volume + "});");
+    }
+
+    /**
+     * 获取当前 PPT 的音量。
+     *
+     * @param promise 方法调用结果，包含 `volume` 和 `error` 两个字段：
+     * - 调用成功：`volume` 返回值为 (0,1] 之间的值，代表当前 PPT 的音量，`error` 返回值为 `nil`。
+     * - 调用失败：`volume` 返回值为 0，`error` 返回值为错误消息。
+     */
+    public void getSlideVolume(Promise<Double> promise) {
+        sdkJsInterface.setPostMessageCallback(jsonObject -> {
+            try {
+                String type = jsonObject.optString("type");
+                if ("@slide/_report_volume_".equals(type)) {
+                    sdkJsInterface.setPostMessageCallback(null);
+                    promise.then(jsonObject.getDouble("volume"));
+                }
+            } catch (Exception e) {
+                sdkJsInterface.setPostMessageCallback(null);
+                promise.catchEx(SDKError.parseError(jsonObject));
+            }
+        });
+        bridge.evaluateJavascript("window.postMessage({'type': \"@slide/_get_volume_\"});");
+    }
+
+    /**
+     * 设置 SlideApp 回调。
+     * SlideApp 通过 `SlideListener` 类向 app 报告内部运行时的各项事件。
+     *
+     * @param slideListener 通用回调事件，详见 {@link SlideListener SlideListener}。
+     */
+    public void setSlideListener(SlideListener slideListener) {
+        sdkJsInterface.setSlideListener(slideListener);
+    }
 }

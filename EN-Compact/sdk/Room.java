@@ -1242,6 +1242,26 @@ public class Room extends Displayer {
     }
     //endregion
 
+
+    /**
+     * Dispatches a doc event.
+     *
+     * @param docsEvent The content of the doc event. See {@link com.herewhite.sdk.domain.WindowDocsEvent WindowDocsEvent}.
+     * @param promise The `Promise<Boolean>` interface instance. See {@link com.herewhite.sdk.domain.Promise Promise}. 
+     *                You can use this interface to get the result of calling `dispatchDocsEvent`:
+     *                  - Returns `true`, if the method call succeeds.
+     *                  - An error message, if the method call fails.
+     */
+    public void dispatchDocsEvent(WindowDocsEvent docsEvent, Promise<Boolean> promise) {
+        String event = docsEvent.getEvent();
+        WindowDocsEvent.Options options = docsEvent.getOptions();
+        bridge.callHandler("room.dispatchDocsEvent", new Object[]{event, options}, (OnReturnValue<Boolean>) value -> {
+            if (promise != null) {
+                promise.then(value);
+            }
+        });
+    }
+
     // region roomListener
     private RoomListener roomListener;
 
