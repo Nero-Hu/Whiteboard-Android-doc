@@ -483,10 +483,12 @@ public class DocPage {
 
 `DocPage` 类包含以下属性：
 
-- `src`：String。转换后的图片的 URL 地址。你可以从[查询转换任务进度](/api-ref/whiteboard/restful/restful-wb/operations/get-v5-projector-tasks-uuid)响应包体中的 `image` 字段中获取。请确保 App 客户端能够访问该 URL，否则无法正常加载图片。
-- `preview`：String。（可选）文档预览图地址。传入后，将在 App 左侧展示预览图。请确保 App 客户端能够访问该 URL，否则无法正常加载预览图。
-- `width`：int。图片的宽度（px）。
-- `height`：int。图片的长度（px）。
+- `src`：String。图片或动态 PPT 页的地址。
+  - 图片：URL 地址，可以是你自己生成的 URL 地址，也可以是通过[文档转换功能](/doc/whiteboard/android/fastboard-sdk/advanced-features/convert-files)生成的 URL 地址。你可以从[查询转换任务进度](/api-ref/whiteboard/restful/restful-wb/operations/get-v5-projector-tasks-uuid)返回的 `image` 字段中获取该地址。请确保 App 客户端能够访问该 URL，否则无法正常加载图片。
+  - 动态 PPT 页：动态 PPT 页：通过[文档转换功能](/doc/whiteboard/android/fastboard-sdk/advanced-features/convert-files)生成的 URI 地址。
+- `preview`：String。（可选）图片或动态 PPT 预览图的 URL 地址。动态 PPT 预览图的 URL 地址可以从[查询文档转换进度](/api-ref/whiteboard/restful/restful-wb/operations/get-v5-projector-tasks-uuid)返回的 `preview` 字段获取。传入后，将在 App 左侧展示预览图。请确保 App 客户端能够访问该 URL，否则无法正常加载预览图。
+- `width`：int。插入的文档在白板中的宽度（px）。
+- `height`：int。插入的文档在白板中的长度（px）。
 
 
 
