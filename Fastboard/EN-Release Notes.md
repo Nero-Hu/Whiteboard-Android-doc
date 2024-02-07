@@ -26,12 +26,12 @@ This release adds the following new whiteboard tools:
 
 **Whiteboard Logging**
 
-Adds the `FastLogger` class to provide a flexible whiteboard runtime log recording tool, which can easily record `debug`, `info`, `warn`, and `error` four different levels of log information. You can call the `setLogger` method to customize the logger to adapt to different logging needs, or you can use the system `Log` class to log.
+Adds the `FastLogger` class to provide a flexible whiteboard runtime log recording tool, which can easily record four different levels of log information: `debug`, `info`, `warn`, and `error` . You can call the `setLogger` method to customize the logger to adapt to different logging needs, or you can use the system `Log` class to log.
 
 #### Improvements
 
 - When calling the `Fastroom.insertImage` method to insert an image, the image will be centered in the current view by default.
-- The full room state callback roomState after joining the room is disabled. Clients need to call `Room.getRoomState()` to get the full `RoomState`.
+- The room state callback, `roomState`, which is triggered after joining a whiteboard room, is disabled. You need to call `Room.getRoomState()` to get the complete `RoomState`.
 
 #### API changes
 
@@ -53,7 +53,7 @@ Adds the `FastLogger` class to provide a flexible whiteboard runtime log recordi
   - `info`
   - `error`
 
-**Depreacated**
+**Deprecated**
 
 - `insertDocs`
 
