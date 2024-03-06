@@ -372,7 +372,7 @@ public class Room extends Displayer {
      * @param x 第一个文字左侧边的中点在世界坐标系中的 X 轴坐标。
      * @param y 第一个文字左侧边的中点在世界坐标系中的 Y 轴坐标。
      * @param text 初始的文字内容，不传则为空。
-     * @param promise `Promise<GlobalState>` 接口实例，详见 {@link com.herewhite.sdk.domain.Promise Promise}。你可以通过该接口获取方法调用结果：
+     * @param promise `Promise<String>` 接口实例，详见 {@link com.herewhite.sdk.domain.Promise Promise}。你可以通过该接口获取方法调用结果：
      *                - 如果方法调用成功，则返回文字标识符。
      *                - 如果方法调用失败，则返回错误信息。
      * 
@@ -1246,7 +1246,7 @@ public class Room extends Displayer {
      * 多窗口模式下，PPT 或自定义插件等可以作为小窗应用插入白板，在一个新的窗口中展示。
      * 
      * @param appParam 小窗应用属性，详见 {@link com.herewhite.sdk.domain.WhiteAppParam WhiteAppParam}。
-     * @param promise `Promise<Object>` 接口实例，详见 {@link com.herewhite.sdk.domain.Promise Promise}。你可以通过该接口获取方法调用结果：
+     * @param promise `Promise<String>` 接口实例，详见 {@link com.herewhite.sdk.domain.Promise Promise}。你可以通过该接口获取方法调用结果：
      *                - 如果方法调用成功，则返回小窗应用 ID。
      *                - 如果方法调用失败，则返回错误信息。
      *
@@ -1272,7 +1272,7 @@ public class Room extends Displayer {
      * 该方法仅在多窗口模式下有效, 无论应用 ID 是否有效都会触发回调。
      *
      * @param appId 小窗应用 ID。
-     * @param promise `Promise<Object>` 接口实例，详见 {@link com.herewhite.sdk.domain.Promise Promise}。你可以通过该接口获取方法调用结果：
+     * @param promise `Promise<Boolean>` 接口实例，详见 {@link com.herewhite.sdk.domain.Promise Promise}。你可以通过该接口获取方法调用结果：
      *                - 如果方法调用成功，则窗口关闭。
      *                - 如果方法调用失败，则返回错误信息。
      */

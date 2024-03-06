@@ -15,7 +15,7 @@ import VersionSection, { VersionTitle, ListTitle } from '@app/mdxComponents/Vers
 
 **小窗应用管理**
 
-在多窗口模式下，SDK 支持以新建窗口的方式插入 PPT 或白板插件等，它们统称为小窗应用。该版本起，`WhiteRoom` 类新增以下方法用于在多窗口模式下管理小窗应用：
+在多窗口模式下，SDK 支持以新建窗口的方式插入 PPT 或白板插件等，它们统称为小窗应用。该版本起，`Room` 对象新增以下方法用于在多窗口模式下管理小窗应用：
 
 - `addApp`：插入小窗应用，并返回应用 ID。
 - `closeApp`：关闭指定小窗应用的窗口。
@@ -32,7 +32,7 @@ import VersionSection, { VersionTitle, ListTitle } from '@app/mdxComponents/Vers
 
 **PPT 渲染配置新项目**
 
-PPT 渲染配置项 `WhiteSlideAppParams` 新增了以下属性：
+PPT 渲染配置项 `WhiteSdkConfiguration.SlideAppOptions` 新增了以下属性：
 
 - `minFPS`：设置 PPT 动画的最小帧率。
 - `maxFPS`：设置 PPT 动画的最大帧率。
