@@ -12,7 +12,7 @@ public class MemberState extends WhiteObject {
     private String currentApplianceName;
 
     /**
-     * 图形工具的类型。
+     * 图形工具的类型。详见 {@link com.herewhite.sdk.domain.ShapeType ShapeType}。
      */
     private ShapeType shapeType;
     /**

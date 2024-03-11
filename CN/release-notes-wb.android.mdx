@@ -30,7 +30,7 @@ import VersionSection, { VersionTitle, ListTitle } from '@app/mdxComponents/Vers
 - `textColor`：文本工具中文字的颜色。
 - `pencilEraserSize`：铅笔橡皮工具的尺寸。
 
-**PPT 渲染配置新项目**
+**PPT 渲染配置新增**
 
 PPT 渲染配置项 `WhiteSdkConfiguration.SlideAppOptions` 新增了以下属性：
 
@@ -40,7 +40,7 @@ PPT 渲染配置项 `WhiteSdkConfiguration.SlideAppOptions` 新增了以下属�
 - `maxResolutionLevel`：设置 PPT 最大分辨率。
 - `bgColor`：设置 PPT 动画的背景色。
 - `forceCanvas`：是否强制使用 2D 渲染，默认不开启。
-- `enableGlobalClick`：是否可以通过点击 PPT 画面执行下一步功能, 默认开启。
+- `enableGlobalClick`：是否可以通过点击 PPT 画面执行下一步功能，默认开启。
 
 **白板绘制性能优化策略**
 
@@ -61,7 +61,7 @@ PPT 渲染配置项 `WhiteSdkConfiguration.SlideAppOptions` 新增了以下属�
 
 该版本修复了以下问题：
 
-- `WhiteWindowParams.fullscreen` 启后，第二次打开 App 没有全屏。
+- `WhiteWindowParams.fullscreen` 开启后，第二次打开 App 没有全屏。
 - `WindowParams.fullscreen` 开启后偶现状态栏闪烁。
 - 路径动画跳页后无法恢复到原位。 
 - 菱形填充会充满图形。
@@ -79,6 +79,9 @@ PPT 渲染配置项 `WhiteSdkConfiguration.SlideAppOptions` 新增了以下属�
 - `queryApp`
 - `queryAllApps`
 - `WindowAppSyncAttrs`
+- `MemberState` 新增
+  - `textColor`
+  - `pencilEraserSize`
 - `SlideAppOptions` 新增
   - `minFPS`
   - `maxFPS`

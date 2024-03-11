@@ -167,7 +167,7 @@ public class WhiteSdkConfiguration extends WhiteObject {
     /**
      * 启用/禁用 iframe 插件。
      *
-     * iframe 插件的功能，详见 https://github.com/netless-io/netless-iframe-bridge。
+     * iframe 插件的功能，详见 [iframe-bridge](https://github.com/netless-io/netless-iframe-bridge)。
      *
      * @param enableIFramePlugin 是否启用 iframe 插件：
      *                           - `true`：开启。
@@ -646,23 +646,23 @@ public class WhiteSdkConfiguration extends WhiteObject {
         private boolean debug = false;
         /**
          * 是否开启全局点击功能：
-         * - `true`：开启。
-         * - `false`：（默认）关闭。
+         * - `true`：（默认）开启。
+         * - `false`：关闭。
          *
          * 用于控制是否可以通过点击 PPT 画面执行下一步功能。
          * 建议移动端开启，移动端受限于屏幕尺寸，交互 UI 较小，如果开启此功能会比较方便执行下一步。
          */
         private boolean enableGlobalClick = true;
 
-        /** 设置 PPT 动画播放的最小 FPS, 应用会尽量保证实际 FPS 高于此值, 此值越小, CPU 开销越小（默认值为 25） */
+        /** 设置 PPT 动画播放的最小帧率（FPS），App 会尽量保证实际 FPS 高于此值，此值越小，CPU 开销越小（默认值为 25）。 */
         private Integer minFPS = 25;
 
-        /** 设置 PPT 动画播放的最大 FPS, 应用会保证实际 FPS 低于此值, 此值越小, CPU 开销越小（默认值为 30）。 */
+        /** 设置 PPT 动画播放的最大帧率（FPS），App 会保证实际 FPS 低于此值，此值越小，CPU 开销越小（默认值为 40）。 */
         private Integer maxFPS = 40;
 
         /**
-         * 设置渲染分辨倍率。
-         * 原始 PPT 有自己的像素尺寸，当在 2K 或者 4K 屏幕下，如果按原始 PPT 分辨率显示，画面会比较模糊。可以调整此值，使画面更清晰，同时性能开销也变高。
+         *  设置渲染分辨倍率。默认值为 1，表示按原始 PPT 分辨率显示。
+         * 当 PPT 原始的分辨率在 2K 或 4K 屏幕下显示模糊时，如果按原始 PPT 分辨率显示，你可以调整该值让画面更清晰，同时性能开销也变高。
          * 建议保持默认值 `1`。
          */
         private Double resolution;
