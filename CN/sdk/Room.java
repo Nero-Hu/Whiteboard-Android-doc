@@ -1245,7 +1245,7 @@ public class Room extends Displayer {
      * 
      * 多窗口模式下，PPT 或自定义插件等可以作为小窗应用插入白板，在一个新的窗口中展示。
      * 
-     * @param appParam 小窗应用属性，详见 {@link com.herewhite.sdk.domain.WhiteAppParam WhiteAppParam}。
+     * @param appParam 小窗应用属性，详见 {@link com.herewhite.sdk.domain.WindowAppParam WindowAppParam}。
      * @param promise `Promise<String>` 接口实例，详见 {@link com.herewhite.sdk.domain.Promise Promise}。你可以通过该接口获取方法调用结果：
      *                - 如果方法调用成功，则返回小窗应用 ID。
      *                - 如果方法调用失败，则返回错误信息。
@@ -1302,7 +1302,7 @@ public class Room extends Displayer {
      * @param appId 小窗应用 ID。
      * @param promise `Promise<Object>` 接口实例，详见 {@link com.herewhite.sdk.domain.Promise Promise}。你可以通过该接口获取方法调用结果：
      * 
-     * - 如果方法调用成功，则返回小窗应用相关信息，详见 {@link com.herewhite.sdk.domain.WhiteAppSyncAttributes WhiteAppSyncAttributes}。
+     * - 如果方法调用成功，则返回小窗应用相关信息，详见 {@link com.herewhite.sdk.domain.WindowAppSyncAttrs WindowAppSyncAttrs}。
      * - 如果方法调用失败，则返回错误信息。
      *
      */
