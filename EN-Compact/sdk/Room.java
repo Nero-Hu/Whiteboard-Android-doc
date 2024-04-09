@@ -382,9 +382,29 @@ public class Room extends Displayer {
      * @param x The X coordinate of the midpoint of the left edge of the first character in the world coordinate system.
      * @param y The Y coordinate of the midpoint of the left edge of the first character in the world coordinate system.
      * @param text The initial text. If you do not pass in a value, the content is empty.
+     * @param promise The `Promise<String>` interface instance. See {@link com.herewhite.sdk.domain.Promise Promise}. You can get the call result of this method through this interface:
+     *                - The text identifier, if the method call succeeds.
+     *                - An error message, if the method call fails.
+     * 
      */
-    public void insertText(int x, int y, String text) {
-        bridge.callHandler("room.insertText", new Object[]{x, y, text});
+    public void insertText(int x, int y, String text, Promise<String> promise) {
+        bridge.callHandler("room.insertText", new Object[]{x, y, text}, new OnReturnValue<String>() {
+            @Override
+            public void onValue(String id) {
+                if (promise != null) {
+                    promise.then(id);
+                }
+            }
+        });
+    }
+    /**
+     * Updates the content of the specified text.
+     *
+     * @param id The text identifier, which is the callback value of the `insertText` method.
+     * @param text The text content.
+     */
+    public void updateText(String id, String text) {
+        bridge.callHandler("room.updateText", new Object[]{id, text});
     }
 
     //region GET API
@@ -1240,6 +1260,117 @@ public class Room extends Displayer {
     public void dispatchMagixEvent(AkkoEvent eventEntry) {
         bridge.callHandler("room.dispatchMagixEvent", new Object[]{eventEntry});
     }
+
+
+    /**
+     * Inserts a window app.
+     *
+     * In multi-window mode, you can insert a PPT or custom plugin as a window app to display it in a new window.
+     *
+     * @param appParam The properties of the window app. See {@link com.herewhite.sdk.domain.WindowAppParam WindowAppParam}.
+     * @param promise The `Promise<String>` interface instance. See {@link com.herewhite.sdk.domain.Promise Promise}. 
+     *                You can use this interface to get the result of calling `addApp`:
+     *                  - Returns the window app ID if the method call succeeds.
+     *                  - Returns an error message if the method call fails.
+     *
+     * @note Inserting the same window app multiple times will result in failure, and the returned `appId` will be `nil`.
+     */
+    public void addApp(WindowAppParam appParam, Promise<String> promise) {
+        String kind = appParam.getKind();
+        WindowAppParam.Options options = appParam.getOptions();
+        WindowAppParam.Attributes attributes = appParam.getAttributes();
+        bridge.callHandler("room.addApp", new Object[]{kind, options, attributes}, new OnReturnValue<String>() {
+            @Override
+            public void onValue(String value) {
+                if (promise != null) {
+                    promise.then(value);
+                }
+            }
+        });
+    }
+
+    /**
+     * Closes the window of the specified window app.
+     *
+     * This method is only valid in multi-window mode, and the callback will be triggered regardless of whether the app ID is valid or not.
+     *
+     * @param appId The window app ID.
+     * @param promise The `Promise<Boolean>` interface instance. See {@link com.herewhite.sdk.domain.Promise Promise}. 
+     *                You can use this interface to get the result of calling `closeApp`:
+     *                  - Returns `true` if the method call succeeds and the window is closed.
+     *                  - Returns an error message if the method call fails.
+     */
+    public void closeApp(String appId, Promise<Boolean> promise) {
+        bridge.callHandler("room.closeApp", new Object[]{appId}, value -> {
+            if (promise != null) {
+                promise.then(true);
+            }
+        });
+    }
+
+    /**
+     * Switches the focused window to the window of the specified window app.
+     *
+     * This method is only valid in multi-window mode.
+     *
+     * @param appId The window app ID.
+     */
+    public void focusApp(String appId) {
+        bridge.callHandler("room.focusApp", new Object[]{appId});
+    }
+
+    /** Queries the information of the specified window app.
+     * 
+     *  This method is only valid in multi-window mode.
+     * 
+     * @param appId The window app ID.
+     * @param promise The `Promise<Object>` interface instance. See {@link com.herewhite.sdk.domain.Promise Promise}. 
+     *                You can use this interface to get the result of calling `queryApp`:
+     * 
+     * - Returns the information of the window app. See {@link com.herewhite.sdk.domain.WindowAppSyncAttrs WindowAppSyncAttrs} if the method call succeeds.
+     * - Returns an error message if the method call fails.
+     *
+     */
+    public void queryApp(String appId, Promise<WindowAppSyncAttrs> promise) {
+        if (promise == null) {
+            throw new IllegalArgumentException("promise is null");
+        }
+        bridge.callHandler("room.queryApp", new Object[]{appId}, (String value) -> {
+            SDKError error = SDKError.promiseError(value);
+            if (error != null) {
+                promise.catchEx(error);
+            } else {
+                promise.then(gson.fromJson(value, WindowAppSyncAttrs.class));
+            }
+        });
+    }
+
+    /** Queries the information of all window apps.
+     * 
+     *  This method is only valid in multi-window mode.
+     * 
+     * @param promise The `Promise<Object>` interface instance. See {@link com.herewhite.sdk.domain.Promise Promise}. 
+     *                You can use this interface to get the result of calling `queryAllApps`:
+     * 
+     * - Returns a dictionary containing the information of all window apps, with the app ID as the key. See {@link com.herewhite.sdk.domain.WhiteAppSyncAttributes WhiteAppSyncAttributes} if the method call succeeds.
+     * - Returns an error message if the method call fails.
+     *
+    */
+    public void queryAllApps(Promise<Map<String, WindowAppSyncAttrs>> promise) {
+        if (promise == null) {
+            throw new IllegalArgumentException("promise is null");
+        }
+        bridge.callHandler("room.queryAllApps", new Object[]{}, (String value) -> {
+            SDKError sdkError = SDKError.promiseError(value);
+            if (sdkError != null) {
+                promise.catchEx(sdkError);
+            } else {
+                Type type = new TypeToken<Map<String, WindowAppSyncAttrs>>() {
+                }.getType();
+                promise.then(gson.fromJson(value, type));
+            }
+        });
+    }
     //endregion
 
 
@@ -1260,6 +1391,18 @@ public class Room extends Displayer {
                 promise.then(value);
             }
         });
+    }
+
+    /**
+     * By default, all synchronization messages are processed at a relatively smooth pace to ensure a smooth user experience.
+     * If this option is set to `true`, all messages will be processed immediately upon receipt, ensuring real-time synchronization.
+     *
+     * @param useSyncMode Whether to enable sync mode:
+     * - `true`: Enable sync mode.
+     * - `false`: Disable sync mode.
+     */
+    public void setSyncMode(boolean useSyncMode) {
+        bridge.callHandler("room.syncMode", new Object[]{useSyncMode});
     }
 
     // region roomListener
@@ -1372,4 +1515,30 @@ public class Room extends Displayer {
             syncRoomState.syncDisplayerState(stateJSON);
         }
     }
-}
+
+    /**
+     * Gets whether the initial state callback is disabled.
+     *
+     */
+    public boolean isDisableInitialStateCallback() {
+        return disableInitialStateCallback;
+    }
+
+    /**
+     * Disables the initial state callback.
+     * 
+     *
+     * @param disableInitialStateCallback
+     *  - `true`: Disable.
+     *  - `false`: (Default) Do not disable.
+     */
+    public void setDisableInitialStateCallback(boolean disableInitialStateCallback) {
+        this.disableInitialStateCallback = disableInitialStateCallback;
+    }
+    /**
+     * Whether to disable the callback during initialization.
+     * 
+     * Default is `false`. If set to `true`, you need to actively call `Room.getRoomState()` to get the state value after successfully joining the room.
+     */
+    private boolean disableInitialStateCallback = false;
+    }

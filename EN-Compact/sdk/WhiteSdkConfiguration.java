@@ -168,7 +168,7 @@ public class WhiteSdkConfiguration extends WhiteObject {
     /**
      * Enables/Disables the iframe plug-in.
      *
-     * For the functions of the iframe plug-in, go to [netless-iframe-bridge](https://github.com/netless-io/netless-iframe-bridge).
+     * For the functions of the iframe plug-in, go to [iframe-bridge](https://github.com/netless-io/netless-iframe-bridge).
      *
      * @param enableIFramePlugin Whether to enable the iframe plug-in.
      * - `true`: Enable the iframe plug-in.
@@ -631,13 +631,62 @@ public class WhiteSdkConfiguration extends WhiteObject {
      */
     public static class SlideAppOptions extends WhiteObject {
         /**
-         * Whether to display rendering errors.
+         * Whether to enable displaying rendering errors.
+         * - `true`: Enable.
+         * - `false`: (Default) Disable.
          */
         private boolean showRenderError = false;
         /**
          * Whether to enable debug mode.
+         * - `true`: Enable.
+         * - `false`: (Default) Disable.    
          */
         private boolean debug = false;
+
+        /**
+         * Whether to enable global click functionality:
+         * - `true`: (Default) Enable.
+         * - `false`: Disable.
+         *
+         * Used to control whether the next step function can be executed by clicking on the PPT screen.
+         * It is recommended to enable this feature on mobile devices. Mobile devices have limited screen size and smaller interactive UI. Enabling this feature makes it easier to execute the next step.
+         */
+        private boolean enableGlobalClick = true;
+
+        /** Sets the minimum frame rate (FPS) for PPT animation playback. The app will try to ensure that the actual FPS is higher than this value. The smaller the value, the lower the CPU overhead (default value is 25). */
+        private Integer minFPS = 25;
+
+        /** Sets the maximum frame rate (FPS) for PPT animation playback. The app will ensure that the actual FPS is lower than this value. The smaller the value, the lower the CPU overhead (default value is 40). */
+        private Integer maxFPS = 40;
+
+        /**
+         * Sets the rendering resolution multiplier. The default value is 1, which means displaying at the original PPT resolution.
+         * When the original resolution of the PPT appears blurry on a 2K or 4K screen, you can adjust this value to make the image clearer, but it will also increase the performance overhead.
+         * It is recommended to keep the default value of `1`.
+         */
+        private Double resolution;
+
+        /**
+         * Sets the maximum resolution for the PPT.
+         *
+         * This value will affect both the rendering canvas resolution and the texture quality. Modifying this property on low-end devices can reduce memory consumption and improve black screen issues. The following values are available:
+         * - `0`: 360p, 640 * 360.
+         * - `1`: 540p, 960 * 540.
+         * - `2`: 720p, 1280 * 720. This value will be set as the default for mobile devices.
+         * - `3`: HD, 920 * 1080.
+         * - `4`: 3K, 3200 × 1800. This value will be set as the default for desktop devices. Values greater than `4` will be treated as `4`.
+         */
+        private Integer maxResolutionLevel;
+
+        /** Background color for PPT page transition animation. */
+        private String bgColor;
+
+        /** Whether to force the use of 2D rendering:
+         * - `true`: Force the use of 2D rendering.
+         * - `false`: (Default) Do not force the use of 2D rendering.
+         * Forcing the use of 2D rendering will result in the loss of some 3D effects.
+         */
+        private Boolean forceCanvas = false;
 
         public boolean isShowRenderError() {
             return showRenderError;
@@ -653,6 +702,62 @@ public class WhiteSdkConfiguration extends WhiteObject {
 
         public void setDebug(boolean debug) {
             this.debug = debug;
+        }
+
+        public boolean isEnableGlobalClick() {
+            return enableGlobalClick;
+        }
+
+        public void setEnableGlobalClick(boolean enableGlobalClick) {
+            this.enableGlobalClick = enableGlobalClick;
+        }
+
+        public Integer getMinFPS() {
+            return minFPS;
+        }
+
+        public void setMinFPS(Integer minFPS) {
+            this.minFPS = minFPS;
+        }
+
+        public Integer getMaxFPS() {
+            return maxFPS;
+        }
+
+        public void setMaxFPS(Integer maxFPS) {
+            this.maxFPS = maxFPS;
+        }
+
+        public Double getResolution() {
+            return resolution;
+        }
+
+        public void setResolution(Double resolution) {
+            this.resolution = resolution;
+        }
+
+        public Integer getMaxResolutionLevel() {
+            return maxResolutionLevel;
+        }
+
+        public void setMaxResolutionLevel(Integer maxResolutionLevel) {
+            this.maxResolutionLevel = maxResolutionLevel;
+        }
+
+        public String getBgColor() {
+            return bgColor;
+        }
+
+        public void setBgColor(String bgColor) {
+            this.bgColor = bgColor;
+        }
+
+        public Boolean getForceCanvas() {
+            return forceCanvas;
+        }
+
+        public void setForceCanvas(Boolean forceCanvas) {
+            this.forceCanvas = forceCanvas;
         }
     }
 }
