@@ -10,7 +10,7 @@ import com.google.gson.annotations.SerializedName;
  *
  * You can insert the following formats of an image or dynamic PPT slide on the whiteboard scene:
  * - Static images in PNG, JPG/JPEG, and WEBP formats, or PNG, JPG/JPEG, and WEBP images which are converted from PPT, PPTX, DOC, DOCX, and PDF files.
- * - Dynamic PPT slides which are converted from PPTX files using the [Agora file conversion deprecated](https://docs.agora.io/en/interactive-whiteboard/reference/file-conversion-overview-deprecated?platform=web).
+ * - Dynamic PPT slides which are converted from PPTX files using the [deprecated file conversion](https://docs.agora.io/en/interactive-whiteboard/reference/file-conversion-overview-deprecated?platform=web).
  *
  */
 public class PptPage extends WhiteObject {
@@ -27,7 +27,7 @@ public class PptPage extends WhiteObject {
      *
      * @note
      * - Call this method when initializing a whiteboard scene.
-     * - This method can only apply to dynamic PPT files converted via [Agora file conversion deprecated](https://docs.agora.io/en/interactive-whiteboard/reference/file-conversion-overview-deprecated?platform=web).
+     * - This method can only apply to dynamic PPT files converted via [deprecated file conversion](https://docs.agora.io/en/interactive-whiteboard/reference/file-conversion-overview-deprecated?platform=web).
      * - You can insert only one image or dynamic PPT slide on a whiteboard scene.
      * - The image or dynamic PPT slide displayed on the whiteboard scene takes the origin of the world coordinate system as the center and cannot be changed, which means you cannot change the position of the image or dynamic PPT slide inside the whiteboard.
      *
@@ -46,7 +46,7 @@ public class PptPage extends WhiteObject {
      *
      * @note
      * - Call this method when initializing a whiteboard scene.
-     * - This method can only apply to dynamic PPT files converted via [Agora file conversion deprecated](https://docs.agora.io/en/interactive-whiteboard/reference/file-conversion-overview-deprecated?platform=web).
+     * - This method can only apply to dynamic PPT files converted via [deprecated file conversion](https://docs.agora.io/en/interactive-whiteboard/reference/file-conversion-overview-deprecated?platform=web).
      * - You can insert only one image or dynamic PPT slide on a whiteboard scene.
      * - The image or dynamic PPT slide displayed on the whiteboard scene takes the origin of the world coordinate system as the center and cannot be changed, which means you cannot change the position of the image or dynamic PPT slide inside the whiteboard.
      *

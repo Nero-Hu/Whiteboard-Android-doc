@@ -20,7 +20,7 @@ public class RoomOptimizeOptions extends WhiteObject {
      *  - `false`: Use double canvases for alternating drawing.
      * 
      * By default, the whiteboard uses two canvases to avoid flickering on some devices during drawing.
-     * Using a single canvas for drawing can avoid redrawing and reduce performance consumption.
+     * Using a single canvas for drawing can prevent redrawing and reduce performance consumption.
      */
     private Boolean useSinglerCanvas;
 
