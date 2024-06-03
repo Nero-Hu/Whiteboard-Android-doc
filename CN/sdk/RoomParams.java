@@ -3,7 +3,9 @@ package com.herewhite.sdk;
 import com.herewhite.sdk.domain.CameraBound;
 import com.herewhite.sdk.domain.MemberInformation;
 import com.herewhite.sdk.domain.Region;
+import com.herewhite.sdk.domain.RoomOptimizeOptions;
 import com.herewhite.sdk.domain.WhiteObject;
+import com.herewhite.sdk.domain.WindowParams;
 
 import java.util.concurrent.TimeUnit;
 
@@ -479,5 +481,18 @@ public class RoomParams extends WhiteObject {
         this.modulesOrigin = modulesOrigin;
     
     private String modulesOrigin;
+
+
+    public RoomOptimizeOptions getOptimizeOptions() {
+        return optimizeOptions;
+    }
+
+    public void setOptimizeOptions(RoomOptimizeOptions optimizeOptions) {
+        this.optimizeOptions = optimizeOptions;
+    }
+    /**
+     * 白板渲染优化配置项。详见 {@link com.herewhite.sdk.domain.RoomOptimizeOptions RoomOptimizeOptions}。
+     */
+    private RoomOptimizeOptions optimizeOptions;
     }
 }

@@ -372,9 +372,29 @@ public class Room extends Displayer {
      * @param x 第一个文字左侧边的中点在世界坐标系中的 X 轴坐标。
      * @param y 第一个文字左侧边的中点在世界坐标系中的 Y 轴坐标。
      * @param text 初始的文字内容，不传则为空。
+     * @param promise `Promise<String>` 接口实例，详见 {@link com.herewhite.sdk.domain.Promise Promise}。你可以通过该接口获取方法调用结果：
+     *                - 如果方法调用成功，则返回文字标识符。
+     *                - 如果方法调用失败，则返回错误信息。
+     * 
      */
-    public void insertText(int x, int y, String text) {
-        bridge.callHandler("room.insertText", new Object[]{x, y, text});
+    public void insertText(int x, int y, String text, Promise<String> promise) {
+        bridge.callHandler("room.insertText", new Object[]{x, y, text}, new OnReturnValue<String>() {
+            @Override
+            public void onValue(String id) {
+                if (promise != null) {
+                    promise.then(id);
+                }
+            }
+        });
+    }
+    /**
+     * 更新指定文本的内容。
+     *
+     * @param id 文字标识符，即 `insertText` 方法的回调值。
+     * @param text 文字内容。
+     */
+    public void updateText(String id, String text) {
+        bridge.callHandler("room.updateText", new Object[]{id, text});
     }
 
     //region GET API
@@ -1219,6 +1239,112 @@ public class Room extends Displayer {
     public void dispatchMagixEvent(AkkoEvent eventEntry) {
         bridge.callHandler("room.dispatchMagixEvent", new Object[]{eventEntry});
     }
+
+    /**
+     * 插入小窗应用。
+     * 
+     * 多窗口模式下，PPT 或自定义插件等可以作为小窗应用插入白板，在一个新的窗口中展示。
+     * 
+     * @param appParam 小窗应用属性，详见 {@link com.herewhite.sdk.domain.WindowAppParam WindowAppParam}。
+     * @param promise `Promise<String>` 接口实例，详见 {@link com.herewhite.sdk.domain.Promise Promise}。你可以通过该接口获取方法调用结果：
+     *                - 如果方法调用成功，则返回小窗应用 ID。
+     *                - 如果方法调用失败，则返回错误信息。
+     *
+     * @note 多次插入同一个小窗应用会导致插入失败，返回的 `appId` 为 `nil` 。
+     */
+    public void addApp(WindowAppParam appParam, Promise<String> promise) {
+        String kind = appParam.getKind();
+        WindowAppParam.Options options = appParam.getOptions();
+        WindowAppParam.Attributes attributes = appParam.getAttributes();
+        bridge.callHandler("room.addApp", new Object[]{kind, options, attributes}, new OnReturnValue<String>() {
+            @Override
+            public void onValue(String value) {
+                if (promise != null) {
+                    promise.then(value);
+                }
+            }
+        });
+    }
+
+    /**
+     * 关闭指定小窗应用的窗口。
+     * 
+     * 该方法仅在多窗口模式下有效, 无论应用 ID 是否有效都会触发回调。
+     *
+     * @param appId 小窗应用 ID。
+     * @param promise `Promise<Boolean>` 接口实例，详见 {@link com.herewhite.sdk.domain.Promise Promise}。你可以通过该接口获取方法调用结果：
+     *                - 如果方法调用成功，则窗口关闭。
+     *                - 如果方法调用失败，则返回错误信息。
+     */
+    public void closeApp(String appId, Promise<Boolean> promise) {
+        bridge.callHandler("room.closeApp", new Object[]{appId}, value -> {
+            if (promise != null) {
+                promise.then(true);
+            }
+        });
+    }
+
+    /**
+     * 切换聚焦窗口为指定小窗应用的窗口。
+     * 
+     * 该方法仅在多窗口模式下有效。
+     *
+     * @param appId 小窗应用 ID。
+     */
+    public void focusApp(String appId) {
+        bridge.callHandler("room.focusApp", new Object[]{appId});
+    }
+
+    /** 查询指定小窗应用的信息。
+     * 
+     *  该方法仅在多窗口下有效。
+     * 
+     * @param appId 小窗应用 ID。
+     * @param promise `Promise<Object>` 接口实例，详见 {@link com.herewhite.sdk.domain.Promise Promise}。你可以通过该接口获取方法调用结果：
+     * 
+     * - 如果方法调用成功，则返回小窗应用相关信息，详见 {@link com.herewhite.sdk.domain.WindowAppSyncAttrs WindowAppSyncAttrs}。
+     * - 如果方法调用失败，则返回错误信息。
+     *
+     */
+    public void queryApp(String appId, Promise<WindowAppSyncAttrs> promise) {
+        if (promise == null) {
+            throw new IllegalArgumentException("promise is null");
+        }
+        bridge.callHandler("room.queryApp", new Object[]{appId}, (String value) -> {
+            SDKError error = SDKError.promiseError(value);
+            if (error != null) {
+                promise.catchEx(error);
+            } else {
+                promise.then(gson.fromJson(value, WindowAppSyncAttrs.class));
+            }
+        });
+    }
+
+    /** 查询所有小窗应用的信息。
+     * 
+     *  该方法仅在多窗口下有效。
+     * 
+     * @param promise `Promise<Object>` 接口实例，详见 {@link com.herewhite.sdk.domain.Promise Promise}。你可以通过该接口获取方法调用结果：
+     * 
+     * - 如果方法调用成功，则返回一个以应用 ID 为键，包含所有小窗应用信息的字典。详见 {@link com.herewhite.sdk.domain.WhiteAppSyncAttributes WhiteAppSyncAttributes}。
+     * - 如果方法调用失败，则返回错误信息。
+     *
+    */
+    public void queryAllApps(Promise<Map<String, WindowAppSyncAttrs>> promise) {
+        if (promise == null) {
+            throw new IllegalArgumentException("promise is null");
+        }
+        bridge.callHandler("room.queryAllApps", new Object[]{}, (String value) -> {
+            SDKError sdkError = SDKError.promiseError(value);
+            if (sdkError != null) {
+                promise.catchEx(sdkError);
+            } else {
+                Type type = new TypeToken<Map<String, WindowAppSyncAttrs>>() {
+                }.getType();
+                promise.then(gson.fromJson(value, type));
+            }
+        });
+    }
     //endregion
 
     /**
@@ -1237,6 +1363,18 @@ public class Room extends Displayer {
                 promise.then(value);
             }
         });
+    }
+
+    /**
+     * 默认情况下，所有同步消息会按比较平滑的速度处理，以此保证观感的流畅性。
+     * 如果设置此项为 `true`，则所有消息一经收到立刻处理，从而保证同步的实时性。
+     *
+     * @param useSyncMode 是否开启同步模式：
+     * - `true`：开启。
+     * - `false`：关闭。
+     */
+    public void setSyncMode(boolean useSyncMode) {
+        bridge.callHandler("room.syncMode", new Object[]{useSyncMode});
     }
 
     // region roomListener
@@ -1352,4 +1490,30 @@ public class Room extends Displayer {
             syncRoomState.syncDisplayerState(stateJSON);
         }
     }
+
+    /**
+     * 获取是否禁止初始化状态回调。
+     *
+     */
+    public boolean isDisableInitialStateCallback() {
+        return disableInitialStateCallback;
+    }
+
+    /**
+     * 禁止初始化状态回调。
+     * 
+     *
+     * @param disableInitialStateCallback
+     *  - `true`：禁止。
+     *  - `false`：（默认）不禁止。
+     */
+    public void setDisableInitialStateCallback(boolean disableInitialStateCallback) {
+        this.disableInitialStateCallback = disableInitialStateCallback;
+    }
+    /**
+     * 是否禁止初始化时的回调。
+     * 
+     * 默认为 `false`，如果设为 `true`，则加入房间成功需要主动调用 `Room.getRoomState()` 获取状态值。
+     */
+    private boolean disableInitialStateCallback = false;
 }

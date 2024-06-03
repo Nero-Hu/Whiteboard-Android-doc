@@ -12,7 +12,7 @@ import com.google.gson.annotations.SerializedName;
  *
  * 场景中可插入的图片或动态 PPT 包括：
  * - PNG、JPG/JPEG、WEBP 格式的图片，或由 PPT、PPTX、DOC、DOCX、PDF 格式的文件转换成 PNG、JPG/JPEG、WEBP 格式的图片。
- * - 使用 [文档转换功能](/doc/whiteboard/android/whiteboard-sdk/advanced-features/convert-files) 转换过的 PPTX 文件。
+ * - 使用[旧版文档转换功能](/doc/whiteboard/android/whiteboard-sdk/advanced-features/convert-files-old)转换过的 PPTX 文件。
  *
  */
 public class PptPage extends WhiteObject {
@@ -29,12 +29,13 @@ public class PptPage extends WhiteObject {
      *
      * @note
      * - 该方法只能在场景初始化的时候调用。
+     * - 该方法只能展示使用[旧版文档转换功能](/doc/whiteboard/android/whiteboard-sdk/advanced-features/convert-files-old)转换过的动态 PPT。
      * - 每个场景中只能插入一张图片和一页动态 PPT。
      * - 场景中展示的图片或动态 PPT 中心点默认为白板内部坐标系得原点且无法移动，即无法改变图片或动态 PPT 在白板内部的位置。
      *
      * @param src 图片或动态 PPT 页的地址，支持的格式如下：
      * - 图片：URL 地址，可以是你自己生成的 URL 地址，也可以是通过文档转换功能生成的 URL 地址，例如，`"https://docs-test-xxx.oss-cn-hangzhou.aliyuncs.com/staticConvert/2fdxxxxx67e/1.jpeg"`。
-     * - 动态 PPT 页：通过文档转换功能生成的 URI 地址，例如，`"pptx://cover.herewhite.com/dynamicConvert/6a212c90fa5311ea8b9c074232aaccd4/1.slide"`，即[动态文档转换任务的查询结果](/api-ref/whiteboard/restful/restful-wb/operations/get-v5-projector-tasks-uuid)中 `conversionFileUrl` 字段的值。
+     * - 动态 PPT 页：通过文档转换功能生成的 URI 地址，例如，`"pptx://cover.herewhite.com/dynamicConvert/6a212c90fa5311ea8b9c074232aaccd4/1.slide"`，即[查询转换任务的进度](https://docportal.shengwang.cn/cn/whiteboard/whiteboard_file_conversion_old?platform=RESTful&_gl=1%2as2thf1%2a_ga%2aNDg5NzQ3NzMxLjE2ODk2NzUxNTc.%2a_ga_BFVGG7E02W%2aMTcwNjc1Mzk5OC4yNTEuMS4xNzA2NzU3NDg5LjAuMC4w#%E6%9F%A5%E8%AF%A2%E8%BD%AC%E6%8D%A2%E4%BB%BB%E5%8A%A1%E7%9A%84%E8%BF%9B%E5%BA%A6%EF%BC%88get%EF%BC%89)中 `conversionFileUrl` 字段的值。
      * @param width  图片或动态 PPT 在白板中的宽度，单位为像素。
      * @param height 图片或动态 PPT 在白板中的高度，单位为像素。
      */
@@ -47,15 +48,16 @@ public class PptPage extends WhiteObject {
      *
      * @note
      * - 该方法只能在场景初始化的时候调用。
+     * - 该方法只能展示使用[旧版文档转换功能](/doc/whiteboard/android/whiteboard-sdk/advanced-features/convert-files-old)转换过的动态 PPT。
      * - 每个场景中只能插入一张图片或一页动态 PPT。
      * - 场景中展示的图片或动态 PPT 中心点默认为白板内部坐标系得原点且无法移动，即无法改变图片或动态 PPT 在白板内部的位置。
      *
      * @param src 图片或动态 PPT 页的地址，支持的格式如下：
      * - 图片：URL 地址，可以是你自己生成的 URL 地址，也可以是通过文档转换功能生成的 URL 地址，例如，`"https://docs-test-xxx.oss-cn-hangzhou.aliyuncs.com/staticConvert/2fdxxxxx67e/1.jpeg"`。
-     * - 动态 PPT 页：通过文档转换功能生成的 URI 地址，例如，`"pptx://cover.herewhite.com/dynamicConvert/6a212c90fa5311ea8b9c074232aaccd4/1.slide"`，即[动态文档转换任务的查询结果](/api-ref/whiteboard/restful/restful-wb/operations/get-v5-projector-tasks-uuid)中 `conversionFileUrl` 字段的值。
+     * - 动态 PPT 页：通过文档转换功能生成的 URI 地址，例如，`"pptx://cover.herewhite.com/dynamicConvert/6a212c90fa5311ea8b9c074232aaccd4/1.slide"`，即[查询转换任务的进度](https://docportal.shengwang.cn/cn/whiteboard/whiteboard_file_conversion_old?platform=RESTful&_gl=1%2as2thf1%2a_ga%2aNDg5NzQ3NzMxLjE2ODk2NzUxNTc.%2a_ga_BFVGG7E02W%2aMTcwNjc1Mzk5OC4yNTEuMS4xNzA2NzU3NDg5LjAuMC4w#%E6%9F%A5%E8%AF%A2%E8%BD%AC%E6%8D%A2%E4%BB%BB%E5%8A%A1%E7%9A%84%E8%BF%9B%E5%BA%A6%EF%BC%88get%EF%BC%89)中 `conversionFileUrl` 字段的值。
      * @param width   图片或动态 PPT 在白板中的宽度，单位为像素。
      * @param height  图片或动态 PPT 在白板中的高度，单位为像素。
-     * @param preview 图片或动态 PPT 预览图的 URL 地址。动态 PPT 预览图的 URL 地址可以从[文档转换任务的查询结果](/api-ref/whiteboard/restful/restful-wb/operations/get-v5-projector-tasks-uuid)中的 `preview` 字段获取，例如，"https://docs-test-xxx.oss-cn-hangzhou.aliyuncs.com/dynamicConvert/2fdxxxxx67e/preview/1.png"。
+     * @param preview 图片或动态 PPT 预览图的 URL 地址。动态 PPT 预览图的 URL 地址可以从[查询转换任务的进度](https://docportal.shengwang.cn/cn/whiteboard/whiteboard_file_conversion_old?platform=RESTful#%E6%9F%A5%E8%AF%A2%E8%BD%AC%E6%8D%A2%E4%BB%BB%E5%8A%A1%E7%9A%84%E8%BF%9B%E5%BA%A6%EF%BC%88get%EF%BC%89)中的 `preview` 字段获取，例如，"https://docs-test-xxx.oss-cn-hangzhou.aliyuncs.com/dynamicConvert/2fdxxxxx67e/preview/1.png"。
      */
     public PptPage(String src, Double width, Double height, String preview) {
         this.src = src;
@@ -79,7 +81,7 @@ public class PptPage extends WhiteObject {
      *
      * @param src 图片或动态 PPT 页的地址，支持的格式如下：
      * - 图片：URL 地址，可以是你自己生成的 URL 地址，也可以是通过文档转换功能生成的 URL 地址，例如，`"https://docs-test-xxx.oss-cn-hangzhou.aliyuncs.com/staticConvert/2fdxxxxx67e/1.jpeg"`。
-     * - 动态 PPT 页：通过文档转换功能生成的 URI 地址，例如，`"pptx://cover.herewhite.com/dynamicConvert/6a212c90fa5311ea8b9c074232aaccd4/1.slide"`，即[动态文档转换任务的查询结果](/api-ref/whiteboard/restful/restful-wb/operations/get-v5-projector-tasks-uuid)中 `conversionFileUrl` 字段的值。
+     * - 动态 PPT 页：通过文档转换功能生成的 URI 地址，例如，`"pptx://cover.herewhite.com/dynamicConvert/6a212c90fa5311ea8b9c074232aaccd4/1.slide"`，即[查询转换任务的进度](https://docportal.shengwang.cn/cn/whiteboard/whiteboard_file_conversion_old?platform=RESTful#%E6%9F%A5%E8%AF%A2%E8%BD%AC%E6%8D%A2%E4%BB%BB%E5%8A%A1%E7%9A%84%E8%BF%9B%E5%BA%A6%EF%BC%88get%EF%BC%89)中 `conversionFileUrl` 字段的值。
      */
     public void setSrc(String src) {
         this.src = src;
@@ -135,7 +137,7 @@ public class PptPage extends WhiteObject {
      *
      * 通过该方法指定的预览图会展示在白板右侧的页面预览中。
      *
-     * @param preview 图片或动态 PPT 预览图的 URL 地址。动态 PPT 预览图的 URL 地址可以从[文档转换任务的查询结果](/api-ref/whiteboard/restful/restful-wb/operations/get-v5-projector-tasks-uuid)中的 `preview` 字段获取，例如，"https://docs-test-xxx.oss-cn-hangzhou.aliyuncs.com/dynamicConvert/2fdxxxxx67e/preview/1.png"。
+     * @param preview 图片或动态 PPT 预览图的 URL 地址。动态 PPT 预览图的 URL 地址可以从[查询转换任务的进度](https://docportal.shengwang.cn/cn/whiteboard/whiteboard_file_conversion_old?platform=RESTful#%E6%9F%A5%E8%AF%A2%E8%BD%AC%E6%8D%A2%E4%BB%BB%E5%8A%A1%E7%9A%84%E8%BF%9B%E5%BA%A6%EF%BC%88get%EF%BC%89)中的 `preview` 字段获取，例如，"https://docs-test-xxx.oss-cn-hangzhou.aliyuncs.com/dynamicConvert/2fdxxxxx67e/preview/1.png"。
      */
     public void setPreview(String preview) {
         this.preview = preview;

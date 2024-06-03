@@ -56,7 +56,7 @@ public class WhiteSdkConfiguration extends WhiteObject {
 
         /// @cond test
         /**
-         * 更改动态 ppt 请求时的请求协议，可以将 https://www.exmaple.com/1.pptx 更改成 scheme://www.example.com/1.pptx
+         * 更改动态 PPT 请求时的请求协议，可以将 https://www.exmaple.com/1.pptx 更改成 scheme://www.example.com/1.pptx
          * Android 端该方法无需使用
          * 文档中隐藏
          *
@@ -135,7 +135,7 @@ public class WhiteSdkConfiguration extends WhiteObject {
     private String appIdentifier;
     private HashMap<String, String> __nativeTags = new HashMap<>();
     /**
-     * pptParams 动态 ppt 专用参数
+     * pptParams 动态 PPT 专用参数
      */
     private PptParams pptParams = new PptParams();
     private HashMap<String, String> fonts;
@@ -167,7 +167,7 @@ public class WhiteSdkConfiguration extends WhiteObject {
     /**
      * 启用/禁用 iframe 插件。
      *
-     * iframe 插件的功能，详见 https://github.com/netless-io/netless-iframe-bridge。
+     * iframe 插件的功能，详见 [iframe-bridge](https://github.com/netless-io/netless-iframe-bridge)。
      *
      * @param enableIFramePlugin 是否启用 iframe 插件：
      *                           - `true`：开启。
@@ -630,16 +630,64 @@ public class WhiteSdkConfiguration extends WhiteObject {
 
     /**
      * PPT 渲染显示的相关配置项。
-     */
+*/
     public static class SlideAppOptions extends WhiteObject {
         /**
          * 是否显示渲染错误。
+         * - `true`：开启。
+         * - `false`：（默认）关闭。
          */
         private boolean showRenderError = false;
         /**
          * 是否开启调试模式。
+         * - `true`：开启。
+         * - `false`：（默认）关闭。
          */
         private boolean debug = false;
+        /**
+         * 是否开启全局点击功能：
+         * - `true`：（默认）开启。
+         * - `false`：关闭。
+         *
+         * 用于控制是否可以通过点击 PPT 画面执行下一步功能。
+         * 建议移动端开启，移动端受限于屏幕尺寸，交互 UI 较小，如果开启此功能会比较方便执行下一步。
+         */
+        private boolean enableGlobalClick = true;
+
+        /** 设置 PPT 动画播放的最小帧率（FPS），App 会尽量保证实际 FPS 高于此值，此值越小，CPU 开销越小（默认值为 25）。 */
+        private Integer minFPS = 25;
+
+        /** 设置 PPT 动画播放的最大帧率（FPS），App 会保证实际 FPS 低于此值，此值越小，CPU 开销越小（默认值为 40）。 */
+        private Integer maxFPS = 40;
+
+        /**
+         *  设置渲染分辨倍率。默认值为 1，表示按原始 PPT 分辨率显示。
+         * 当 PPT 原始的分辨率在 2K 或 4K 屏幕下显示模糊时，如果按原始 PPT 分辨率显示，你可以调整该值让画面更清晰，同时性能开销也变高。
+         * 建议保持默认值 `1`。
+         */
+        private Double resolution;
+
+        /**
+         * 设置 PPT 最大分辨率。
+         * 
+         * 该值将同时影响渲染画布的分辨率和材质质量。在低端机上修改该属性可降低内存消耗、改善黑屏现象。可取以下值：
+         * - `0`：360p，640 * 360。
+         * - `1`：540p，960 * 540。
+         * - `2`：720p，1280 * 720。移动端设备将默认设为该值。
+         * - `3`：HD，920 * 1080。
+         * - `4`：3K，3200 × 1800。桌面端设备将默认设为该值。传入大于 `4` 的值会被视为 `4`。
+         */
+        private Integer maxResolutionLevel;
+
+        /** PPT 切页动画的背景色。 */
+        private String bgColor;
+
+        /** 是否强制使用 2D 渲染：
+         * - `true`：强制使用 2D 渲染。
+         * - `false`：不强制使用 2D 渲染（默认）。
+         *  强制使用 2D 渲染将损失部分 3D 效果。
+         */
+        private Boolean forceCanvas = false;
 
         public boolean isShowRenderError() {
             return showRenderError;
@@ -655,6 +703,62 @@ public class WhiteSdkConfiguration extends WhiteObject {
 
         public void setDebug(boolean debug) {
             this.debug = debug;
+        }
+
+        public boolean isEnableGlobalClick() {
+            return enableGlobalClick;
+        }
+
+        public void setEnableGlobalClick(boolean enableGlobalClick) {
+            this.enableGlobalClick = enableGlobalClick;
+        }
+
+        public Integer getMinFPS() {
+            return minFPS;
+        }
+
+        public void setMinFPS(Integer minFPS) {
+            this.minFPS = minFPS;
+        }
+
+        public Integer getMaxFPS() {
+            return maxFPS;
+        }
+
+        public void setMaxFPS(Integer maxFPS) {
+            this.maxFPS = maxFPS;
+        }
+
+        public Double getResolution() {
+            return resolution;
+        }
+
+        public void setResolution(Double resolution) {
+            this.resolution = resolution;
+        }
+
+        public Integer getMaxResolutionLevel() {
+            return maxResolutionLevel;
+        }
+
+        public void setMaxResolutionLevel(Integer maxResolutionLevel) {
+            this.maxResolutionLevel = maxResolutionLevel;
+        }
+
+        public String getBgColor() {
+            return bgColor;
+        }
+
+        public void setBgColor(String bgColor) {
+            this.bgColor = bgColor;
+        }
+
+        public Boolean getForceCanvas() {
+            return forceCanvas;
+        }
+
+        public void setForceCanvas(Boolean forceCanvas) {
+            this.forceCanvas = forceCanvas;
         }
     }
 }
