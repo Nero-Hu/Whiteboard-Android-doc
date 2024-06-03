@@ -12,8 +12,10 @@ public class MemberState extends WhiteObject {
     private int[] strokeColor;
     private Double strokeWidth;
     private Double textSize;
+    private int[] textColor;
     private Boolean textCanSelectText;
     private Boolean dottedLine;
+    private Integer pencilEraserSize;
     
     public MemberState() {
     }
@@ -93,6 +95,23 @@ public class MemberState extends WhiteObject {
         this.strokeColor = strokeColor;
     }
 
+    /**
+     * Gets the text color for the text tool.
+     *
+     * @return An array of integers representing the RGB values of the text color.
+     */
+    public int[] getTextColor() {
+        return textColor;
+    }
+
+    /**
+     * Sets the text color for the text tool.
+     *
+     * @param textColor An array of integers representing the RGB values of the text color.
+     */
+    public void setTextColor(int[] textColor) {
+        this.textColor = textColor;
+    }
 
     /**
      * Gets the stroke width.
@@ -170,5 +189,23 @@ public class MemberState extends WhiteObject {
      */
     public void setDottedLine(Boolean dottedLine) {
         this.dottedLine = dottedLine;
+    }
+
+    /**
+     * Gets the size of the pencil eraser.
+     *
+     */
+    public Integer getPencilEraserSize() {
+        return pencilEraserSize;
+    }
+
+    /**
+     * Sets the size of the pencil eraser.
+     * To modify this configuration, you need to set {@link com.herewhite.sdk.RoomParams#setDisableNewPencil (false)}} when joining the room.
+     *
+     * @param pencilEraserSize The size of the pencil eraser, ranging from [1,3], where a larger value indicates a larger size.
+     */
+    public void setPencilEraserSize(Integer pencilEraserSize) {
+        this.pencilEraserSize = pencilEraserSize;
     }
 }

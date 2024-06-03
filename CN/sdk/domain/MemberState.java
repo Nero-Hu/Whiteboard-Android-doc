@@ -120,10 +120,20 @@ public class MemberState extends WhiteObject {
         this.strokeColor = strokeColor;
     }
 
+    /**
+     * 获取文本工具中文字的颜色。
+     *
+     * @return 文本颜色的数组。
+     */
     public int[] getTextColor() {
         return textColor;
     }
 
+    /**
+     * 设置文本工具中文字的颜色。
+     *
+     * @param textColor 文本颜色的数组。
+     */
     public void setTextColor(int[] textColor) {
         this.textColor = textColor;
     }
