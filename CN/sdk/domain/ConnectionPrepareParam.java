@@ -7,18 +7,18 @@ import java.util.Objects;
  */
 public class ConnectionPrepareParam {
     /**
-     * 白板项目的唯一标识，可在控制台获取。
+     * 白板项目的唯一标识，详见[获取白板项目的 App Identifier](/doc/whiteboard/ios/whiteboard-sdk/get-started/enable-service#获取互动白板项目的安全密钥)。
      * 需要与 {@link com.herewhite.sdk.WhiteSdkConfiguration#WhiteSdkConfiguration(String)} 设置保持一致。
      */
     private final String appId;
 
     /**
-     * 用户的应用所在的区域，详见 {@link Region}.
+     * 用户的 App 所在的区域，详见 {@link Region}。
      */
     private final Region region;
 
     /**
-     * 过期时间, 在时间内不做再次检查。默认为 12 小时
+     * 过期时间, 在时间内不做再次检查。默认为 12 小时。
      */
     private final Long expire;
 
