@@ -359,7 +359,7 @@ public class WhiteSdk {
     }
 
     /**
-     * Preselects the optimal access domain to improve the connection speed for the first time a user connects a whiteboard room.
+     * Preselects the optimal access domain to improve the connection speed for when the user connects for the first time.
      *
      * @param context The context of the Android Activity.
      * @param param The whiteboard connection preparation parameters, see {@link com.herewhite.sdk.domain.ConnectionPrepareParam ConnectionPrepareParam}.

@@ -18,7 +18,7 @@ public class ConnectionPrepareParam {
     private final Region region;
 
     /**
-     * Expiration time, no further check within the time. Default is 12 hours.
+     * Expiration time, no further connection check within the time. Default is 12 hours.
      */
     private final Long expire;
 
