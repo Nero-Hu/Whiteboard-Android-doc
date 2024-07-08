@@ -450,7 +450,7 @@ public class WhiteSdk {
 
 
     /**
-     * 提前选择线路以加快首次加入白板方间时的连接速度。
+     * 提前选择线路以加快首次加入白板房间时的连接速度。
      *
      * @param context 安卓活动 (Android Activity) 的上下文。
      * @param param 白板预连接参数，详见 {@link com.herewhite.sdk.domain.ConnectionPrepareParam ConnectionPrepareParam}。
