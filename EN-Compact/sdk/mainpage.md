@@ -436,4 +436,8 @@ Agora provides interactive whiteboard with high reliability and rich features th
 <td>{@link com.herewhite.sdk.Displayer.refreshViewSize() refreshViewSize}</td>
 <td>Refreshes the whiteboard view.</td>
 </tr>
+<tr>
+<td>{@link com.herewhite.sdk.WhiteSdk.prepareWhiteConnection(Context context, ConnectionPrepareParam param) prepareWhiteConnection}</td>
+<td>Preselects the optimal access domain to improve the connection speed for when the user connects for the first time.</td>
+</tr>
 </table>

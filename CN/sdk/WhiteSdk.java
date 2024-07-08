@@ -452,6 +452,8 @@ public class WhiteSdk {
     /**
      * 提前选择线路以加快首次加入白板房间时的连接速度。
      *
+     * 声网建议在加入白板房间前调用该方法，例如设备检测页、白板房间列表页等，有助于提升加入白板房间的连接速度。
+     * 
      * @param context 安卓活动 (Android Activity) 的上下文。
      * @param param 白板预连接参数，详见 {@link com.herewhite.sdk.domain.ConnectionPrepareParam ConnectionPrepareParam}。
      */

@@ -360,6 +360,8 @@ public class WhiteSdk {
 
     /**
      * Preselects the optimal access domain to improve the connection speed for when the user connects for the first time.
+     * 
+     * Agora recommends you call this method before joining a whiteboard room, for example, on the device detection page or the whiteboard room list page. This method helps improve the connection speed when joining a whiteboard room.
      *
      * @param context The context of the Android Activity.
      * @param param The whiteboard connection preparation parameters, see {@link com.herewhite.sdk.domain.ConnectionPrepareParam ConnectionPrepareParam}.

@@ -532,7 +532,7 @@
 <td>刷新白板的界面</td>
 </tr>
 <tr>
-<td>{@link com.herewhite.sdk.RoomParams.setUseNativeWebSocket setUseNativeWebSocket}</td>
-<td>开启/关闭全链路加速功能。</td>
+<td>{@link com.herewhite.sdk.WhiteSdk.prepareWhiteConnection(Context context, ConnectionPrepareParam param) prepareWhiteConnection}</td>
+<td>提前选择线路以加快首次加入白板房间时的连接速度。</td>
 </tr>
 </table>
