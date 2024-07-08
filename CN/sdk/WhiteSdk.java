@@ -6,6 +6,7 @@ import androidx.annotation.Nullable;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+import com.herewhite.sdk.domain.ConnectionPrepareParam;
 import com.herewhite.sdk.domain.FontFace;
 import com.herewhite.sdk.domain.PlayerConfiguration;
 import com.herewhite.sdk.domain.PlayerTimeInfo;
@@ -13,11 +14,15 @@ import com.herewhite.sdk.domain.Promise;
 import com.herewhite.sdk.domain.SDKError;
 import com.herewhite.sdk.domain.UrlInterrupter;
 import com.herewhite.sdk.internal.PlayerJsInterfaceImpl;
+import com.herewhite.sdk.internal.PostMessageCallback;
 import com.herewhite.sdk.internal.RoomJsInterfaceImpl;
 import com.herewhite.sdk.internal.RtcJsInterfaceImpl;
 import com.herewhite.sdk.internal.SdkJsInterfaceImpl;
+import com.herewhite.sdk.window.SlideListener;
 
 import org.json.JSONObject;
+
+import java.io.File;
 
 import wendu.dsbridge.OnReturnValue;
 
@@ -437,9 +442,24 @@ public class WhiteSdk {
      * 设置 SlideApp 回调。
      * SlideApp 通过 `SlideListener` 类向 app 报告内部运行时的各项事件。
      *
-     * @param slideListener 通用回调事件，详见 {@link SlideListener SlideListener}。
+     * @param slideListener 通用回调事件，详见 {@link com.herewhite.sdk.window.SlideListener SlideListener}。
      */
     public void setSlideListener(SlideListener slideListener) {
         sdkJsInterface.setSlideListener(slideListener);
+    }
+
+
+    /**
+     * 提前选择线路以加快首次加入白板房间时的连接速度。
+     *
+     * @param context 安卓活动 (Android Activity) 的上下文。
+     * @param param 白板预连接参数，详见 {@link com.herewhite.sdk.domain.ConnectionPrepareParam ConnectionPrepareParam}。
+     */
+    public static void prepareWhiteConnection(Context context, ConnectionPrepareParam param) {
+        WhiteboardView whiteboardView = new WhiteboardView(context);
+        whiteboardView.callHandler("sdk.prepareWhiteConnection", new Object[]{param}, (OnReturnValue<String>) value -> {
+            whiteboardView.removeAllViews();
+            whiteboardView.destroy();
+        });
     }
 }
