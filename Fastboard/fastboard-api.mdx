@@ -48,19 +48,6 @@ public FastRoom createFastRoom(FastRoomOptions roomOptions)
 
 方法调用成功时返回 `FastRoom` 对象。
 
-<h3 className="anchor index-api-preloadwhiteboardview" id="preloadwhiteboardview">preloadWhiteboardView</h3>
-
-```java
-public static void preloadWhiteboardView() {
-        WhiteboardViewManager.get().preload();
-    }
-```
-
-预加载白板视图。
-
-该方法仅在 `FastboardConfig` 中的 `autoPreload` 为 `false` 时生效。成功调用该方法将消耗内存执行一次白板视图预加载，提升下次加入房间的速度。
-
-
 <h3 className="anchor index-api-setconfig" id="setconfig">setConfig</h3>
 
 ```java
@@ -162,26 +149,21 @@ public class FastUserPayload {
 
 - `avatar`：String。（可选）用户光标上显示的用户头像，应传入头像对应的 URL 地址。
 
-<h3 className="anchor index-api-fastboardconfig" id="fastboardconfig">FastboardConfig</h3>
+<h3 className="anchor index-api-fastroomconfig" id="fastroomconfig">FastRoomConfig</h3>
 
 ```java
 public class FastboardConfig {
     private final boolean enablePreload;
     private final int preloadCount;
-    private final boolean autoPreload;
 }
 ```
 
 `Fastboard` 对象的辅助配置，包含以下属性：
 
 - `enablePreload`：boolean。是否开启白板预加载功能：
-  - `true`：开启白板预加载。
+  - `true`：开启白板预加载。开启后可提升白板加载速度。
   - `false`：（默认）关闭白板预加载。
 - `preloadCount`：int。预加载的 WebView 数量，默认为 `0`。该属性的实际生效情况受内存容量的限制，你需要根据实际情况适当调整设置。
-- `autoPreload`:boolean。该属性仅在 `enablePreload` 为 `true` 时生效。是否启用自动预加载：
-  - `true`：（默认）启用自动预加载。开启后可自动预加载白板视图，提升白板加载速度，但会占用额外的内存。
-  - `false`：关闭自动预加载。关闭后，你可以调用 [`preloadWhiteboardView`](#preloadWhiteboardView) 手动执行预加载。
-
 
 <H2 className="anchor index-auto-group index-class-fastroom" id="fastroom">FastRoom 类</H2>
 
