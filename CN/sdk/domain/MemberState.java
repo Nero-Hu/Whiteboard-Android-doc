@@ -44,6 +44,22 @@ public class MemberState extends WhiteObject {
      */
     private Integer pencilEraserSize;
 
+    /**
+     * 线条透明度。取值范围为 [0.0, 1.0]，0 表示完全透明，1 表示完全不透明。
+     */
+    private Double strokeOpacity;
+
+    /**
+     * 图形填充透明度。取值范围为 [0.0, 1.0]，0 表示完全透明，1 表示完全不透明。
+     */
+    private Double fillOpacity;
+
+    /**
+     * 图形填充颜色，为 RGB 格式，例如，[0, 0, 255] 表示蓝色。
+     */
+    private int[] fillColor;
+
+
     public MemberState() {
     }
 
@@ -232,5 +248,71 @@ public class MemberState extends WhiteObject {
      */
     public void setPencilEraserSize(Integer pencilEraserSize) {
         this.pencilEraserSize = pencilEraserSize;
+    }
+
+    /**
+     * 获取线条透明度。
+     * 
+     * @since 2.16.100
+     *
+     * @return 线条透明度。取值范围为 [0.0, 1.0]，0 表示完全透明，1 表示完全不透明。
+     */
+    public Double getStrokeOpacity() {
+        return strokeOpacity;
+    }
+
+    /**
+     * 设置线条透明度。
+     * 
+     * @since 2.16.100
+     *
+     * @param strokeOpacity 线条透明度。取值范围为 [0.0, 1.0]，0 表示完全透明，1 表示完全不透明。
+     */
+    public void setStrokeOpacity(Double strokeOpacity) {
+        this.strokeOpacity = strokeOpacity;
+    }
+
+    /**
+     * 获取图形填充透明度。
+     * 
+     * @since 2.16.100
+     *
+     * @return 图形填充透明度。取值范围为 [0.0, 1.0]，0 表示完全透明，1 表示完全不透明。
+     */
+    public Double getFillOpacity() {
+        return fillOpacity;
+    }
+
+    /**
+     * 设置图形填充透明度。
+     * 
+     * @since 2.16.100
+     *
+     * @param fillOpacity 图形填充透明度。
+     */
+    public void setFillOpacity(Double fillOpacity) {
+        this.fillOpacity = fillOpacity;
+    }
+
+    /**
+     * 获取图形填充颜色。
+     * 
+     * @since 2.16.100
+     *
+     * @return 图形填充颜色，为 RGB 格式，例如，[0, 0, 255] 表示蓝色。
+     */
+    public int[] getFillColor() {
+        return fillColor;
+    }
+
+    /**
+     * 设置图形填充颜色。
+     * 
+     * @since 2.16.100
+     *
+     * @param fillColor 图形填充颜色，为 RGB 格式，例如，[0, 0, 255] 表示蓝色。
+     */
+    public void setFillColor(int[] fillColor) {
+        this.fillColor = fillColor;
     }
 }

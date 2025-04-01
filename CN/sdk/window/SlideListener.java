@@ -19,4 +19,17 @@ public interface SlideListener {
      * @param resultCaller 回调替换后的 URL。
      */
     void slideUrlInterrupter(String sourceUrl, ResultCaller<String> resultCaller);
+
+    /**
+     * PPT 加载错误回调，用于监听 PPT 渲染错误事件。
+     *
+     * @since 2.16.93
+     *
+     * @param errorType 错误类型。
+     * @param errorMsg  错误信息。
+     * @param slideId   PPT ID。
+     * @param slideIndex PPT 索引。
+     */
+    default void onSlideError(SlideErrorType errorType, String errorMsg, String slideId, int slideIndex) {
+    }
 }
