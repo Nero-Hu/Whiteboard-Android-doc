@@ -2,6 +2,7 @@ package com.herewhite.sdk.window;
 
 import com.herewhite.sdk.ResultCaller;
 import com.herewhite.sdk.WhiteSdkConfiguration;
+import com.herewhite.sdk.domain.SlideErrorType;
 
 public interface SlideListener {
     /**
