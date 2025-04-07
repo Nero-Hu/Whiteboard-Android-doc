@@ -448,6 +448,16 @@ public class WhiteSdk {
         sdkJsInterface.setSlideListener(slideListener);
     }
 
+    /**
+     * 恢复指定 PPT 的渲染状态。
+     * 
+     * 如果 PPT 渲染失败，你可以调用该方法恢复 PPT 的渲染状态。
+     * 
+     * @param slideId PPT ID。
+     */
+    public void recoverSlide(String slideId) {
+        bridge.evaluateJavascript("window.postMessage({'type': \"@slide/_recover_\",'recoverBy': \"reloadCurrentPage\",'slideId': \"" + slideId + "\"});");
+    }
 
     /**
      * 提前选择线路以加快首次加入白板房间时的连接速度。

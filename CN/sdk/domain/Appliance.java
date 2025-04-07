@@ -55,7 +55,13 @@ public class Appliance {
      */
     public final static String SHAPE = "shape";
     /**
-     * 用于擦除局部铅笔笔迹的橡皮工具。该工具仅对 NewPencil 生效，使用前需要先设置 disableNewPencil 为 false
+     * 用于擦除局部铅笔笔迹的橡皮工具。
+     * 该工具仅对 `NewPencil` 生效，使用前需要先设置 `disableNewPencil` 为 `false`。
      */
     public final static String PENCIL_ERASER = "pencilEraser";
+    /**
+     * 激光铅笔工具。
+     * 该工具只在开启 `WhiteSdkConfiguration.enableAppliancePlugin` 后生效。
+     */
+    public final static String LASER_PENCIL = "laserPen";
 }

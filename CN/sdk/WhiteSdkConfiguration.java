@@ -317,6 +317,28 @@ public class WhiteSdkConfiguration extends WhiteObject {
     }
 
     /**
+     * 获取是否启用高性能白板绘制工具插件 (appliance-plugin)。
+     *
+     * @return 是否启用 appliance-plugin：
+     * - `true`：开启。
+     * - `false`：（默认）关闭。
+     */
+    public boolean isEnableAppliancePlugin() {
+        return enableAppliancePlugin;
+    }
+
+    /**
+     * 启用/禁用高性能白板绘制工具插件 (appliance-plugin)。
+     *
+     * @param enableAppliancePlugin 是否启用 appliance-plugin：
+     *                              - `true`：开启。
+     *                              - `false`：（默认）关闭。
+     */
+    public void setEnableAppliancePlugin(boolean enableAppliancePlugin) {
+        this.enableAppliancePlugin = enableAppliancePlugin;
+    }
+
+    /**
      * 设置绘图的渲染模式。
      *
      * @since 2.8.0
