@@ -45,6 +45,26 @@ Call this method after obtaining the `Fastboard` object.
 
 A `FastRoom` object is returned when the method call is successful.
 
+### preloadWhiteboardView
+
+```java
+public static void preloadWhiteboardView() {
+    WhiteboardViewManager.get().preload();
+}
+```
+
+Preload the whiteboard view.
+
+This method only takes effect when `autoPreload` in [`FastboardConfig`](#fastboardconfig) is set to `false`. Successfully calling this method will consume memory to perform one whiteboard view preload, improving the speed of joining rooms next time.
+
+### destroy
+
+```java
+public void destroy()
+```
+
+Destroy the room and release resources.
+
 ### setConfig
 
 ```java
@@ -152,15 +172,19 @@ public class FastUserPayload {
 public class FastboardConfig {
     private final boolean enablePreload;
     private final int preloadCount;
+    private final boolean autoPreload; 
 }
 ```
 
 The auxiliary configuration class of the `Fastboard` object, including the following attributes:
 
 - `enablePreload`: Boolean. Whether to enable whiteboard preloading:
-  - `true`: Enable whiteboard preloading. Enabling this can improve whiteboard loading speed.
+  - `true`: Enable whiteboard preloading.
   - `false`: (Default) Disable whiteboard preloading.
 - `preloadCount`: Integer. The number of WebViews to preload, defaults to `0`. The actual effect of this attribute is limited by the memory capacity. You need to adjust the settings appropriately according to the actual situation.
+- `autoPreload`: Boolean. This property only takes effect when `enablePreload` is `true`. Whether to enable automatic preloading:
+  - `true`: (Default) Enable automatic preloading. After enabling, whiteboard views will be automatically preloaded to improve loading speed, but will occupy additional memory.
+  - `false`: Disable automatic preloading. After disabling, you can call [`preloadWhiteboardView`](#preloadwhiteboardview) to manually perform preloading.
 
 ## FastRoom class
 
