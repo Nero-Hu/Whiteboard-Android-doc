@@ -359,12 +359,21 @@ public class WhiteSdk {
     }
 
     /**
-     * Preselects the optimal access domain to improve the connection speed for when the user connects for the first time.
+     * Recovers the rendering status of the specified PPT.
      * 
-     * Agora recommends you call this method before joining a whiteboard room, for example, on the device detection page or the whiteboard room list page, thus improving the connection speed when joining a whiteboard room.
+     * If PPT rendering fails, you can call this method to recover the rendering status of the PPT.
+     * 
+     * @param slideId PPT ID.
+     */
+    public void recoverSlide(String slideId) {
+        bridge.evaluateJavascript("window.postMessage({'type': \"@slide/_recover_\",'recoverBy': \"reloadCurrentPage\",'slideId': \"" + slideId + "\"});");
+    }
+
+    /**
+     * Preselects the connection route to speed up the connection when joining a whiteboard room for the first time.
      *
-     * @param context The context of the Android Activity.
-     * @param param The whiteboard connection preparation parameters, see {@link com.herewhite.sdk.domain.ConnectionPrepareParam ConnectionPrepareParam}.
+     * @param context The context.
+     * @param param The connection preparation parameters.
      */
     public static void prepareWhiteConnection(Context context, ConnectionPrepareParam param) {
         WhiteboardView whiteboardView = new WhiteboardView(context);

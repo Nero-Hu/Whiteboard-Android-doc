@@ -2,6 +2,7 @@ package com.herewhite.sdk.window;
 
 import com.herewhite.sdk.ResultCaller;
 import com.herewhite.sdk.WhiteSdkConfiguration;
+import com.herewhite.sdk.domain.SlideErrorType;
 
 public interface SlideListener {
     /**
@@ -18,4 +19,17 @@ public interface SlideListener {
      * @param resultCaller The URL replacemnt.
      */
     void slideUrlInterrupter(String sourceUrl, ResultCaller<String> resultCaller);
+
+    /**
+     * The callback triggered when a PPT loading error occurs, used to listen for PPT rendering error events.
+     *
+     * @since 2.16.93
+     *
+     * @param errorType   The error type.
+     * @param errorMsg    The error message.
+     * @param slideId     The PPT ID.
+     * @param slideIndex  The PPT index.
+     */
+    default void onSlideError(SlideErrorType errorType, String errorMsg, String slideId, int slideIndex) {
+    }
 }

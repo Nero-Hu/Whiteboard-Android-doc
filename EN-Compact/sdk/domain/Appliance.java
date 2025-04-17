@@ -53,8 +53,12 @@ public class Appliance {
      */
     public final static String SHAPE = "shape";
     /**
-     * A pencil eraser used to erase any part of the pencil strokes.
-     * This tool only applies to NewPencil. You need to set disableNewPencil to false before using the pencil eraser.
+     * The eraser tool for erasing partial pencil strokes. This tool only works for `NewPencil` and requires `disableNewPencil` to be set to `false` before use.
      */
     public final static String PENCIL_ERASER = "pencilEraser";
+    /**
+     * The laser pencil tool.
+     * This tool is only available when `WhiteSdkConfiguration.enableAppliancePlugin` is enabled.
+     */
+    public final static String LASER_PENCIL = "laserPen";
 }

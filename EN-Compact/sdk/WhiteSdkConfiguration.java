@@ -12,6 +12,7 @@ import com.herewhite.sdk.domain.WhiteObject;
 import org.json.JSONObject;
 
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Configuration for the `WhiteSdk` instance.
@@ -309,6 +310,28 @@ public class WhiteSdkConfiguration extends WhiteObject {
      */
     public void setApiHosts(List<String> apiHosts) {
         this.apiHosts = apiHosts;
+    }
+
+    /**
+     * Gets whether the high-performance whiteboard drawing tools plugin (appliance-plugin) is enabled.
+     *
+     * @return Whether the appliance-plugin is enabled:
+     * - `true`: Enabled.
+     * - `false`: (Default) Disabled.
+     */
+    public boolean isEnableAppliancePlugin() {
+        return enableAppliancePlugin;
+    }
+
+    /**
+     * Enables/disables the high-performance whiteboard drawing tools plugin (appliance-plugin).
+     *
+     * @param enableAppliancePlugin Whether to enable the appliance-plugin:
+     *                              - `true`: Enable.
+     *                              - `false`: (Default) Disable.
+     */
+    public void setEnableAppliancePlugin(boolean enableAppliancePlugin) {
+        this.enableAppliancePlugin = enableAppliancePlugin;
     }
 
     /**

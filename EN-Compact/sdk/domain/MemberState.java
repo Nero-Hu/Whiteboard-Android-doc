@@ -16,6 +16,9 @@ public class MemberState extends WhiteObject {
     private Boolean textCanSelectText;
     private Boolean dottedLine;
     private Integer pencilEraserSize;
+    private Double strokeOpacity;
+    private Double fillOpacity;
+    private int[] fillColor;
     
     public MemberState() {
     }
@@ -192,20 +195,86 @@ public class MemberState extends WhiteObject {
     }
 
     /**
-     * Gets the size of the pencil eraser.
+     * Gets the size of the pencil eraser tool.
      *
+     * @return The size of the pencil eraser tool.
      */
     public Integer getPencilEraserSize() {
         return pencilEraserSize;
     }
 
     /**
-     * Sets the size of the pencil eraser.
-     * To modify this configuration, you need to set {@link com.herewhite.sdk.RoomParams#setDisableNewPencil (false)}} when joining the room.
+     * Sets the size of the pencil eraser tool.
      *
-     * @param pencilEraserSize The size of the pencil eraser, ranging from [1,3], where a larger value indicates a larger size.
+     * @param pencilEraserSize The size of the pencil eraser tool.
      */
     public void setPencilEraserSize(Integer pencilEraserSize) {
         this.pencilEraserSize = pencilEraserSize;
+    }
+
+    /**
+     * Gets the stroke opacity.
+     * 
+     * @since 2.16.100
+     *
+     * @return The stroke opacity. The value ranges from [0.0, 1.0], where 0 means completely transparent and 1 means completely opaque.
+     */
+    public Double getStrokeOpacity() {
+        return strokeOpacity;
+    }
+
+    /**
+     * Sets the stroke opacity.
+     * 
+     * @since 2.16.100
+     *
+     * @param strokeOpacity The stroke opacity. The value ranges from [0.0, 1.0], where 0 means completely transparent and 1 means completely opaque.
+     */
+    public void setStrokeOpacity(Double strokeOpacity) {
+        this.strokeOpacity = strokeOpacity;
+    }
+
+    /**
+     * Gets the fill opacity for shapes.
+     * 
+     * @since 2.16.100
+     *
+     * @return The fill opacity for shapes. The value ranges from [0.0, 1.0], where 0 means completely transparent and 1 means completely opaque.
+     */
+    public Double getFillOpacity() {
+        return fillOpacity;
+    }
+
+    /**
+     * Sets the fill opacity for shapes.
+     * 
+     * @since 2.16.100
+     *
+     * @param fillOpacity The fill opacity for shapes.
+     */
+    public void setFillOpacity(Double fillOpacity) {
+        this.fillOpacity = fillOpacity;
+    }
+
+    /**
+     * Gets the fill color for shapes.
+     * 
+     * @since 2.16.100
+     *
+     * @return The fill color for shapes, in RGB format. For example, [0, 0, 255] represents blue.
+     */
+    public int[] getFillColor() {
+        return fillColor;
+    }
+
+    /**
+     * Sets the fill color for shapes.
+     * 
+     * @since 2.16.100
+     *
+     * @param fillColor The fill color for shapes, in RGB format. For example, [0, 0, 255] represents blue.
+     */
+    public void setFillColor(int[] fillColor) {
+        this.fillColor = fillColor;
     }
 }

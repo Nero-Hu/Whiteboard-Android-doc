@@ -1,5 +1,44 @@
 <PlatformWrapper platform="android">
 
+## v2.16.100
+
+This version was released on April X, 2025.
+
+#### New Features
+
+**High-performance whiteboard drawing tools**
+
+This version adds the `appliance-plugin` plugin, which implements a set of high-performance whiteboard drawing tools. After installing `@netless/appliance-plugin`, you can enable this plugin through the `WhiteSdkConfiguration.enableAppliancePlugin` configuration option. See [`appliance-plugin`](https://github.com/netless-io/fastboard/blob/main/docs/zh/appliance-plugin.md) for details.
+
+<Admonition type="caution" title="Note">
+- `@netless/appliance-plugin` is a required external dependency that needs to be installed separately.
+- To ensure proper display of strokes, enable the `appliance-plugin` plugin on all terminals (Web, Android, and iOS). If a terminal does not enable it, strokes drawn using `appliance-plugin` on other terminals will not be visible on that terminal.
+- After enabling the `appliance-plugin` plugin, historical content on the whiteboard will still be displayed but cannot be operated on or upgraded. To avoid affecting user experience, it is recommended to use this plugin on a new whiteboard. After disabling the plugin, content drawn with it will be lost.
+</Admonition>
+
+After enabling the `appliance-plugin` plugin, you can:
+
+- Use the newly added laser pencil tool `LASER_PENCIL`. For usage details, see [`appliance-plugin`](https://github.com/netless-io/fastboard/blob/main/docs/zh/appliance-plugin.md#%E6%96%B0%E5%8A%9F%E8%83%BD).
+- Use the new `MemberState.strokeOpacity` property to change line transparency.
+- Use the new `MemberState.fillOpacity` property to change fill transparency.
+- Use the new `MemberState.fillColor` property to change fill color.
+
+**Handling PPT rendering errors**
+
+This version adds the `SlideListener.onSlideError` method to listen for PPT rendering errors. Additionally, when a PPT rendering error occurs, you can call the `WhiteSdk.recoverSlide` method to recover PPT rendering.
+
+#### API Changes
+
+**Added**
+
+- `WhiteSdkConfiguration` adds `enableAppliancePlugin`
+- `MemberState` adds the following properties:
+  - `strokeOpacity`
+  - `fillOpacity`
+  - `fillColor`
+- `onSlideError`
+- `recoverSlide`
+
 ## v2.16.86
 
 This version was released on June X, 2024.
